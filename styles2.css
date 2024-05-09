@@ -172,3 +172,21 @@ header.not-home nav ul {
     display: flex;
     align-items: center; /* Centra los elementos del menú verticalmente */
 }
+
+
+@keyframes flyToHeader {
+    0% {
+        position: fixed;
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        position: fixed;
+        transform: translateX(calc(-50vw + 50px)) translateY(calc(-50vh + 30px)) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.logo-fly {
+    animation: flyToHeader 1s forwards; /* forwards asegura que se mantenga el estado final de la animación */
+}

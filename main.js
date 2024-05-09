@@ -31,6 +31,8 @@ const homeLogo = homeLogoContainer
   ? homeLogoContainer.querySelector("img")
   : null;
 const header = document.querySelector("header");
+const logoHome = document.querySelector('#home .logo img');
+const logoHeader = document.querySelector('#logo-container img');
 function updateNavigation(activeId) {
   // Asegúrate de que el logo existe en el contenedor de home antes de intentar manipularlo
 
@@ -50,10 +52,31 @@ function updateNavigation(activeId) {
     // Si la sección activa no es 'home', añade la clase 'not-home'
     header.classList.add("not-home");
     document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
+
+    if (logoHome && !logoHeader) {
+        logoHome.classList.add('logo-fly');
+        logoHome.addEventListener('animationend', () => {
+            logoHome.classList.remove('logo-fly');
+            // Mueve el logo al header después de la animación
+            logoHome.style.opacity = 0;  // Oculta temporalmente para evitar un cambio brusco
+            logoHeader.src = logoHome.src;
+            logoHeader.style.opacity = 1;  // Aparece suavemente en el header
+        });
+    }
+
   } else {
     // Si la sección activa es 'home', remueve la clase 'not-home'
     header.classList.remove("not-home");
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
+
+    header.classList.remove('not-home');
+        // Asegúrate de resetear cualquier estilo si vuelves a home
+        if (logoHeader) {
+            logoHeader.style.opacity = 0;  // Prepara para mover de vuelta
+            logoHome.src = logoHeader.src;
+            logoHome.style.opacity = 1;  // Aparece suavemente en home
+        }
+
   }
 
   if (activeId !== "home" && homeLogo) {
