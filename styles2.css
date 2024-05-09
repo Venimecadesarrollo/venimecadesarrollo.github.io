@@ -15,18 +15,35 @@ section {
     scroll-snap-align: start; /* Alineado al inicio de cada sección */
 }
 
+#logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 header {
+    display: flex;
+    justify-content: center; /* Centra el contenido por defecto */
+    align-items: space-between; /* Alinea los elementos verticalmente en el centro */
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 20px 0;
+    padding: 20px 20px;
     z-index: 1000;
 }
 
+nav {
+    display: flex;
+    justify-content: flex-end; /* Asegura que el menú esté a la derecha */
+    width: auto; /* Ocupa solo el espacio necesario */
+}
+
 nav ul {
+    display: flex;  /* Importante para asegurar que flexbox controle los li */
+    justify-content: flex-end; /* Centra los elementos del menú */
+    align-items: center; /* Alineación vertical */
+    width: 100%; /* Asegura que ul ocupe todo el ancho de nav */
     list-style: none;
-    text-align: center;
-    margin: 0;
     padding: 0;
 }
 
@@ -132,4 +149,26 @@ nav a:hover::after, nav a.active::after {
 
 .scroll-indicator.only-icon .get-started {
     display: none; /* Oculta la frase 'Get Started' cuando solo hay un icono */
+}
+
+.small-logo {
+    width: 80px; /* Cambia esto según el tamaño deseado para el logo en el header */
+}
+
+
+header.not-home {
+    justify-content: space-between; /* Espaciado entre logo y menú */
+}
+
+header.not-home #logo-container {
+    justify-content: flex-start; /* Alinea el logo a la izquierda */
+}
+
+header.not-home nav {
+    justify-content: flex-end; /* Alinea el menú a la derecha */
+}
+
+header.not-home nav ul {
+    display: flex;
+    align-items: center; /* Centra los elementos del menú verticalmente */
 }
