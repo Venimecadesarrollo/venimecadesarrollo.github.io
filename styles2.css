@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    overflow-y: auto; /* Cambiado a auto para permitir el comportamiento de desplazamiento nativo */
+}
+
+section {
+    height: 100vh; /* Ajustado para ocupar toda la pantalla */
+    scroll-snap-align: start; /* Alineado al inicio de cada sección */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    padding: 0 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    padding: 10px;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+nav a:hover::after, nav a.active::after {
+    opacity: 1;
+}
+
+.fullscreen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#home {
+    background: url('hero-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#about-us {
+    background: url('about.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#products {
+    background: url('terrabox.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    cursor: pointer;
+    background: none;
+
+    animation: anime .8s infinite ease-in-out alternate;
+    animation-delay: .1s;
+}
+
+@keyframes anime {
+    0% {
+        transform: translateX(-50%) translateY(0); /* Estado inicial con centrado horizontal */
+    }
+    100% {
+        transform: translateX(-50%) translateY(5px); /* Mueve el botón verticalmente manteniendo el centrado horizontal */
+        box-shadow: 0 25px 10px -20px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.material-symbols-outlined {
+    color: #fff;
+    font-size: 36px;
+    display: block;
+    filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.9));
+}
+
+/* Ocultar botón cuando no hay más secciones disponibles */
+.scroll-indicator.hidden {
+    display: none;
+}
+
+
+.scroll-indicator .get-started {
+    display: block; /* Hace que la frase 'Get started' se muestre en línea */
+    color: #fff; /* Blanco para contraste */
+    font-size: 16px; /* Tamaño del texto */
+    font-family: Poppins; /* Fuente de texto */
+    margin-bottom: 5px; /* Espacio entre el texto y el icono */
+    text-decoration: none; /* Elimina cualquier subrayado por defecto */
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
+}
+
+.scroll-indicator.only-icon .get-started {
+    display: none; /* Oculta la frase 'Get Started' cuando solo hay un icono */
+}

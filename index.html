@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnergyVoltio</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="hero">
+      <div class="logo">
+        <img src="logo.svg" width="150" alt="Logo de EnergyVoltio" />
+      </div>
+      <div class="scroll-indicator">
+        <span class="get-started">Get started</span>
+        <span class="material-symbols-outlined">
+          keyboard_double_arrow_down
+        </span>
+      </div>
+      <!--<a href="#get-started" class="get-started">Get started</a>-->
+    </div>
+    <section id="about-us" class="content-section">
+        <div class="container">
+            <h1>WIND ENERGY</h1>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            <a href="#more-info" class="see-more-button">See more</a>
+        </div>
+    </section>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Selecciona todos los enlaces que comienzan con '#'
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+
+    smoothScrollLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Detiene el comportamiento de salto automático
+
+            const targetId = this.getAttribute('href'); // Obtiene el atributo href del enlace
+            const targetSection = document.querySelector(targetId); // Encuentra la sección correspondiente
+
+            if (targetSection) {
+                // Desplaza a la sección específica suavemente
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start' // Alinea la sección en la parte superior del viewport
+                });
+            }
+        });
+    });
+});
+
+  </script>
+</html>
