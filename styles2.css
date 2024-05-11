@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body,
@@ -218,14 +217,6 @@ header.not-home nav ul {
   padding: 10px 0; /* Mantener el padding pero asegurarse de que inicia al mismo nivel */
 }
 
-/*.secondary-navbar {
-    display: flex;
-    justify-content: flex-end;
-    width: auto;
-    padding: 10px 0;
-    padding-top: 120px;
-}*/
-
 .nav-link {
   color: white;
   font-family: Poppins;
@@ -290,15 +281,16 @@ header.not-home nav ul {
   font-family: Poppins;
   color: #fff;
 
-  display: none; /* Oculta todas las secciones por defecto */
+  
   transition: opacity 0.5s ease-in-out;
   opacity: 0; /* Agrega opacidad inicial */
+  visibility: hidden;
 }
 
-
 .content-section.active {
-  display: block; /* Solo muestra la sección activa */
+
   opacity: 1;
+  visibility: visible;
 }
 
 #proposal-list {
