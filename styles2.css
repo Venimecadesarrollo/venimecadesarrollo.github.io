@@ -1,244 +1,316 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body, html {
-    height: 100%;
-    scroll-snap-type: y mandatory;
-    overflow-y: auto; /* Cambiado a auto para permitir el comportamiento de desplazamiento nativo */
+body,
+html {
+  height: 100%;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto; /* Cambiado a auto para permitir el comportamiento de desplazamiento nativo */
 }
 
 section {
-    height: 100vh; /* Ajustado para ocupar toda la pantalla */
-    scroll-snap-align: start; /* Alineado al inicio de cada sección */
+  height: 100vh; /* Ajustado para ocupar toda la pantalla */
+  scroll-snap-align: start; /* Alineado al inicio de cada sección */
 }
 
 #logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 header {
-    display: flex;
-    justify-content: center; /* Centra el contenido por defecto */
-    align-items: space-between; /* Alinea los elementos verticalmente en el centro */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px 20px;
-    z-index: 1000;
-    height: 60px;
+  display: flex;
+  justify-content: center; /* Centra el contenido por defecto */
+  align-items: space-between; /* Alinea los elementos verticalmente en el centro */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 20px;
+  z-index: 1000;
+  height: 60px;
 }
 
 nav {
-    display: flex;
-    justify-content: flex-end; /* Asegura que el menú esté a la derecha */
-    width: auto; /* Ocupa solo el espacio necesario */
+  display: flex;
+  justify-content: flex-end; /* Asegura que el menú esté a la derecha */
+  width: auto; /* Ocupa solo el espacio necesario */
 }
 
 nav ul {
-    display: flex;  /* Importante para asegurar que flexbox controle los li */
-    justify-content: flex-end; /* Centra los elementos del menú */
-    align-items: center; /* Alineación vertical */
-    width: 100%; /* Asegura que ul ocupe todo el ancho de nav */
-    list-style: none;
-    padding: 0;
+  display: flex; /* Importante para asegurar que flexbox controle los li */
+  justify-content: flex-end; /* Centra los elementos del menú */
+  align-items: center; /* Alineación vertical */
+  width: 100%; /* Asegura que ul ocupe todo el ancho de nav */
+  list-style: none;
+  padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    padding: 0 40px;
+  display: inline;
+  padding: 0 40px;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  padding: 10px;
 }
 
 nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #fff;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-nav a:hover::after, nav a.active::after {
-    opacity: 1;
+nav a:hover::after,
+nav a.active::after {
+  opacity: 1;
 }
 
 .fullscreen {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding-top: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 70px;
 }
 
 #home {
-    background: url('hero-image.jpg') no-repeat center center fixed;
-    background-size: cover;
+  background: url("hero-image.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 #about-us {
-    background: url('about.jpg') no-repeat center center fixed;
-    background-size: cover;
+  background: url("about.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 #products {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Mantiene los hijos alineados a la derecha */
-    justify-content: flex-start; /* Alinea los hijos hacia la parte superior */
-    width: 100%;
-    background: url('background-terrabox.svg') no-repeat center center fixed;
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Mantiene los hijos alineados a la derecha */
+  justify-content: flex-start; /* Alinea los hijos hacia la parte superior */
+  width: 100%;
+  background: url("background-terrabox.svg") no-repeat center center fixed;
+  background-size: cover;
 }
 
+.product-image-container {
+  width: 70%;
+  display: flex;
+  align-items: center; /* Centra la imagen verticalmente */
+  justify-content: center; /* Centra la imagen horizontalmente */
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea el contenido internamente a la izquierda */
+  padding-right: 40px; /* Espacio a la derecha si es necesario */
+  padding-top: 80px;
+}
+
+#product-content {
+  max-width: 440px; /* Ajusta esto al ancho del nav secundario */
+  width: 100%; /* Esto asegura que el contenido no sea más ancho que el contenedor */
+  margin: 0; /* Mantiene el margen a cero para alineación */
+  padding: 20px 0; /* Padding superior e inferior */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea el contenido a la izquierda */
+  overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado largo */
+  text-align: left;
+  word-wrap: break-word;
+  height: auto;
+  max-height: 500px;
+  overflow-x: hidden;
+}
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    cursor: pointer;
-    background: none;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  cursor: pointer;
+  background: none;
 
-    animation: anime .8s infinite ease-in-out alternate;
-    animation-delay: .1s;
+  animation: anime 0.8s infinite ease-in-out alternate;
+  animation-delay: 0.1s;
 }
 
 @keyframes anime {
-    0% {
-        transform: translateX(-50%) translateY(0); /* Estado inicial con centrado horizontal */
-    }
-    100% {
-        transform: translateX(-50%) translateY(5px); /* Mueve el botón verticalmente manteniendo el centrado horizontal */
-        box-shadow: 0 25px 10px -20px rgba(0, 0, 0, 0.25);
-    }
+  0% {
+    transform: translateX(-50%) translateY(0); /* Estado inicial con centrado horizontal */
+  }
+  100% {
+    transform: translateX(-50%) translateY(5px); /* Mueve el botón verticalmente manteniendo el centrado horizontal */
+    box-shadow: 0 25px 10px -20px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .material-symbols-outlined {
-    color: #fff;
-    font-size: 36px;
-    display: block;
-    filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.9));
+  color: #fff;
+  font-size: 36px;
+  display: block;
+  filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.9));
 }
 
 /* Ocultar botón cuando no hay más secciones disponibles */
 .scroll-indicator.hidden {
-    display: none;
+  display: none;
 }
 
-
 .scroll-indicator .get-started {
-    display: block; /* Hace que la frase 'Get started' se muestre en línea */
-    color: #fff; /* Blanco para contraste */
-    font-size: 16px; /* Tamaño del texto */
-    font-family: Poppins; /* Fuente de texto */
-    margin-bottom: 5px; /* Espacio entre el texto y el icono */
-    text-decoration: none; /* Elimina cualquier subrayado por defecto */
-    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
+  display: block; /* Hace que la frase 'Get started' se muestre en línea */
+  color: #fff; /* Blanco para contraste */
+  font-size: 16px; /* Tamaño del texto */
+  font-family: Poppins; /* Fuente de texto */
+  margin-bottom: 5px; /* Espacio entre el texto y el icono */
+  text-decoration: none; /* Elimina cualquier subrayado por defecto */
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
 }
 
 .scroll-indicator.only-icon .get-started {
-    display: none; /* Oculta la frase 'Get Started' cuando solo hay un icono */
+  display: none; /* Oculta la frase 'Get Started' cuando solo hay un icono */
 }
 
 .small-logo {
-    width: 80px; /* Cambia esto según el tamaño deseado para el logo en el header */
+  width: 80px; /* Cambia esto según el tamaño deseado para el logo en el header */
 }
 
-
 header.not-home {
-    justify-content: space-between; /* Espaciado entre logo y menú */
+  justify-content: space-between; /* Espaciado entre logo y menú */
 }
 
 header.not-home #logo-container {
-    justify-content: flex-start; /* Alinea el logo a la izquierda */
+  justify-content: flex-start; /* Alinea el logo a la izquierda */
 }
 
 header.not-home nav {
-    justify-content: flex-end; /* Alinea el menú a la derecha */
+  justify-content: flex-end; /* Alinea el menú a la derecha */
 }
 
 header.not-home nav ul {
-    display: flex;
-    align-items: center; /* Centra los elementos del menú verticalmente */
+  display: flex;
+  align-items: center; /* Centra los elementos del menú verticalmente */
 }
 
-
-
-
-
 .secondary-navbar {
+  width: auto;
+  display: flex;
+  justify-content: flex-start; /* Cambio para alinear los enlaces a la izquierda */
+  padding: 10px 0; /* Mantener el padding pero asegurarse de que inicia al mismo nivel */
+}
+
+/*.secondary-navbar {
     display: flex;
     justify-content: flex-end;
     width: auto;
     padding: 10px 0;
     padding-top: 120px;
-}
+}*/
 
 .nav-link {
-    color: white;
-    font-family: Poppins;
-    padding: 8px 15px;
-    text-decoration: none;
-    transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
-    background-color: rgba(217, 217, 217, 0.1); /* Color de fondo con transparencia */
-    border: 2px solid rgba(255, 255, 255, 0.75); /* Contorno blanco con ligera transparencia */
-    border-radius: 15px;
-    margin-right: 10px;
+  color: white;
+  font-family: Poppins;
+  padding: 8px 15px;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
+  background-color: rgba(
+    217,
+    217,
+    217,
+    0.1
+  ); /* Color de fondo con transparencia */
+  border: 2px solid rgba(255, 255, 255, 0.75); /* Contorno blanco con ligera transparencia */
+  border-radius: 15px;
+  margin-right: 10px;
 }
 
-.nav-link:hover, .nav-link:focus {
-    background-color: rgba(255, 255, 255, 0.3); /* Color de fondo con transparencia */
-    border-color: rgba(255, 255, 255, 1); /* Hace el borde completamente blanco y opaco */
+.nav-link:hover,
+.nav-link:focus {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Color de fondo con transparencia */
+  border-color: rgba(
+    255,
+    255,
+    255,
+    1
+  ); /* Hace el borde completamente blanco y opaco */
 }
 
 .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo más oscuro para el ítem activo */
-    color: #fff; /* Mantiene el texto blanco */
-    border-color: rgba(255, 255, 255, 0.9); /* Ajusta el borde para el ítem activo */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Fondo más oscuro para el ítem activo */
+  color: #fff; /* Mantiene el texto blanco */
+  border-color: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Ajusta el borde para el ítem activo */
 }
-
-#products p {
-    width: 500px; /* Define el ancho deseado para el párrafo */
-    margin-left: auto; /* Empuja el párrafo hacia la derecha */
-    margin-right: 0; /* Asegura que el margen derecho sea 0 */
-    padding: 20px; /* Agrega un poco de espacio interior para la legibilidad */
-    text-align: left; /* Justifica el texto para una mejor presentación */
-    font-family: Poppins;
-    color: #fff;
-    transition: opacity 0.5s ease-in-out;
-}
-
 
 #proposal-list {
-    display: block;
-    font-family: Poppins;
-    color: #fff;
+  display: block;
+  font-family: Poppins;
+  color: #fff;
 }
 
 .content-section {
-    display: none; /* Oculta todas las secciones por defecto */
-    transition: opacity 0.5s ease-in-out;
+  overflow-wrap: break-word;
+  width: 100%;
+  max-width: 430px;
+
+  text-align: left; /* Justifica el texto para una mejor presentación */
+  font-family: Poppins;
+  color: #fff;
+
+  display: none; /* Oculta todas las secciones por defecto */
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0; /* Agrega opacidad inicial */
 }
 
+
 .content-section.active {
-    display: block; /* Solo muestra la sección activa */
+  display: block; /* Solo muestra la sección activa */
+  opacity: 1;
+}
+
+#proposal-list {
+  list-style: none; /* Quita los puntos de la lista */
+  padding: 0; /* Quita el padding por defecto de la lista */
+  margin: 0; /* Quita el margen por defecto de la lista */
+}
+
+#proposal-list > li {
+  margin-bottom: 10px; /* Ajusta el espacio entre cada elemento de la lista */
+}
+
+#proposal-list > li > ul {
+  padding-left: 20px; /* Indenta los elementos de la lista secundaria */
 }

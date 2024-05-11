@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const newActiveId = 'content-' + this.id; // Este ID corresponde al contenido relacionado
+        console.log('newActiveId', newActiveId)
         const newActive = document.getElementById(newActiveId);
         if (newActive) {
             newActive.classList.add('active');
