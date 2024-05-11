@@ -85,6 +85,22 @@ document.addEventListener("DOMContentLoaded", function () {
   setupSectionObserver();
   transitionInClickMenu();
   EventClickDownButton();
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const currentActive = document.querySelector('.content-section.active');
+        if (currentActive) {
+            currentActive.classList.remove('active');
+        }
+
+        const newActiveId = 'content-' + this.id; // Este ID corresponde al contenido relacionado
+        const newActive = document.getElementById(newActiveId);
+        if (newActive) {
+            newActive.classList.add('active');
+        }
+    });
+});
+
 });
 
 function transitionInClickMenu() {

@@ -30,6 +30,7 @@ header {
     width: 100%;
     padding: 20px 20px;
     z-index: 1000;
+    height: 60px;
 }
 
 nav {
@@ -84,6 +85,7 @@ nav a:hover::after, nav a.active::after {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 70px;
 }
 
 #home {
@@ -97,9 +99,15 @@ nav a:hover::after, nav a.active::after {
 }
 
 #products {
-    background: url('terrabox.png') no-repeat center center fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Mantiene los hijos alineados a la derecha */
+    justify-content: flex-start; /* Alinea los hijos hacia la parte superior */
+    width: 100%;
+    background: url('background-terrabox.svg') no-repeat center center fixed;
     background-size: cover;
 }
+
 
 .scroll-indicator {
     position: absolute;
@@ -171,4 +179,66 @@ header.not-home nav {
 header.not-home nav ul {
     display: flex;
     align-items: center; /* Centra los elementos del menú verticalmente */
+}
+
+
+
+
+
+.secondary-navbar {
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    padding: 10px 0;
+    padding-top: 120px;
+}
+
+.nav-link {
+    color: white;
+    font-family: Poppins;
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
+    background-color: rgba(217, 217, 217, 0.1); /* Color de fondo con transparencia */
+    border: 2px solid rgba(255, 255, 255, 0.75); /* Contorno blanco con ligera transparencia */
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.nav-link:hover, .nav-link:focus {
+    background-color: rgba(255, 255, 255, 0.3); /* Color de fondo con transparencia */
+    border-color: rgba(255, 255, 255, 1); /* Hace el borde completamente blanco y opaco */
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo más oscuro para el ítem activo */
+    color: #fff; /* Mantiene el texto blanco */
+    border-color: rgba(255, 255, 255, 0.9); /* Ajusta el borde para el ítem activo */
+}
+
+#products p {
+    width: 500px; /* Define el ancho deseado para el párrafo */
+    margin-left: auto; /* Empuja el párrafo hacia la derecha */
+    margin-right: 0; /* Asegura que el margen derecho sea 0 */
+    padding: 20px; /* Agrega un poco de espacio interior para la legibilidad */
+    text-align: left; /* Justifica el texto para una mejor presentación */
+    font-family: Poppins;
+    color: #fff;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+#proposal-list {
+    display: block;
+    font-family: Poppins;
+    color: #fff;
+}
+
+.content-section {
+    display: none; /* Oculta todas las secciones por defecto */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content-section.active {
+    display: block; /* Solo muestra la sección activa */
 }
