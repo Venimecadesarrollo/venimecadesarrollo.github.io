@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-      var currentComponent = document.querySelector(".content-section");
+      var currentComponent = document.querySelector(".content-section-2");
 
       if (currentComponent) {
         removeInfoTerrabox();
@@ -98,9 +98,82 @@ document.addEventListener("DOMContentLoaded", function () {
     
     });
   });
+  document.querySelectorAll(".nav-link-2").forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      console.log(this.id);
+      var currentComponent = document.querySelector("#product2 .content-section");
+      console.log(currentComponent);
+      if (currentComponent) {
+        removeInfoRalaxy();
+      }
 
+      addInfoRalaxy(this.id);
+    
+    });
+  });
+
+  var nextButton = document.getElementById("next-button");
+  nextButton.addEventListener("click", function () {
+    nextProduct();
+  });
   
 });
+
+function nextProduct() {
+  const current = document.querySelector('.products-container:is(:not([style*="display: none"]))');
+  const next = current.nextElementSibling;
+  
+  if (next && next.classList.contains('products-container')) {
+    current.style.display = 'none';
+    next.style.display = 'block';
+  } else {
+    // Si no hay más productos, vuelve al inicio
+    current.style.display = 'none';
+    document.querySelector('.products-container').style.display = 'block';
+  }
+}
+
+var componentWhatIsRalaxy = `
+<div id="content-que-es" class="content-section">
+  <h2>What is TerraBox</h2>
+  <p>
+    TerraBox es esencial por su capacidad de mejorar 
+    significativamente la gestión de residuos, disminuyendo el impacto
+    ambiental y fomentando la conciencia ecológica. Este proyecto
+    innovador no solo utiliza tecnología avanzada para optimizar
+    el
+    reciclaje, sino que también involucra a la comunidad através de un
+    sistema de incentivos, ofreciendo beneficios económicos y
+    adaptándos a diferentes entornos urbanos y rurales, políticas
+  locales, y necesidad especificas de gestión de residuos.
+  </p>
+</div>
+`;
+  
+var componentApproachRalaxy = `
+
+<div id="content-enfoque-y-abordaje" class="content-section">
+<h2>Benefit</h2>
+  <p>
+    Optimizar la recolección y gestión de materiales reciclables, con
+    el fin de mejorar así la eficiencia en la reutilización urbana y
+    fom entar la participación ciudadana. Metodología El proyecto se
+    enfocará en el diseño, implementación y evaluación del TerraBox
+    mediante técnicas de ingeniería y análisis de sostenibilidad. con
+    pruebas piloto y recopilación de datos para medir su impacto y
+    eficaci
+  </p>
+</div>`;
+
+var componentProposalRalaxy = `
+<div id="content-enfoque-y-abordaje" class="content-section">
+  <h1>TERRABOX</h1>
+  <h2>Recicla y gana</h2>
+  <button id="download-button">Descarga</button>
+</div>
+`;
+
 
 var componentWhatIs = `
 <div id="content-que-es" class="content-section">
@@ -164,6 +237,30 @@ function addInfoTerrabox(concept) {
 
 function removeInfoTerrabox() {
   containerInfo.innerHTML = "";
+}
+var containerInfo2 = document.querySelector("#product2 #product-content");
+function addInfoRalaxy(concept) {
+  var currentComponent = ''
+  if (concept === "what-is") {
+    containerInfo2.innerHTML = componentWhatIs;
+    currentComponent = document.querySelector("#product2 .content-section");
+  }else if (concept === "approach") {
+    containerInfo2.innerHTML = componentApproach;
+    currentComponent = document.querySelector("#product2 .content-section");
+  }else if (concept === "proposal") {
+    containerInfo2.innerHTML = componentProposal;
+    currentComponent = document.querySelector("#product2 .content-section");
+  }
+
+  setTimeout(() => {
+    currentComponent.classList.toggle("active");
+  }, 100);
+}
+
+function removeInfoRalaxy() {
+ 
+  console.log('aaaaaaaa', containerInfo2)
+  containerInfo2.innerHTML = "";
 }
 
 function transitionInClickMenu() {
