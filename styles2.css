@@ -105,7 +105,7 @@ nav a.active::after {
   align-items: flex-start; /* Mantiene los hijos alineados a la derecha */
   justify-content: flex-end; /* Alinea los hijos hacia la parte superior */
   width: 100%;
-  background: url("background-terrabox.svg") no-repeat center center fixed;
+  background: url("background-terrabox.png") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -114,6 +114,12 @@ nav a.active::after {
   display: flex;
   align-items: center; /* Centra la imagen verticalmente */
   justify-content: center; /* Centra la imagen horizontalmente */
+  background-color: black;
+}
+
+.product-image-container img {
+  max-width: 100%;
+  height: auto;
 }
 
 .container-next{
@@ -406,10 +412,18 @@ header.not-home nav ul {
 .products-container {
   width: 100%;
   height: 100vh; /* Ajusta la altura a la de la ventana */
-  display: none; /* Oculta todos los contenedores inicialmente */
+  display: flex; /* Oculta todos los contenedores inicialmente */
   position: relative; /* Posicionamiento necesario para alinear correctamente */
+  opacity: 0; /* Inicia con opacidad 0 para animarlo */
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Agrega transiciones para opacidad y visibilidad */
+  visibility: hidden;
 }
 
 .products-container:first-of-type {
   display: block; /* Muestra solo el primer contenedor */
+}
+
+.products-container.active {
+  opacity: 1; /* Completa opacidad para el contenedor activo */
+  visibility: visible;
 }
