@@ -101,7 +101,7 @@ nav a.active::after {
 
 #products {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start; /* Mantiene los hijos alineados a la derecha */
   justify-content: flex-end; /* Alinea los hijos hacia la parte superior */
   width: 100%;
@@ -110,18 +110,26 @@ nav a.active::after {
 }
 
 .product-image-container {
-  width: 70%;
+  width: 40%;
   display: flex;
   align-items: center; /* Centra la imagen verticalmente */
   justify-content: center; /* Centra la imagen horizontalmente */
+}
+
+.container-next{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .product-info-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Alinea el contenido internamente a la izquierda */
+  width: 60%;
   padding-left: 80px; /* Espacio a la derecha si es necesario */
-  padding-bottom: 160px;
+  padding-top: 80px;
 }
 
 h1 {
@@ -129,9 +137,34 @@ h1 {
   font-family: "Poppins", sans-serif;
   color: #fff;
 }
+h2{
+  font-size: 54px;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+#download-button{
+  background-color: #0080FF;
+  color: white;
+  padding: 10px 35px;
+  border-radius: 35px;
+  border-style: none;
+  font-size: 32px;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
+}
+
+.next-product {
+  background-color: red;
+  font-family: poppins;
+  color: #000;
+  padding: 10px 35px;
+  font-size: 32px;
+}
 
 #product-content {
-  max-width: 440px; /* Ajusta esto al ancho del nav secundario */
+  max-width: 550px; /* Ajusta esto al ancho del nav secundario */
   width: 100%; /* Esto asegura que el contenido no sea más ancho que el contenedor */
   margin: 0; /* Mantiene el margen a cero para alineación */
   padding-bottom: 80px;
@@ -141,8 +174,8 @@ h1 {
   overflow-y: auto; /* Permite el desplazamiento vertical si el contenido es demasiado largo */
   text-align: left;
   word-wrap: break-word;
-  height: 250px;
-  max-height: 250px;
+  height: 300px;
+  max-height: 350px;
   overflow-x: hidden;
 }
 
@@ -220,7 +253,7 @@ header.not-home nav ul {
   width: auto;
   display: flex;
   justify-content: flex-start; /* Cambio para alinear los enlaces a la izquierda */
-  padding: 10px 0; /* Mantener el padding pero asegurarse de que inicia al mismo nivel */
+  padding: 80px 0 10px 0; /* Mantener el padding pero asegurarse de que inicia al mismo nivel */
 }
 
 .nav-link {
@@ -281,7 +314,7 @@ header.not-home nav ul {
 .content-section {
   overflow-wrap: break-word;
   width: 100%;
-  max-width: 430px;
+  max-width: 550px;
 
   text-align: left; /* Justifica el texto para una mejor presentación */
   font-family: Poppins;

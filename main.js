@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 var componentWhatIs = `
 <div id="content-que-es" class="content-section">
+  <h2>What is TerraBox</h2>
   <p>
     TerraBox es esencial por su capacidad de mejorar 
     significativamente la gestión de residuos, disminuyendo el impacto
@@ -119,7 +120,9 @@ var componentWhatIs = `
 `;
   
 var componentApproach = `
+
 <div id="content-enfoque-y-abordaje" class="content-section">
+<h2>Benefit</h2>
   <p>
     Optimizar la recolección y gestión de materiales reciclables, con
     el fin de mejorar así la eficiencia en la reutilización urbana y
@@ -132,29 +135,10 @@ var componentApproach = `
 </div>`;
 
 var componentProposal = `
-<div id="content-propuesta" class="content-section">
-  <ul id="proposal-list">
-    <li>
-      Puerto la Cruz
-      <ul>
-        <li>Paseo Colón</li>
-      </ul>
-    </li>
-    <li>
-      Barcelona
-      <ul>
-        <li>Plaza Bolívar</li>
-      </ul>
-    </li>
-    <li>
-      Lechería
-      <ul>
-        <li>Comedor Popular</li>
-        <li>Turístico</li>
-        <li>Alberto Lovera</li>
-      </ul>
-    </li>
-  </ul>
+<div id="content-enfoque-y-abordaje" class="content-section">
+  <h1>TERRABOX</h1>
+  <h2>Recicla y gana</h2>
+  <button id="download-button">Descarga</button>
 </div>
 `;
 
