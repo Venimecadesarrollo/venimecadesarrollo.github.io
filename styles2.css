@@ -110,11 +110,11 @@ nav a.active::after {
 }
 
 .product-image-container {
-  width: 40%;
+  height: 100%;
+  width: 100%;
   display: flex;
-  align-items: center; /* Centra la imagen verticalmente */
-  justify-content: center; /* Centra la imagen horizontalmente */
-  background-color: black;
+  align-items: flex-end; /* Centra la imagen verticalmente */
+  justify-content: flex-end; /* Centra la imagen horizontalmente */
 }
 
 .product-image-container img {
@@ -134,7 +134,7 @@ nav a.active::after {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Alinea el contenido internamente a la izquierda */
-  width: 60%;
+  width: 70%;
   padding-left: 80px; /* Espacio a la derecha si es necesario */
   padding-top: 80px;
 }
@@ -145,7 +145,7 @@ h1 {
   color: #fff;
 }
 h2{
-  font-size: 54px;
+  font-size: 48px;
   font-family: "Poppins", sans-serif;
   color: #fff;
 }
@@ -172,7 +172,7 @@ h2{
 }
 
 #product-content {
-  max-width: 550px; /* Ajusta esto al ancho del nav secundario */
+  max-width: 600px; /* Ajusta esto al ancho del nav secundario */
   width: 100%; /* Esto asegura que el contenido no sea más ancho que el contenedor */
   margin: 0; /* Mantiene el margen a cero para alineación */
   padding-bottom: 80px;
@@ -377,7 +377,7 @@ header.not-home nav ul {
 .content-section {
   overflow-wrap: break-word;
   width: 100%;
-  max-width: 550px;
+  max-width: 600px;
 
   text-align: left; /* Justifica el texto para una mejor presentación */
   font-family: Poppins;
