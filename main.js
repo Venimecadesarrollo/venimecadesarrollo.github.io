@@ -1,9 +1,9 @@
 function setupSectionObserver() {
   const sections = Array.from(document.querySelectorAll("section"));
   const options = {
-    root: null, // Se observa respecto al viewport
+    root: null,
     rootMargin: "0px",
-    threshold: 0.5, // El callback se ejecutará cuando el 50% del elemento esté visible
+    threshold: 0.5,
   };
 
   const observer = new IntersectionObserver((entries, observer) => {
@@ -14,8 +14,10 @@ function setupSectionObserver() {
 
       if (entry.isIntersecting) {
         console.log("xxx");
+
         updateNavigation(entry.target.id);
         updateDownButton(entry.target.id, hasNextSection);
+        updateBackground(entry.target.id);
       }
     });
   }, options);
@@ -34,97 +36,309 @@ const header = document.querySelector("header");
 const logoHome = document.querySelector('#home .logo img');
 const logoHeader = document.querySelector('#logo-container img');
 function updateNavigation(activeId) {
-  // Asegúrate de que el logo existe en el contenedor de home antes de intentar manipularlo
-
-  console.log("aaasssss");
-  console.log(homeLogo);
-
   navLinks.forEach((link) => {
     link.classList.toggle(
       "active",
       link.getAttribute("href") === `#${activeId}`
     );
   });
-  console.log("rrrr");
   console.log(activeId !== "home" && homeLogo);
 
   if (activeId !== "home") {
-    // Si la sección activa no es 'home', añade la clase 'not-home'
     header.classList.add("not-home");
     document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
-
-    if (logoHome && !logoHeader) {
-        logoHome.classList.add('logo-fly');
-        logoHome.addEventListener('animationend', () => {
-            logoHome.classList.remove('logo-fly');
-            // Mueve el logo al header después de la animación
-            logoHome.style.opacity = 0;  // Oculta temporalmente para evitar un cambio brusco
-            logoHeader.src = logoHome.src;
-            logoHeader.style.opacity = 1;  // Aparece suavemente en el header
-        });
+    if (homeLogo && !logoContainer.contains(homeLogo)) {
+      animateLogoToHeader();
     }
-
   } else {
-    // Si la sección activa es 'home', remueve la clase 'not-home'
+    homeLogo.classList.remove("center-logo-home");
+    homeLogo.classList.add("center-logo");
     header.classList.remove("not-home");
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
-
-    header.classList.remove('not-home');
-        // Asegúrate de resetear cualquier estilo si vuelves a home
-        if (logoHeader) {
-            logoHeader.style.opacity = 0;  // Prepara para mover de vuelta
-            logoHome.src = logoHeader.src;
-            logoHome.style.opacity = 1;  // Aparece suavemente en home
-        }
-
+    headerLogo.classList.add("hidden");
   }
 
   if (activeId !== "home" && homeLogo) {
-    // Mueve el logo al header si no está en 'home' y el logo existe
-    if (!logoContainer.contains(homeLogo)) {
-      homeLogo.classList.add("small-logo");
-      logoContainer.appendChild(homeLogo);
-    }
     document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
   } else {
-    // Mueve el logo de vuelta a la sección 'home' si está en 'home' y el logo existe
-    if (homeLogoContainer && !homeLogoContainer.contains(homeLogo)) {
-      console.log(homeLogoContainer);
-      console.log(homeLogo);
-      homeLogo.classList.remove("small-logo");
-      homeLogoContainer.appendChild(homeLogo);
-    }
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
-    // Asegura que el logo se elimine del header
+  }
+}
 
-    //console.log(logoContainer.contains(homeLogo));
-    //if (logoContainer.contains(homeLogo)) {
-    //    logoContainer.removeChild(homeLogo);
-    //}
+const headerLogo = document.querySelector(".header-logo");
+function animateLogoToHeader() {
+  const homeLogo = document.querySelector(".home-logo");
+
+  const logoContainer = document.getElementById("logo-container");
+
+  if (homeLogo && headerLogo && logoContainer) {
+    const headerLogoRect = logoContainer.getBoundingClientRect();
+
+    const translateX =
+      headerLogoRect.left - window.innerWidth / 2 + headerLogoRect.width / 2;
+    const translateY =
+      headerLogoRect.top - window.innerHeight / 2 + headerLogoRect.height / 2;
+
+    setTimeout(() => {
+      homeLogo.classList.add("animate-logo");
+      setTimeout(() => {
+        homeLogo.style.transform = `translate(${
+          translateX - 70
+        }px, ${-50}px) scale(0.5)`;
+        setTimeout(() => {
+          homeLogo.classList.remove("center-logo", "animate-logo");
+          homeLogo.classList.add("center-logo-home");
+          headerLogo.classList.remove("hidden");
+          homeLogo.style.transform = "";
+          homeLogo.style.opacity = "";
+        }, 300);
+      }, 500);
+    }, 100);
   }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  preloadImages();
   setupSectionObserver();
   transitionInClickMenu();
   EventClickDownButton();
+  updateBackground();
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      var currentComponent = document.querySelector(".content-section-2");
+
+      if (currentComponent) {
+        removeInfoTerrabox();
+      }
+
+      addInfoTerrabox(this.id);
+    });
+  });
+  document.querySelectorAll(".nav-link-2").forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      console.log(this.id);
+      var currentComponent = document.querySelector(
+        "#product2 .content-section"
+      );
+      console.log(currentComponent);
+      if (currentComponent) {
+        removeInfoRalaxy();
+      }
+
+      addInfoRalaxy(this.id);
+    });
+  });
+
+  var nextButton = document.getElementById("next-button");
+  nextButton.addEventListener("click", function () {
+    nextProduct();
+  });
 });
+
+function nextProduct() {
+  const currentProduct = document.querySelector(".products-container.active");
+  let nextProduct = currentProduct.nextElementSibling;
+
+  if (!nextProduct || !nextProduct.classList.contains("products-container")) {
+    nextProduct = document.querySelector(".products-container:first-of-type");
+  }
+
+  // Añadir la clase 'no-scroll' al body para ocultar las barras de desplazamiento
+  document.body.classList.add("no-scroll");
+
+  currentProduct.classList.add("exit-left"); // Salida a la izquierda
+  nextProduct.classList.add("transitioning"); // Asegura que el nuevo contenedor sea visible
+
+  setTimeout(() => {
+    nextProduct.classList.add("enter-right"); // Entrada desde la derecha
+
+    setTimeout(() => {
+      currentProduct.classList.remove("active", "exit-left", "transitioning");
+      nextProduct.classList.remove("enter-right", "transitioning");
+      nextProduct.classList.add("active");
+
+      // Remover la clase 'no-scroll' después de la transición
+      document.body.classList.remove("no-scroll");
+    }, 500); // Ajusta el tiempo a la duración de la transición
+  }, 10);
+}
+
+function updateBackground(activeId) {
+  const body = document.body;
+
+  // Elimina las clases de fondo existentes
+  body.classList.remove("home-bg", "about-us-bg", "products-bg");
+
+  // Añade la clase de fondo correspondiente según la sección activa
+  switch (activeId) {
+    case "home":
+      body.classList.add("home-bg");
+      break;
+    case "about-us":
+      body.classList.add("about-us-bg");
+      break;
+    case "products":
+      body.classList.add("products-bg");
+      break;
+    default:
+      break;
+  }
+}
+
+const preloadImages = () => {
+  const images = ["background-terrabox.png", "background-ralaxy.png"];
+  images.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
+var componentWhatIsRalaxy = `
+<div id="content-que-es" class="content-section">
+  <h2>What is TerraBox</h2>
+  <p>
+    TerraBox es esencial por su capacidad de mejorar 
+    significativamente la gestión de residuos, disminuyendo el impacto
+    ambiental y fomentando la conciencia ecológica. Este proyecto
+    innovador no solo utiliza tecnología avanzada para optimizar
+    el
+    reciclaje, sino que también involucra a la comunidad através de un
+    sistema de incentivos, ofreciendo beneficios económicos y
+    adaptándos a diferentes entornos urbanos y rurales, políticas
+  locales, y necesidad especificas de gestión de residuos.
+  </p>
+</div>
+`;
+
+var componentApproachRalaxy = `
+
+<div id="content-enfoque-y-abordaje" class="content-section">
+<h2>Benefit</h2>
+  <p>
+    Optimizar la recolección y gestión de materiales reciclables, con
+    el fin de mejorar así la eficiencia en la reutilización urbana y
+    fom entar la participación ciudadana. Metodología El proyecto se
+    enfocará en el diseño, implementación y evaluación del TerraBox
+    mediante técnicas de ingeniería y análisis de sostenibilidad. con
+    pruebas piloto y recopilación de datos para medir su impacto y
+    eficaci
+  </p>
+</div>`;
+
+var componentProposalRalaxy = `
+<div id="content-enfoque-y-abordaje" class="content-section">
+  <h1>TERRABOX</h1>
+  <h2>Recicla y gana</h2>
+  <button id="download-button">Descarga</button>
+</div>
+`;
+
+var componentWhatIs = `
+<div id="content-que-es" class="content-section">
+  <h2>What is TerraBox</h2>
+  <p>
+    TerraBox es esencial por su capacidad de mejorar 
+    significativamente la gestión de residuos, disminuyendo el impacto
+    ambiental y fomentando la conciencia ecológica. Este proyecto
+    innovador no solo utiliza tecnología avanzada para optimizar
+    el
+    reciclaje, sino que también involucra a la comunidad através de un
+    sistema de incentivos, ofreciendo beneficios económicos y
+    adaptándos a diferentes entornos urbanos y rurales, políticas
+  locales, y necesidad especificas de gestión de residuos.
+  </p>
+</div>
+`;
+
+var componentApproach = `
+
+<div id="content-enfoque-y-abordaje" class="content-section">
+<h2>Benefit</h2>
+  <p>
+    Optimizar la recolección y gestión de materiales reciclables, con
+    el fin de mejorar así la eficiencia en la reutilización urbana y
+    fom entar la participación ciudadana. Metodología El proyecto se
+    enfocará en el diseño, implementación y evaluación del TerraBox
+    mediante técnicas de ingeniería y análisis de sostenibilidad. con
+    pruebas piloto y recopilación de datos para medir su impacto y
+    eficaci
+  </p>
+</div>`;
+
+var componentProposal = `
+<div id="content-enfoque-y-abordaje" class="content-section">
+  <h1>TERRABOX</h1>
+  <h2>Recicla y gana</h2>
+  <button id="download-button">Descarga</button>
+</div>
+`;
+
+var containerInfo = document.querySelector("#product-content");
+
+function addInfoTerrabox(concept) {
+  var currentComponent = "";
+  if (concept === "what-is") {
+    containerInfo.innerHTML = componentWhatIs;
+    currentComponent = document.querySelector(".content-section");
+  } else if (concept === "approach") {
+    containerInfo.innerHTML = componentApproach;
+    currentComponent = document.querySelector(".content-section");
+  } else if (concept === "proposal") {
+    containerInfo.innerHTML = componentProposal;
+    currentComponent = document.querySelector(".content-section");
+  }
+
+  setTimeout(() => {
+    currentComponent.classList.toggle("active");
+  }, 100);
+}
+
+function removeInfoTerrabox() {
+  containerInfo.innerHTML = "";
+}
+var containerInfo2 = document.querySelector("#product2 #product-content");
+function addInfoRalaxy(concept) {
+  var currentComponent = "";
+  if (concept === "what-is") {
+    containerInfo2.innerHTML = componentWhatIs;
+    currentComponent = document.querySelector("#product2 .content-section");
+  } else if (concept === "approach") {
+    containerInfo2.innerHTML = componentApproach;
+    currentComponent = document.querySelector("#product2 .content-section");
+  } else if (concept === "proposal") {
+    containerInfo2.innerHTML = componentProposal;
+    currentComponent = document.querySelector("#product2 .content-section");
+  }
+
+  setTimeout(() => {
+    currentComponent.classList.toggle("active");
+  }, 100);
+}
+
+function removeInfoRalaxy() {
+  console.log("aaaaaaaa", containerInfo2);
+  containerInfo2.innerHTML = "";
+}
 
 function transitionInClickMenu() {
   const menuLinks = document.querySelectorAll("nav a");
 
   menuLinks.forEach((link) => {
     link.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+      if (this.id !== "nav-about-us") {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
 
-      // Obtener el ID de la sección objetivo desde el atributo href del enlace
-      const targetId = this.getAttribute("href").substring(1);
-      const targetSection = document.getElementById(targetId);
+        // Obtener el ID de la sección objetivo desde el atributo href del enlace
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
 
-      // Comprobar si la sección objetivo existe
-      if (targetSection) {
-        // Realizar un scroll suave hacia la sección objetivo
-        targetSection.scrollIntoView({ behavior: "smooth" });
+        // Comprobar si la sección objetivo existe
+        if (targetSection) {
+          // Realizar un scroll suave hacia la sección objetivo
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }
       }
     });
   });
