@@ -82,6 +82,7 @@ function updateNavigation(activeId) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  preloadImages();
   setupSectionObserver();
   transitionInClickMenu();
   EventClickDownButton();
@@ -95,21 +96,21 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       addInfoTerrabox(this.id);
-    
     });
   });
   document.querySelectorAll(".nav-link-2").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
       console.log(this.id);
-      var currentComponent = document.querySelector("#product2 .content-section");
+      var currentComponent = document.querySelector(
+        "#product2 .content-section"
+      );
       console.log(currentComponent);
       if (currentComponent) {
         removeInfoRalaxy();
       }
 
       addInfoRalaxy(this.id);
-    
     });
   });
 
@@ -117,22 +118,45 @@ document.addEventListener("DOMContentLoaded", function () {
   nextButton.addEventListener("click", function () {
     nextProduct();
   });
-  
 });
 
 function nextProduct() {
-  const current = document.querySelector('.products-container:is(:not([style*="display: none"]))');
-  const next = current.nextElementSibling;
-  
-  if (next && next.classList.contains('products-container')) {
-    current.style.display = 'none';
-    next.style.display = 'block';
-  } else {
-    // Si no hay más productos, vuelve al inicio
-    current.style.display = 'none';
-    document.querySelector('.products-container').style.display = 'block';
+  const currentProduct = document.querySelector(".products-container.active");
+  let nextProduct = currentProduct.nextElementSibling;
+
+  if (!nextProduct || !nextProduct.classList.contains("products-container")) {
+    nextProduct = document.querySelector(".products-container:first-of-type");
   }
+
+  // Añadir la clase 'no-scroll' al body para ocultar las barras de desplazamiento
+  document.body.classList.add("no-scroll");
+
+  currentProduct.classList.add("exit-left"); // Salida a la izquierda
+  nextProduct.classList.add("transitioning"); // Asegura que el nuevo contenedor sea visible
+
+  setTimeout(() => {
+    nextProduct.classList.add("enter-right"); // Entrada desde la derecha
+
+    setTimeout(() => {
+      currentProduct.classList.remove("active", "exit-left", "transitioning");
+      nextProduct.classList.remove("enter-right", "transitioning");
+      nextProduct.classList.add("active");
+
+      // Remover la clase 'no-scroll' después de la transición
+      document.body.classList.remove("no-scroll");
+    }, 500); // Ajusta el tiempo a la duración de la transición
+  }, 10);
 }
+
+
+const preloadImages = () => {
+  const images = ["background-terrabox.png", "background-ralaxy.png"];
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+};
+
 
 var componentWhatIsRalaxy = `
 <div id="content-que-es" class="content-section">
@@ -150,7 +174,7 @@ var componentWhatIsRalaxy = `
   </p>
 </div>
 `;
-  
+
 var componentApproachRalaxy = `
 
 <div id="content-enfoque-y-abordaje" class="content-section">
@@ -174,7 +198,6 @@ var componentProposalRalaxy = `
 </div>
 `;
 
-
 var componentWhatIs = `
 <div id="content-que-es" class="content-section">
   <h2>What is TerraBox</h2>
@@ -191,7 +214,7 @@ var componentWhatIs = `
   </p>
 </div>
 `;
-  
+
 var componentApproach = `
 
 <div id="content-enfoque-y-abordaje" class="content-section">
@@ -218,14 +241,14 @@ var componentProposal = `
 var containerInfo = document.querySelector("#product-content");
 
 function addInfoTerrabox(concept) {
-  var currentComponent = ''
+  var currentComponent = "";
   if (concept === "what-is") {
     containerInfo.innerHTML = componentWhatIs;
     currentComponent = document.querySelector(".content-section");
-  }else if (concept === "approach") {
+  } else if (concept === "approach") {
     containerInfo.innerHTML = componentApproach;
     currentComponent = document.querySelector(".content-section");
-  }else if (concept === "proposal") {
+  } else if (concept === "proposal") {
     containerInfo.innerHTML = componentProposal;
     currentComponent = document.querySelector(".content-section");
   }
@@ -240,14 +263,14 @@ function removeInfoTerrabox() {
 }
 var containerInfo2 = document.querySelector("#product2 #product-content");
 function addInfoRalaxy(concept) {
-  var currentComponent = ''
+  var currentComponent = "";
   if (concept === "what-is") {
     containerInfo2.innerHTML = componentWhatIs;
     currentComponent = document.querySelector("#product2 .content-section");
-  }else if (concept === "approach") {
+  } else if (concept === "approach") {
     containerInfo2.innerHTML = componentApproach;
     currentComponent = document.querySelector("#product2 .content-section");
-  }else if (concept === "proposal") {
+  } else if (concept === "proposal") {
     containerInfo2.innerHTML = componentProposal;
     currentComponent = document.querySelector("#product2 .content-section");
   }
@@ -258,8 +281,7 @@ function addInfoRalaxy(concept) {
 }
 
 function removeInfoRalaxy() {
- 
-  console.log('aaaaaaaa', containerInfo2)
+  console.log("aaaaaaaa", containerInfo2);
   containerInfo2.innerHTML = "";
 }
 

@@ -105,8 +105,8 @@ nav a.active::after {
   align-items: flex-start; /* Mantiene los hijos alineados a la derecha */
   justify-content: flex-end; /* Alinea los hijos hacia la parte superior */
   width: 100%;
-  background: url("background-terrabox.png") no-repeat center center fixed;
-  background-size: cover;
+  background-color: black;
+  overflow: hidden;
 }
 
 .product-image-container {
@@ -127,6 +127,7 @@ nav a.active::after {
   justify-content: center;
   align-items: center;
   height: 100%;
+  z-index: 3;
 }
 
 .product-info-container {
@@ -412,11 +413,17 @@ header.not-home nav ul {
 .products-container {
   width: 100%;
   height: 100vh; /* Ajusta la altura a la de la ventana */
-  display: flex; /* Oculta todos los contenedores inicialmente */
-  position: relative; /* Posicionamiento necesario para alinear correctamente */
+  display: none; /* Oculta todos los contenedores inicialmente */
+  position: absolute; /* Asegura que ocupe toda la pantalla */
+  top: 0;
+  left: 100%;
+  right: 0;
+  bottom: 0;
   opacity: 0; /* Inicia con opacidad 0 para animarlo */
-  transition: opacity 0.5s ease, visibility 0.5s ease; /* Agrega transiciones para opacidad y visibilidad */
+  transition: left 0.5s ease, opacity 0.5s ease;
+  z-index: 1; /* Asegura que el contenedor esté detrás del contenedor activo */
   visibility: hidden;
+  overflow: hidden;
 }
 
 .products-container:first-of-type {
@@ -424,6 +431,65 @@ header.not-home nav ul {
 }
 
 .products-container.active {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
   opacity: 1; /* Completa opacidad para el contenedor activo */
   visibility: visible;
+  left: 0;
+  z-index: 2;
+}
+
+
+/* Specific product background classes */
+.product1-bg {
+  background: url("background-terrabox.png") no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.product2-bg {
+  background: url("background-ralaxy.png") no-repeat center center fixed;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+
+
+.products-container.exit-left {
+  left: -100%; /* Mueve el contenedor saliente hacia la izquierda */
+  opacity: 0; /* Reduce la opacidad durante la salida */
+  z-index: 1; /* Asegura que el contenedor saliente esté detrás del entrante */
+}
+
+.products-container.enter-right {
+  left: 100%; /* Posiciona el nuevo contenedor a la derecha para la entrada */
+  opacity: 1; /* Incrementa la opacidad durante la entrada */
+  z-index: 2; /* Asegura que el contenedor entrante esté frente a los demás */
+}
+
+.products-container.exit-right {
+  left: 100%; /* Mueve el contenedor saliente hacia la derecha */
+}
+
+.products-container.enter-left {
+  left: -100%; /* Posiciona el nuevo contenedor a la izquierda para la entrada */
+}
+
+.products-container.transitioning {
+  display: block; /* Asegura que los contenedores en transición sean visibles */
+}
+
+.no-scroll {
+  overflow: hidden;
 }
