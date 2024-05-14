@@ -1,9 +1,9 @@
 function setupSectionObserver() {
   const sections = Array.from(document.querySelectorAll("section"));
   const options = {
-    root: null, // Se observa respecto al viewport
+    root: null,
     rootMargin: "0px",
-    threshold: 0.5, // El callback se ejecutará cuando el 50% del elemento esté visible
+    threshold: 0.5,
   };
 
   const observer = new IntersectionObserver((entries, observer) => {
@@ -18,6 +18,7 @@ function setupSectionObserver() {
         updateNavigation(entry.target.id);
         updateDownButton(entry.target.id, hasNextSection);
         updateBackground(entry.target.id);
+        
       }
     });
   }, options);
@@ -46,9 +47,6 @@ function updateNavigation(activeId) {
   console.log(activeId !== "home" && homeLogo);
 
   if (activeId !== "home") {
-    // Si la sección activa no es 'home', añade la clase 'not-home'
-    
-
     header.classList.add("not-home");
     document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
     if (homeLogo && !logoContainer.contains(homeLogo)) {
@@ -56,54 +54,50 @@ function updateNavigation(activeId) {
       animateLogoToHeader();
     }
   } else {
-    // Si la sección activa es 'home', remueve la clase 'not-home'
+
+    homeLogo.classList.remove("center-logo-home");
+    homeLogo.classList.add("center-logo");
     header.classList.remove("not-home");
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
+    headerLogo.classList.add('hidden')
+    
+
   }
 
   if (activeId !== "home" && homeLogo) {
-    // Mueve el logo al header si no está en 'home' y el logo existe
-    //if (!logoContainer.contains(homeLogo)) {
-    //  homeLogo.classList.add("small-logo");
-    //  logoContainer.appendChild(homeLogo);
-    //}
     document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
   } else {
-    // Mueve el logo de vuelta a la sección 'home' si está en 'home' y el logo existe
-    //if (homeLogoContainer && !homeLogoContainer.contains(homeLogo)) {
-    //  homeLogo.classList.remove("small-logo");
-    //  homeLogoContainer.appendChild(homeLogo);
-    //}
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
-    // Asegura que el logo se elimine del header
-
-    //console.log(logoContainer.contains(homeLogo));
-    //if (logoContainer.contains(homeLogo)) {
-    //    logoContainer.removeChild(homeLogo);
-    //}
   }
 }
 
 
 
-
+const headerLogo = document.querySelector(".header-logo");
 function animateLogoToHeader() {
   const homeLogo = document.querySelector(".home-logo");
-  const headerLogo = document.querySelector(".header-logo");
 
-  if (homeLogo) {
-    // Primer paso: subir el logo
+  const logoContainer = document.getElementById("logo-container");
+  
+
+  if (homeLogo && headerLogo && logoContainer) {
+    const headerLogoRect = logoContainer.getBoundingClientRect();
+
+    const translateX = headerLogoRect.left - window.innerWidth / 2 + headerLogoRect.width / 2;
+    const translateY = headerLogoRect.top - window.innerHeight / 2 + headerLogoRect.height / 2;
+
     setTimeout(() => {
       homeLogo.classList.add("animate-logo");
       setTimeout(() => {
-        // Segundo paso: mover a la izquierda y desvanecer
-        homeLogo.classList.add("fade-left");
+        homeLogo.style.transform = `translate(${translateX -70}px, ${-50}px) scale(0.5)`;
         setTimeout(() => {
-          // Finalmente, mover al header y ajustar clases
-          homeLogo.classList.remove("center-logo", "animate-logo", "fade-left");
+          homeLogo.classList.remove("center-logo", "animate-logo");
+          homeLogo.classList.add("center-logo-home");
           headerLogo.classList.remove("hidden");
-        }, 500); // Tiempo para la animación de desvanecimiento
-      }, 500); // Tiempo para la animación de subida
+          homeLogo.style.transform = "";
+          homeLogo.style.opacity = "";
+        }, 300);
+      }, 500); 
     }, 100);
   }
 }
