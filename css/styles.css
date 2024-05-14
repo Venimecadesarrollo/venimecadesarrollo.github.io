@@ -52,7 +52,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .about-us {
-    background: url('hero-image.jpg') no-repeat center center/cover;
+    background: url('images/hero-image.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .hero {
-    background: url('hero-image.jpg') no-repeat center center/cover;
+    background: url('images/hero-image.jpg') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     flex-direction: column;

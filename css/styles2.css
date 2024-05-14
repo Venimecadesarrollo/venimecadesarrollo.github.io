@@ -93,12 +93,12 @@ nav a.active::after {
 }
 
 #home {
-  background: url("hero-image.jpg") no-repeat center center fixed;
+  background: url("../images/hero-image.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
 #about-us {
-  background: url("t-5.png") no-repeat top center fixed;
+  background: url("../images/t-5.png") no-repeat top center fixed;
   background-size: cover;
 }
 
@@ -442,7 +442,7 @@ header.not-home nav ul {
 
 /* Specific product background classes */
 .product1-bg {
-  background: url("background-terrabox.png") no-repeat center center fixed;
+  background: url("../images/background-terrabox.png") no-repeat center center fixed;
   background-size: cover;
   position: absolute;
   top: 0;
@@ -452,7 +452,7 @@ header.not-home nav ul {
 }
 
 .product2-bg {
-  background: url("background-ralaxy.png") no-repeat center center fixed;
+  background: url("../images/background-ralaxy.png") no-repeat center center fixed;
   background-size: cover;
   position: absolute;
   top: 0;
@@ -490,17 +490,17 @@ header.not-home nav ul {
 }
 
 body.home-bg {
-  background: url("hero-image.jpg") no-repeat center center fixed;
+  background: url("../images/hero-image.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
 body.about-us-bg {
-  background: url("about.jpg") no-repeat center center fixed;
+  background: url("../images/about.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
 body.products-bg {
-  background: url("background-terrabox.png") no-repeat center center fixed; /* Puedes cambiar este a otro fondo específico si lo necesitas */
+  background: url("../images/background-terrabox.png") no-repeat center center fixed; /* Puedes cambiar este a otro fondo específico si lo necesitas */
   background-size: cover;
 }
 

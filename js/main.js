@@ -188,7 +188,7 @@ function updateBackground(activeId) {
 }
 
 const preloadImages = () => {
-  const images = ["background-terrabox.png", "background-ralaxy.png"];
+  const images = ["images/background-terrabox.png", "images/background-ralaxy.png"];
   images.forEach((src) => {
     const img = new Image();
     img.src = src;
