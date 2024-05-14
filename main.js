@@ -16,6 +16,7 @@ function setupSectionObserver() {
         console.log("xxx");
         updateNavigation(entry.target.id);
         updateDownButton(entry.target.id, hasNextSection);
+        updateBackground(entry.target.id);
       }
     });
   }, options);
@@ -86,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupSectionObserver();
   transitionInClickMenu();
   EventClickDownButton();
+  updateBackground();
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
@@ -148,6 +150,28 @@ function nextProduct() {
   }, 10);
 }
 
+
+function updateBackground(activeId) {
+  const body = document.body;
+
+  // Elimina las clases de fondo existentes
+  body.classList.remove('home-bg', 'about-us-bg', 'products-bg');
+
+  // Añade la clase de fondo correspondiente según la sección activa
+  switch (activeId) {
+    case 'home':
+      body.classList.add('home-bg');
+      break;
+    case 'about-us':
+      body.classList.add('about-us-bg');
+      break;
+    case 'products':
+      body.classList.add('products-bg');
+      break;
+    default:
+      break;
+  }
+}
 
 const preloadImages = () => {
   const images = ["background-terrabox.png", "background-ralaxy.png"];

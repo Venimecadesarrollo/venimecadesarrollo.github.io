@@ -107,6 +107,7 @@ nav a.active::after {
   width: 100%;
   background-color: black;
   overflow: hidden;
+  position: relative
 }
 
 .product-image-container {
@@ -492,4 +493,19 @@ header.not-home nav ul {
 
 .no-scroll {
   overflow: hidden;
+}
+
+body.home-bg {
+  background: url("hero-image.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.about-us-bg {
+  background: url("about.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.products-bg {
+  background: url("background-terrabox.png") no-repeat center center fixed; /* Puedes cambiar este a otro fondo específico si lo necesitas */
+  background-size: cover;
 }
