@@ -31,6 +31,9 @@ header {
   padding: 20px 20px;
   z-index: 1000;
   height: 60px;
+
+  /*background-color: rgba(0, 0, 0, 0.8); 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
 }
 
 nav {
@@ -95,7 +98,7 @@ nav a.active::after {
 }
 
 #about-us {
-  background: url("about.jpg") no-repeat center center fixed;
+  background: url("t-5.png") no-repeat top center fixed;
   background-size: cover;
 }
 
@@ -107,7 +110,7 @@ nav a.active::after {
   width: 100%;
   background-color: black;
   overflow: hidden;
-  position: relative
+  position: relative;
 }
 
 .product-image-container {
@@ -123,7 +126,7 @@ nav a.active::after {
   height: auto;
 }
 
-.container-next{
+.container-next {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,14 +148,14 @@ h1 {
   font-family: "Poppins", sans-serif;
   color: #fff;
 }
-h2{
+h2 {
   font-size: 48px;
   font-family: "Poppins", sans-serif;
   color: #fff;
 }
 
-#download-button{
-  background-color: #0080FF;
+#download-button {
+  background-color: #0080ff;
   color: white;
   padding: 10px 35px;
   border-radius: 35px;
@@ -164,12 +167,10 @@ h2{
 }
 
 .next-product {
-  
-  
   padding: 10px 35px;
   background-color: transparent;
   border: none;
-  cursor: pointer
+  cursor: pointer;
 }
 
 #product-content {
@@ -384,14 +385,12 @@ header.not-home nav ul {
   font-family: Poppins;
   color: #fff;
 
-  
   transition: opacity 0.5s ease-in-out;
   opacity: 0; /* Agrega opacidad inicial */
   visibility: hidden;
 }
 
 .content-section.active {
-
   opacity: 1;
   visibility: visible;
 }
@@ -409,7 +408,6 @@ header.not-home nav ul {
 #proposal-list > li > ul {
   padding-left: 20px; /* Indenta los elementos de la lista secundaria */
 }
-
 
 .products-container {
   width: 100%;
@@ -442,7 +440,6 @@ header.not-home nav ul {
   z-index: 2;
 }
 
-
 /* Specific product background classes */
 .product1-bg {
   background: url("background-terrabox.png") no-repeat center center fixed;
@@ -463,9 +460,6 @@ header.not-home nav ul {
   left: 0;
   right: 0;
 }
-
-
-
 
 .products-container.exit-left {
   left: -100%; /* Mueve el contenedor saliente hacia la izquierda */
@@ -510,9 +504,6 @@ body.products-bg {
   background-size: cover;
 }
 
-
-
-
 .center-logo {
   position: fixed;
   top: 50%;
@@ -530,7 +521,6 @@ body.products-bg {
   z-index: 3;
   transition: top 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
 }
-
 
 .animate-logo {
   top: 50px;

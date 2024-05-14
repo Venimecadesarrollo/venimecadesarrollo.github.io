@@ -14,11 +14,10 @@ function setupSectionObserver() {
 
       if (entry.isIntersecting) {
         console.log("xxx");
-        
+
         updateNavigation(entry.target.id);
         updateDownButton(entry.target.id, hasNextSection);
         updateBackground(entry.target.id);
-        
       }
     });
   }, options);
@@ -35,33 +34,26 @@ const homeLogo = homeLogoContainer
   : null;
 const header = document.querySelector("header");
 function updateNavigation(activeId) {
-  
-
   navLinks.forEach((link) => {
     link.classList.toggle(
       "active",
       link.getAttribute("href") === `#${activeId}`
     );
   });
-  console.log("rrrr");
   console.log(activeId !== "home" && homeLogo);
 
   if (activeId !== "home") {
     header.classList.add("not-home");
     document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
     if (homeLogo && !logoContainer.contains(homeLogo)) {
-      
       animateLogoToHeader();
     }
   } else {
-
     homeLogo.classList.remove("center-logo-home");
     homeLogo.classList.add("center-logo");
     header.classList.remove("not-home");
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
-    headerLogo.classList.add('hidden')
-    
-
+    headerLogo.classList.add("hidden");
   }
 
   if (activeId !== "home" && homeLogo) {
@@ -71,25 +63,26 @@ function updateNavigation(activeId) {
   }
 }
 
-
-
 const headerLogo = document.querySelector(".header-logo");
 function animateLogoToHeader() {
   const homeLogo = document.querySelector(".home-logo");
 
   const logoContainer = document.getElementById("logo-container");
-  
 
   if (homeLogo && headerLogo && logoContainer) {
     const headerLogoRect = logoContainer.getBoundingClientRect();
 
-    const translateX = headerLogoRect.left - window.innerWidth / 2 + headerLogoRect.width / 2;
-    const translateY = headerLogoRect.top - window.innerHeight / 2 + headerLogoRect.height / 2;
+    const translateX =
+      headerLogoRect.left - window.innerWidth / 2 + headerLogoRect.width / 2;
+    const translateY =
+      headerLogoRect.top - window.innerHeight / 2 + headerLogoRect.height / 2;
 
     setTimeout(() => {
       homeLogo.classList.add("animate-logo");
       setTimeout(() => {
-        homeLogo.style.transform = `translate(${translateX -70}px, ${-50}px) scale(0.5)`;
+        homeLogo.style.transform = `translate(${
+          translateX - 70
+        }px, ${-50}px) scale(0.5)`;
         setTimeout(() => {
           homeLogo.classList.remove("center-logo", "animate-logo");
           homeLogo.classList.add("center-logo-home");
@@ -97,13 +90,10 @@ function animateLogoToHeader() {
           homeLogo.style.transform = "";
           homeLogo.style.opacity = "";
         }, 300);
-      }, 500); 
+      }, 500);
     }, 100);
   }
 }
-
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   preloadImages();
@@ -173,23 +163,22 @@ function nextProduct() {
   }, 10);
 }
 
-
 function updateBackground(activeId) {
   const body = document.body;
 
   // Elimina las clases de fondo existentes
-  body.classList.remove('home-bg', 'about-us-bg', 'products-bg');
+  body.classList.remove("home-bg", "about-us-bg", "products-bg");
 
   // Añade la clase de fondo correspondiente según la sección activa
   switch (activeId) {
-    case 'home':
-      body.classList.add('home-bg');
+    case "home":
+      body.classList.add("home-bg");
       break;
-    case 'about-us':
-      body.classList.add('about-us-bg');
+    case "about-us":
+      body.classList.add("about-us-bg");
       break;
-    case 'products':
-      body.classList.add('products-bg');
+    case "products":
+      body.classList.add("products-bg");
       break;
     default:
       break;
@@ -198,12 +187,11 @@ function updateBackground(activeId) {
 
 const preloadImages = () => {
   const images = ["background-terrabox.png", "background-ralaxy.png"];
-  images.forEach(src => {
+  images.forEach((src) => {
     const img = new Image();
     img.src = src;
   });
 };
-
 
 var componentWhatIsRalaxy = `
 <div id="content-que-es" class="content-section">
@@ -337,16 +325,18 @@ function transitionInClickMenu() {
 
   menuLinks.forEach((link) => {
     link.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+      if (this.id !== "nav-about-us") {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
 
-      // Obtener el ID de la sección objetivo desde el atributo href del enlace
-      const targetId = this.getAttribute("href").substring(1);
-      const targetSection = document.getElementById(targetId);
+        // Obtener el ID de la sección objetivo desde el atributo href del enlace
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
 
-      // Comprobar si la sección objetivo existe
-      if (targetSection) {
-        // Realizar un scroll suave hacia la sección objetivo
-        targetSection.scrollIntoView({ behavior: "smooth" });
+        // Comprobar si la sección objetivo existe
+        if (targetSection) {
+          // Realizar un scroll suave hacia la sección objetivo
+          targetSection.scrollIntoView({ behavior: "smooth" });
+        }
       }
     });
   });
