@@ -8,11 +8,13 @@ function setupSectionObserver() {
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
-      const currentIndex = sections.indexOf(entry.target);
-      const hasNextSection = currentIndex < sections.length - 1;
-      const hasPreviousSection = currentIndex > 0;
-
       if (entry.isIntersecting) {
+        const currentIndex = sections.indexOf(entry.target);
+        const hasNextSection = currentIndex < sections.length - 1;
+        console.log("section: ", sections.length);
+        console.log("section l: ", sections.length -1);
+        console.log("s: ", currentIndex);
+        const hasPreviousSection = currentIndex > 0;
         console.log("xxx");
 
         updateNavigation(entry.target.id);
@@ -65,7 +67,7 @@ function updateNavigation(activeId) {
     headerLogo.classList.add("hidden");
   }
 
-  if(activeId === 'products' && !productInterval){
+  if (activeId === "products" && !productInterval) {
     productInterval = setInterval(() => {
       nextProduct();
     }, 4000);
@@ -117,11 +119,11 @@ document.addEventListener("DOMContentLoaded", function () {
   EventClickDownButton();
   updateBackground();
 
-  var buttonContactRalaxy = document.getElementById('contact-us-btn');
-  console.log(buttonContactRalaxy)
-  var contactUsSection = document.getElementById('contact');
-  console.log(contactUsSection)
-  buttonContactRalaxy.addEventListener('click', function(e){
+  var buttonContactRalaxy = document.getElementById("contact-us-btn");
+  console.log(buttonContactRalaxy);
+  var contactUsSection = document.getElementById("contact");
+  console.log(contactUsSection);
+  buttonContactRalaxy.addEventListener("click", function (e) {
     contactUsSection.scrollIntoView({ behavior: "smooth" });
   });
 

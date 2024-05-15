@@ -14,7 +14,6 @@ html {
 section {
   height: 100vh; /* Ajustado para ocupar toda la pantalla */
   scroll-snap-align: start; /* Alineado al inicio de cada sección */;
-  overflow-y: hidden;
 }
 
 #logo-container {
@@ -207,6 +206,7 @@ h2 {
 
   animation: anime 0.8s infinite ease-in-out alternate;
   animation-delay: 0.1s;
+  z-index: 5;
 }
 
 @keyframes anime {
