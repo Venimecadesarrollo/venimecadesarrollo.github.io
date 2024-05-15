@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About us</title>
-    <link rel="stylesheet" href="css/styles2.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -13,25 +13,52 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
   </head>
   <body>
     <header>
-        <div id="logo-container">
-          <img src="images/logo.svg" width="75" class="header-logo hidden" alt="Logo en Header">
+      <div id="logo-container">
+        <img
+          src="images/logo.svg"
+          width="75"
+          class="header-logo hidden"
+          alt="Logo en Header"
+        />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#products">Products</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="about-us.html" id="nav-about-us">About Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="about-us" class="fullscreen">
+      <div class="container-info-about">
+        <div class="container-about">
+          <div id="about-us-text">
+            <h1>¿Quiénes somos?</h1>
+            <p>
+              En VIS Energy Volt OÜ, fusionamos experiencia y especialización
+              para ofrecer soluciones vanguardistas en Robótica, Software,
+              Automatización, Electricidad y Diseño 3D. Nuestra misión: impulsar
+              la innovación y enriquecer la vida humana y social a través de la
+              Electrónica y Domótica.
+            </p>
+          </div>
+          <img src="images/AB1.jpg" alt="" />
         </div>
-        <nav>
-          <ul>
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="index.html#products">Products</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-            <li><a href="about-us.html" id="nav-about-us">About Us</a></li>
-          </ul>
-        </nav>
-      </header> 
-    <section id="about-us" class="fullscreen"></section>
+        <div class="container-about-2">
+          <img src="images/AB2.jpg" alt="" />
+          <div id="mission">
+            <h1>¿A dónde vamos?</h1>
+            <p>
+              Con la visión de ser pioneros en América y globalmente,
+              desarrollamos tecnologías para un mundo mejor.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
