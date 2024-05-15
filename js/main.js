@@ -213,17 +213,20 @@ const preloadImages = () => {
 
 var componentWhatIsRalaxy = `
 <div id="content-que-es" class="content-section">
-  <h2>What is TerraBox</h2>
+  <h2>What is Ralaxy</h2>
   <p>
-    TerraBox es esencial por su capacidad de mejorar 
-    significativamente la gestión de residuos, disminuyendo el impacto
-    ambiental y fomentando la conciencia ecológica. Este proyecto
-    innovador no solo utiliza tecnología avanzada para optimizar
-    el
-    reciclaje, sino que también involucra a la comunidad através de un
-    sistema de incentivos, ofreciendo beneficios económicos y
-    adaptándos a diferentes entornos urbanos y rurales, políticas
-  locales, y necesidad especificas de gestión de residuos.
+    Ralaxy es un sistem a potencial
+    para revolucionar la seguridad
+    vial m ediante la 
+    vial m ediante la m ejora de la
+    visibilidad de señalizaciones
+    en calles, avenidas, autopistas 
+    y carreteras. Su tecnología de
+    biolum iniscencia a través de la 
+    carga solar representa un
+    avance significativo. Ralaxy por
+    la evolución del transito
+    vehicular en el m undo.
   </p>
 </div>
 `;
@@ -233,21 +236,17 @@ var componentApproachRalaxy = `
 <div id="content-enfoque-y-abordaje" class="content-section">
 <h2>Benefit</h2>
   <p>
-    Optimizar la recolección y gestión de materiales reciclables, con
-    el fin de mejorar así la eficiencia en la reutilización urbana y
-    fom entar la participación ciudadana. Metodología El proyecto se
-    enfocará en el diseño, implementación y evaluación del TerraBox
-    mediante técnicas de ingeniería y análisis de sostenibilidad. con
-    pruebas piloto y recopilación de datos para medir su impacto y
-    eficaci
+  Desarrollar e implementar un sistema de señalización vial
+  avanzado, utilizando la tecnología de bioluminiscencia y carga
+  solar para mejorar la visibilidad y seguridad en las vías de tráfico.
   </p>
 </div>`;
 
 var componentProposalRalaxy = `
 <div id="content-enfoque-y-abordaje" class="content-section">
-  <h1>TERRABOX</h1>
-  <h2>Recicla y gana</h2>
-  <button id="download-button">Descarga</button>
+<img src="images/ralaxy-logo.svg" alt="" />
+<h2>Innovación y seguridad vial</h2>
+<button id="download-button">Contact us</button>
 </div>
 `;
 
@@ -285,9 +284,9 @@ var componentApproach = `
 
 var componentProposal = `
 <div id="content-enfoque-y-abordaje" class="content-section">
-  <h1>TERRABOX</h1>
-  <h2>Recicla y gana</h2>
-  <button id="download-button">Descarga</button>
+<img src="images/terrabox-logo.svg" alt="" />
+<h2>Recicla y Gana con Terrabox</h2>
+<button id="download-button">Download</button>
 </div>
 `;
 
@@ -318,13 +317,13 @@ var containerInfo2 = document.querySelector("#product2 #product-content");
 function addInfoRalaxy(concept) {
   var currentComponent = "";
   if (concept === "what-is") {
-    containerInfo2.innerHTML = componentWhatIs;
+    containerInfo2.innerHTML = componentWhatIsRalaxy;
     currentComponent = document.querySelector("#product2 .content-section");
   } else if (concept === "approach") {
-    containerInfo2.innerHTML = componentApproach;
+    containerInfo2.innerHTML = componentApproachRalaxy;
     currentComponent = document.querySelector("#product2 .content-section");
   } else if (concept === "proposal") {
-    containerInfo2.innerHTML = componentProposal;
+    containerInfo2.innerHTML = componentProposalRalaxy;
     currentComponent = document.querySelector("#product2 .content-section");
   }
 
