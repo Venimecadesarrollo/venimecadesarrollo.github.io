@@ -11,11 +11,7 @@ function setupSectionObserver() {
       if (entry.isIntersecting) {
         const currentIndex = sections.indexOf(entry.target);
         const hasNextSection = currentIndex < sections.length - 1;
-        console.log("section: ", sections.length);
-        console.log("section l: ", sections.length -1);
-        console.log("s: ", currentIndex);
         const hasPreviousSection = currentIndex > 0;
-        console.log("xxx");
 
         updateNavigation(entry.target.id);
         updateDownButton(entry.target.id, hasNextSection);
@@ -71,6 +67,9 @@ function updateNavigation(activeId) {
     productInterval = setInterval(() => {
       nextProduct();
     }, 4000);
+  }else{
+    clearInterval(productInterval);
+    productInterval = null;
   }
 
   if (activeId !== "home" && homeLogo) {
