@@ -1,3 +1,5 @@
+let isTransitioning = false;
+
 function setupSectionObserver() {
   const sections = Array.from(document.querySelectorAll("section"));
   const options = {
@@ -40,6 +42,7 @@ const homeLogo = homeLogoContainer
 const header = document.querySelector("header");
 const logoHome = document.querySelector("#home .logo img");
 const logoHeader = document.querySelector("#logo-container img");
+var previusSection = "home";
 function updateNavigation(activeId) {
   navLinks.forEach((link) => {
     link.classList.toggle(
@@ -50,24 +53,31 @@ function updateNavigation(activeId) {
   console.log(activeId !== "home" && homeLogo);
 
   if (activeId !== "home") {
-    header.classList.add("not-home");
-    document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
-    if (homeLogo && !logoContainer.contains(homeLogo)) {
-      animateLogoToHeader();
+    if (!isTransitioning) {
+      header.classList.add("not-home");
+      document.querySelector("nav").style.cssText = "float: right;";
+      if (previusSection === "home") {
+        if (homeLogo && !logoContainer.contains(homeLogo)) {
+          animateLogoToHeader();
+        }
+      }
     }
   } else {
+    if (isTransitioning) {
+      stopTransition();
+    }
     homeLogo.classList.remove("center-logo-home");
     homeLogo.classList.add("center-logo");
     header.classList.remove("not-home");
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
     headerLogo.classList.add("hidden");
   }
-
+  previusSection = activeId;
   if (activeId === "products" && !productInterval) {
     productInterval = setInterval(() => {
       nextProduct();
     }, 4000);
-  }else{
+  } else {
     clearInterval(productInterval);
     productInterval = null;
   }
@@ -86,6 +96,7 @@ function animateLogoToHeader() {
   const logoContainer = document.getElementById("logo-container");
 
   if (homeLogo && headerLogo && logoContainer) {
+    isTransitioning = true;
     const headerLogoRect = logoContainer.getBoundingClientRect();
 
     const translateX =
@@ -105,10 +116,17 @@ function animateLogoToHeader() {
           headerLogo.classList.remove("hidden");
           homeLogo.style.transform = "";
           homeLogo.style.opacity = "";
+          isTransitioning = false;
         }, 300);
       }, 500);
     }, 100);
   }
+}
+
+function stopTransition() {
+  isTransitioning = false;
+  homeLogo.style.transform = "";
+  homeLogo.style.opacity = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
