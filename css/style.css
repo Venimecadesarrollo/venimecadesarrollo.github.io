@@ -173,7 +173,7 @@ h2 {
 }
 
 .next-product {
-  padding: 10px 35px;
+  padding: 10px 15px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -668,3 +668,8 @@ body.products-bg {
   font-family: Poppins;
 }
 
+
+
+#next-button-product {
+  font-size: 45px; /* Ajusta el tamaño del icono en píxeles */
+}

@@ -26,6 +26,13 @@ function setupSectionObserver() {
     observer.observe(section);
   });
 }
+
+const productSection = document.getElementById("products");
+productSection.addEventListener("click", () => {
+  clearInterval(productInterval); // Detiene la ejecución de nextProduct()
+  productInterval = null; // Limpia la variable del intervalo
+});
+let productInterval;
 const navLinks = document.querySelectorAll("nav a");
 const logoContainer = document.getElementById("logo-container");
 const homeLogoContainer = document.querySelector("#home .logo");
@@ -33,8 +40,8 @@ const homeLogo = homeLogoContainer
   ? homeLogoContainer.querySelector("img")
   : null;
 const header = document.querySelector("header");
-const logoHome = document.querySelector('#home .logo img');
-const logoHeader = document.querySelector('#logo-container img');
+const logoHome = document.querySelector("#home .logo img");
+const logoHeader = document.querySelector("#logo-container img");
 function updateNavigation(activeId) {
   navLinks.forEach((link) => {
     link.classList.toggle(
@@ -56,6 +63,12 @@ function updateNavigation(activeId) {
     header.classList.remove("not-home");
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
     headerLogo.classList.add("hidden");
+  }
+
+  if(activeId === 'products' && !productInterval){
+    productInterval = setInterval(() => {
+      nextProduct();
+    }, 4000);
   }
 
   if (activeId !== "home" && homeLogo) {
@@ -96,7 +109,6 @@ function animateLogoToHeader() {
     }, 100);
   }
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
   preloadImages();
@@ -189,7 +201,10 @@ function updateBackground(activeId) {
 }
 
 const preloadImages = () => {
-  const images = ["images/background-terrabox.png", "images/background-ralaxy.png"];
+  const images = [
+    "images/background-terrabox.png",
+    "images/background-ralaxy.png",
+  ];
   images.forEach((src) => {
     const img = new Image();
     img.src = src;
