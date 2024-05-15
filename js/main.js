@@ -274,7 +274,7 @@ var componentProposalRalaxy = `
 <div id="content-enfoque-y-abordaje" class="content-section">
 <img src="images/ralaxy-logo.svg" alt="" />
 <h2>Innovación y seguridad vial</h2>
-<button id="download-button" id='contact-us-btn'>Contact us</button>
+<button class="download-button" id='contact-us-btn'>Contact us</button>
 </div>
 `;
 
@@ -314,7 +314,7 @@ var componentProposal = `
 <div id="content-enfoque-y-abordaje" class="content-section">
 <img src="images/terrabox-logo.svg" alt="" />
 <h2>Recicla y Gana con Terrabox</h2>
-<button id="download-button">Download</button>
+<button class="download-button">Download</button>
 </div>
 `;
 
