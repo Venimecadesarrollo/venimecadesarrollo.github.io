@@ -8,6 +8,7 @@ html {
   height: 100%;
   scroll-snap-type: y mandatory;
   overflow-y: auto; /* Cambiado a auto para permitir el comportamiento de desplazamiento nativo */
+  font-family: Poppins, sans-serif;
 }
 
 section {
@@ -90,6 +91,9 @@ nav a.active::after {
   align-items: center;
   text-align: center;
   padding-top: 70px;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: aqua;
 }
 
 #home {
@@ -111,6 +115,10 @@ nav a.active::after {
   background-color: black;
   overflow: hidden;
   position: relative;
+}
+
+#contact{
+  background-color: #0C0A53;
 }
 
 .product-image-container {
@@ -552,4 +560,111 @@ body.products-bg {
 
 .logo-fly {
     animation: flyToHeader 1s forwards; /* forwards asegura que se mantenga el estado final de la animación */
+}
+
+
+
+
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  margin: 20px;
+  height: 85%;
+  width: 90%;
+}
+
+.contact-info {
+  background-color: #0C0A53;
+  border: white;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 35px 0px 0 35px;
+  border-right: none;
+  color: white;
+  padding: 3rem;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  align-items: start;
+  justify-content: start;
+}
+
+.contact-info div {
+  align-items: start;
+  justify-content: start;
+  text-align: left;
+}
+
+.contact-info h2,
+.contact-info p {
+  grid-column: span 2;
+  justify-self: start;
+  text-align: left;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.contact-form {
+  background-color: #fff;
+  padding: 3rem;
+  box-sizing: border-box;
+  border-radius: 0 35px 35px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+}
+
+.contact-form h2{
+  color: #0C0A53;
+}
+
+.contact-form input, .contact-form textarea {
+  color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  height: 36px;
+  font-family: Poppins;
+  outline: none;
+}
+
+.contact-form input, .contact-form textarea, .contact-form button, .contact-form h2 {
+  grid-column: span 2;
+}
+
+#email, #full-name{
+  grid-column: span 1;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  border-bottom: 1px solid #0C0A53; /* Cambiar el color del borde inferior al hacer clic */
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #0C0A53;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contact-form button:hover {
+  background-color: #27ae60;
+}
+.contact-form textarea {
+  height: 80px; /* Ajustar la altura del textarea */
+}
+
+#message {
+  resize: vertical;
+  padding: 5px;
+  font-family: Poppins;
 }
