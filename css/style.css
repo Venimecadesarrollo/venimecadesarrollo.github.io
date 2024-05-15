@@ -13,7 +13,8 @@ html {
 
 section {
   height: 100vh; /* Ajustado para ocupar toda la pantalla */
-  scroll-snap-align: start; /* Alineado al inicio de cada sección */
+  scroll-snap-align: start; /* Alineado al inicio de cada sección */;
+  overflow-y: hidden;
 }
 
 #logo-container {
@@ -32,9 +33,6 @@ header {
   padding: 20px 20px;
   z-index: 1000;
   height: 60px;
-
-  /*background-color: rgba(0, 0, 0, 0.8); 
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
 }
 
 nav {
@@ -252,6 +250,8 @@ h2 {
 
 header.not-home {
   justify-content: space-between; /* Espaciado entre logo y menú */
+  width: 98%;
+  padding-right: 100px;
 }
 
 header.not-home #logo-container {
@@ -667,3 +667,4 @@ body.products-bg {
   padding: 5px;
   font-family: Poppins;
 }
+

@@ -97,6 +97,7 @@ function animateLogoToHeader() {
   }
 }
 
+
 document.addEventListener("DOMContentLoaded", function () {
   preloadImages();
   setupSectionObserver();
