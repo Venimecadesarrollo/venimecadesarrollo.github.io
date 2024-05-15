@@ -94,7 +94,7 @@ nav a.active::after {
 }
 
 #home {
-  background: url("../images/hero-image.jpg") no-repeat center center fixed;
+  background: url("../images/background-home.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
