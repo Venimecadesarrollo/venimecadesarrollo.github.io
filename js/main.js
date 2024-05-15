@@ -116,6 +116,15 @@ document.addEventListener("DOMContentLoaded", function () {
   transitionInClickMenu();
   EventClickDownButton();
   updateBackground();
+
+  var buttonContactRalaxy = document.getElementById('contact-us-btn');
+  console.log(buttonContactRalaxy)
+  var contactUsSection = document.getElementById('contact');
+  console.log(contactUsSection)
+  buttonContactRalaxy.addEventListener('click', function(e){
+    contactUsSection.scrollIntoView({ behavior: "smooth" });
+  });
+
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
@@ -246,7 +255,7 @@ var componentProposalRalaxy = `
 <div id="content-enfoque-y-abordaje" class="content-section">
 <img src="images/ralaxy-logo.svg" alt="" />
 <h2>Innovación y seguridad vial</h2>
-<button id="download-button">Contact us</button>
+<button id="download-button" id='contact-us-btn'>Contact us</button>
 </div>
 `;
 

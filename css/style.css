@@ -160,7 +160,7 @@ h2 {
   color: #fff;
 }
 
-#download-button {
+.download-button {
   background-color: #0080ff;
   color: white;
   padding: 10px 35px;
@@ -170,6 +170,7 @@ h2 {
   font-family: "Poppins", sans-serif;
   text-decoration: none;
   transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
+  cursor: pointer;
 }
 
 .next-product {
