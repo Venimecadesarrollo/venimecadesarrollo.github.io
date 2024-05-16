@@ -655,7 +655,12 @@ body.products-bg {
 }
 
 .material-icons.visibility {
-  visibility: hidden;
+  
+}
+
+#hamburguer-menu-btn{
+  display: none;
+  height: 50px;
 }
 
 @media (max-width: 600px) {
@@ -663,7 +668,12 @@ body.products-bg {
     display: none;
   }
 
-  .material-icons.visibility {
-    visibility: visible;
+  #hamburguer-menu-btn {
+    display: block;
+    grid-column: 1 / 4;
+    justify-self: end; 
+  }
+  header.not-home #hamburguer-menu-btn {
+    grid-column: 2 / 3;
   }
 }
