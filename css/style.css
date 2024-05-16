@@ -1,19 +1,32 @@
+/* Resetting default styles */
 * {
   margin: 0;
   padding: 0;
 }
 
-body,
-html {
+body, html {
   height: 100%;
   scroll-snap-type: y mandatory;
-  overflow-y: auto; /* Cambiado a auto para permitir el comportamiento de desplazamiento nativo */
-  font-family: Poppins, sans-serif;
+  overflow-y: auto;
+  font-family: 'Poppins', sans-serif;
 }
 
 section {
-  height: 100vh; /* Ajustado para ocupar toda la pantalla */
-  scroll-snap-align: start; /* Alineado al inicio de cada sección */;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 1000;
+  height: 60px;
 }
 
 #logo-container {
@@ -22,35 +35,22 @@ section {
   justify-content: flex-start;
 }
 
-header {
-  display: flex;
-  justify-content: center; /* Centra el contenido por defecto */
-  align-items: space-between; /* Alinea los elementos verticalmente en el centro */
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 20px 20px;
-  z-index: 1000;
-  height: 60px;
-}
-
 nav {
   display: flex;
-  justify-content: flex-end; /* Asegura que el menú esté a la derecha */
-  width: auto; /* Ocupa solo el espacio necesario */
+  justify-content: flex-end;
+  width: auto;
 }
 
 nav ul {
-  display: flex; /* Importante para asegurar que flexbox controle los li */
-  justify-content: flex-end; /* Centra los elementos del menú */
-  align-items: center; /* Alineación vertical */
-  width: 100%; /* Asegura que ul ocupe todo el ancho de nav */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
   list-style: none;
   padding: 0;
 }
 
 nav ul li {
-  display: inline;
   padding: 0 40px;
 }
 
@@ -58,9 +58,8 @@ nav ul li a {
   text-decoration: none;
   color: #fff;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  position: relative;
   padding: 10px;
+  position: relative;
 }
 
 nav a::after {
@@ -75,9 +74,188 @@ nav a::after {
   transition: opacity 0.3s ease;
 }
 
-nav a:hover::after,
-nav a.active::after {
+nav a:hover::after, nav a.active::after {
   opacity: 1;
+}
+
+/* Home Section */
+#home {
+  background: url("../images/background-home.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Products Section */
+#products {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 100%;
+  background-color: black;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-image-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.product-image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+  padding-top: 80px;
+  padding-left: 80px;
+}
+
+/* Contact Section */
+#contact {
+  background-image: linear-gradient(#0C0A53 0%, #2D5BB9 40%, #3873BF 54%, #4A95C7 72%, #58B2BA 100%);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  margin: 20px;
+  height: 85%;
+  width: 90%;
+}
+
+.contact-info {
+  background-color: #05156C;
+  border-radius: 35px 0 0 35px;
+  color: white;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.contact-info div {
+  text-align: left;
+}
+
+.contact-info h2, .contact-info p {
+  grid-column: span 2;
+  text-align: left;
+}
+
+.contact-form {
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 0 35px 35px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+}
+
+.contact-form h2 {
+  color: #05156C;
+}
+
+.contact-form input, .contact-form textarea {
+  color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+.contact-form input, .contact-form textarea, .contact-form button, .contact-form h2 {
+  grid-column: span 2;
+}
+
+#email, #full-name {
+  grid-column: span 1;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  border-bottom: 1px solid #0C0A53;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #05156C;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+.contact-form button:hover {
+  background-color: #040f4d;
+}
+
+.contact-form textarea {
+  height: 80px;
+}
+
+#message {
+  resize: vertical;
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Common Styles */
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+.download-button {
+  background-color: #0080ff;
+  color: white;
+  padding: 10px 35px;
+  border-radius: 35px;
+  border: none;
+  font-size: 32px;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.next-product {
+  padding: 10px 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.container-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  z-index: 3;
+}
+
+#next-button-product {
+  font-size: 45px;
 }
 
 .fullscreen {
@@ -92,110 +270,6 @@ nav a.active::after {
   box-sizing: border-box;
 }
 
-#home {
-  background: url("../images/background-home.jpg") no-repeat center center fixed;
-  background-size: cover;
-}
-
-#products {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start; /* Mantiene los hijos alineados a la derecha */
-  justify-content: flex-end; /* Alinea los hijos hacia la parte superior */
-  width: 100%;
-  background-color: black;
-  overflow: hidden;
-  position: relative;
-}
-
-#contact{
-  background-image: linear-gradient(#0C0A53 0%, #2D5BB9 40%, #3873BF 54%, #4A95C7 72%, #58B2BA 100%);
-}
-
-#about-us {
-  background-color: black;
-  align-items: start;
-  justify-content: start;
-  height: 100%;
-}
-
-.product-image-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: flex-end; /* Centra la imagen verticalmente */
-  justify-content: flex-end; /* Centra la imagen horizontalmente */
-}
-
-.product-image-container img {
-  max-width: 100%;
-  height: auto;
-}
-
-.container-next {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  z-index: 3;
-}
-
-.product-info-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinea el contenido internamente a la izquierda */
-  width: 70%;
-  padding-left: 80px; /* Espacio a la derecha si es necesario */
-  padding-top: 80px;
-}
-
-h1 {
-  font-size: 64px;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
-}
-h2 {
-  font-size: 48px;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
-}
-
-.download-button {
-  background-color: #0080ff;
-  color: white;
-  padding: 10px 35px;
-  border-radius: 35px;
-  border-style: none;
-  font-size: 32px;
-  font-family: "Poppins", sans-serif;
-  text-decoration: none;
-  transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
-  cursor: pointer;
-}
-
-.next-product {
-  padding: 10px 15px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-#product-content {
-  max-width: 600px; /* Ajusta esto al ancho del nav secundario */
-  width: 100%; /* Esto asegura que el contenido no sea más ancho que el contenedor */
-  margin: 0; /* Mantiene el margen a cero para alineación */
-  padding-bottom: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinea el contenido a la izquierda */
-  overflow-y: hidden; /* Permite el desplazamiento vertical si el contenido es demasiado largo */
-  text-align: left;
-  word-wrap: break-word;
-  height: 300px;
-  max-height: 350px;
-  overflow-x: hidden;
-}
-
 .scroll-indicator {
   position: absolute;
   bottom: 20px;
@@ -204,7 +278,6 @@ h2 {
   text-align: center;
   cursor: pointer;
   background: none;
-
   animation: anime 0.8s infinite ease-in-out alternate;
   animation-delay: 0.1s;
   z-index: 5;
@@ -212,10 +285,10 @@ h2 {
 
 @keyframes anime {
   0% {
-    transform: translateX(-50%) translateY(0); /* Estado inicial con centrado horizontal */
+    transform: translateX(-50%) translateY(0);
   }
   100% {
-    transform: translateX(-50%) translateY(5px); /* Mueve el botón verticalmente manteniendo el centrado horizontal */
+    transform: translateX(-50%) translateY(5px);
     box-shadow: 0 25px 10px -20px rgba(0, 0, 0, 0.25);
   }
 }
@@ -227,224 +300,103 @@ h2 {
   filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.9));
 }
 
-/* Ocultar botón cuando no hay más secciones disponibles */
+/* Hide indicator when no more sections */
 .scroll-indicator.hidden {
   display: none;
 }
 
 .scroll-indicator .get-started {
-  display: block; /* Hace que la frase 'Get started' se muestre en línea */
-  color: #fff; /* Blanco para contraste */
-  font-size: 16px; /* Tamaño del texto */
-  font-family: Poppins; /* Fuente de texto */
-  margin-bottom: 5px; /* Espacio entre el texto y el icono */
-  text-decoration: none; /* Elimina cualquier subrayado por defecto */
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-decoration: none;
   text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
 }
 
 .scroll-indicator.only-icon .get-started {
-  display: none; /* Oculta la frase 'Get Started' cuando solo hay un icono */
+  display: none;
 }
 
 .small-logo {
-  width: 80px; /* Cambia esto según el tamaño deseado para el logo en el header */
+  width: 80px;
 }
 
 header.not-home {
-  justify-content: space-between; /* Espaciado entre logo y menú */
+  justify-content: space-between;
   width: 98%;
   padding-right: 100px;
 }
 
 header.not-home #logo-container {
-  justify-content: flex-start; /* Alinea el logo a la izquierda */
+  justify-content: flex-start;
 }
 
 header.not-home nav {
-  justify-content: flex-end; /* Alinea el menú a la derecha */
+  justify-content: flex-end;
 }
 
 header.not-home nav ul {
   display: flex;
-  align-items: center; /* Centra los elementos del menú verticalmente */
+  align-items: center;
 }
 
-.secondary-navbar {
+.secondary-navbar, .secondary-navbar-2 {
   width: auto;
   display: flex;
-  justify-content: flex-start; /* Cambio para alinear los enlaces a la izquierda */
-  padding: 80px 0 10px 0; /* Mantener el padding pero asegurarse de que inicia al mismo nivel */
+  justify-content: flex-start;
+  padding: 80px 0 10px 0;
 }
 
-.secondary-navbar-2 {
-  width: auto;
-  display: flex;
-  justify-content: flex-start; /* Cambio para alinear los enlaces a la izquierda */
-  padding: 80px 0 10px 0; /* Mantener el padding pero asegurarse de que inicia al mismo nivel */
-}
-
-.nav-link {
+.nav-link, .nav-link-2 {
   color: white;
-  font-family: Poppins;
   padding: 8px 15px;
   text-decoration: none;
-  transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
-  background-color: rgba(
-    217,
-    217,
-    217,
-    0.1
-  ); /* Color de fondo con transparencia */
-  border: 2px solid rgba(255, 255, 255, 0.75); /* Contorno blanco con ligera transparencia */
+  transition: background-color 0.3s, border-color 0.3s;
+  background-color: rgba(217, 217, 217, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.75);
   border-radius: 15px;
   margin-right: 10px;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.3
-  ); /* Color de fondo con transparencia */
-  border-color: rgba(
-    255,
-    255,
-    255,
-    1
-  ); /* Hace el borde completamente blanco y opaco */
+.nav-link:hover, .nav-link:focus, .nav-link-2:hover, .nav-link-2:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 1);
 }
 
-.nav-link.active {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Fondo más oscuro para el ítem activo */
-  color: #fff; /* Mantiene el texto blanco */
-  border-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Ajusta el borde para el ítem activo */
-}
-.nav-link-2 {
-  color: white;
-  font-family: Poppins;
-  padding: 8px 15px;
-  text-decoration: none;
-  transition: background-color 0.3s, border-color 0.3s; /* Transición suave del fondo y del borde */
-  background-color: rgba(
-    217,
-    217,
-    217,
-    0.1
-  ); /* Color de fondo con transparencia */
-  border: 2px solid rgba(255, 255, 255, 0.75); /* Contorno blanco con ligera transparencia */
-  border-radius: 15px;
-  margin-right: 10px;
-}
-
-.nav-link-2:hover,
-.nav-link-2:focus {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.3
-  ); /* Color de fondo con transparencia */
-  border-color: rgba(
-    255,
-    255,
-    255,
-    1
-  ); /* Hace el borde completamente blanco y opaco */
-}
-
-.nav-link-2.active {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Fondo más oscuro para el ítem activo */
-  color: #fff; /* Mantiene el texto blanco */
-  border-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Ajusta el borde para el ítem activo */
-}
-
-#proposal-list {
-  display: block;
-  font-family: Poppins;
+.nav-link.active, .nav-link-2.active {
+  background-color: rgba(255, 255, 255, 0.8);
   color: #fff;
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
-.content-section {
-  overflow-wrap: break-word;
-  width: 100%;
-  max-width: 600px;
-
-  text-align: left; /* Justifica el texto para una mejor presentación */
-  font-family: Poppins;
-  color: #fff;
-
-  transition: opacity 0.5s ease-in-out;
-  opacity: 0; /* Agrega opacidad inicial */
-  visibility: hidden;
-}
-
-.content-section.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-#proposal-list {
-  list-style: none; /* Quita los puntos de la lista */
-  padding: 0; /* Quita el padding por defecto de la lista */
-  margin: 0; /* Quita el margen por defecto de la lista */
-}
-
-#proposal-list > li {
-  margin-bottom: 10px; /* Ajusta el espacio entre cada elemento de la lista */
-}
-
-#proposal-list > li > ul {
-  padding-left: 20px; /* Indenta los elementos de la lista secundaria */
-}
-
+/* Product Containers */
 .products-container {
   width: 100%;
-  height: 100vh; /* Ajusta la altura a la de la ventana */
-  display: none; /* Oculta todos los contenedores inicialmente */
-  position: absolute; /* Asegura que ocupe toda la pantalla */
+  height: 100vh;
+  display: none;
+  position: absolute;
   top: 0;
   left: 100%;
   right: 0;
   bottom: 0;
-  opacity: 0; /* Inicia con opacidad 0 para animarlo */
+  opacity: 0;
   transition: left 0.5s ease, opacity 0.5s ease;
-  z-index: 1; /* Asegura que el contenedor esté detrás del contenedor activo */
+  z-index: 1;
   visibility: hidden;
   overflow: hidden;
 }
 
 .products-container:first-of-type {
-  display: block; /* Muestra solo el primer contenedor */
+  display: block;
 }
 
 .products-container.active {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Centra verticalmente el contenido */
-  justify-content: center; /* Centra horizontalmente el contenido */
-  opacity: 1; /* Completa opacidad para el contenedor activo */
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
   visibility: visible;
   left: 0;
   z-index: 2;
@@ -472,27 +424,62 @@ header.not-home nav ul {
 }
 
 .products-container.exit-left {
-  left: -100%; /* Mueve el contenedor saliente hacia la izquierda */
-  opacity: 0; /* Reduce la opacidad durante la salida */
-  z-index: 1; /* Asegura que el contenedor saliente esté detrás del entrante */
+  left: -100%;
+  opacity: 0;
+  z-index: 1;
 }
 
 .products-container.enter-right {
-  left: 100%; /* Posiciona el nuevo contenedor a la derecha para la entrada */
-  opacity: 1; /* Incrementa la opacidad durante la entrada */
-  z-index: 2; /* Asegura que el contenedor entrante esté frente a los demás */
+  left: 100%;
+  opacity: 1;
+  z-index: 2;
 }
 
 .products-container.exit-right {
-  left: 100%; /* Mueve el contenedor saliente hacia la derecha */
+  left: 100%;
 }
 
 .products-container.enter-left {
-  left: -100%; /* Posiciona el nuevo contenedor a la izquierda para la entrada */
+  left: -100%;
 }
 
 .products-container.transitioning {
-  display: block; /* Asegura que los contenedores en transición sean visibles */
+  display: block;
+}
+
+.content-section {
+  overflow-wrap: break-word;
+  width: 100%;
+  max-width: 600px;
+
+  text-align: left; /* Justifica el texto para una mejor presentación */
+  font-family: Poppins;
+  color: #fff;
+
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0; /* Agrega opacidad inicial */
+  visibility: hidden;
+}
+
+.content-section.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#product-content {
+  max-width: 600px; /* Ajusta esto al ancho del nav secundario */
+  width: 100%; /* Esto asegura que el contenido no sea más ancho que el contenedor */
+  margin: 0; /* Mantiene el margen a cero para alineación */
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea el contenido a la izquierda */
+  overflow-y: hidden; /* Permite el desplazamiento vertical si el contenido es demasiado largo */
+  text-align: left;
+  word-wrap: break-word;
+  height: 300px;
+  max-height: 350px;
+  overflow-x: hidden;
 }
 
 .no-scroll {
@@ -510,7 +497,7 @@ body.about-us-bg {
 }
 
 body.products-bg {
-  background: url("../images/background-terrabox.png") no-repeat center center fixed; /* Puedes cambiar este a otro fondo específico si lo necesitas */
+  background: url("../images/background-terrabox.png") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -546,179 +533,61 @@ body.products-bg {
   opacity: 0;
 }
 
-
 @keyframes flyToHeader {
-    0% {
-        position: fixed;
-        transform: translateX(0) translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        position: fixed;
-        transform: translateX(calc(-50vw + 50px)) translateY(calc(-50vh + 30px)) scale(0.5);
-        opacity: 0;
-    }
+  0% {
+    position: fixed;
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    position: fixed;
+    transform: translateX(calc(-50vw + 50px)) translateY(calc(-50vh + 30px)) scale(0.5);
+    opacity: 0;
+  }
 }
 
 .logo-fly {
-    animation: flyToHeader 1s forwards; /* forwards asegura que se mantenga el estado final de la animación */
+  animation: flyToHeader 1s forwards;
 }
-
-
-
-
-
-.container {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  margin: 20px;
-  height: 85%;
-  width: 90%;
-}
-
-.contact-info {
-  background-color: #05156C;
-  border-radius: 35px 0px 0 35px;
-  border-right: none;
-  color: white;
-  padding: 3rem;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto;
-  gap: 10px;
-  align-items: start;
-  justify-content: start;
-}
-
-.contact-info div {
-  align-items: start;
-  justify-content: start;
-  text-align: left;
-}
-
-.contact-info h2,
-.contact-info p {
-  grid-column: span 2;
-  justify-self: start;
-  text-align: left;
-}
-
-.contact-info p {
-  margin-bottom: 10px;
-}
-
-.contact-form {
-  background-color: #fff;
-  padding: 3rem;
-  box-sizing: border-box;
-  border-radius: 0 35px 35px 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 50px;
-}
-
-.contact-form h2{
-  color: #05156C;
-}
-
-.contact-form input, .contact-form textarea {
-  color: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  height: 36px;
-  font-family: Poppins;
-  outline: none;
-}
-
-.contact-form input, .contact-form textarea, .contact-form button, .contact-form h2 {
-  grid-column: span 2;
-}
-
-#email, #full-name{
-  grid-column: span 1;
-}
-
-.contact-form input:focus, .contact-form textarea:focus {
-  border-bottom: 1px solid #0C0A53; /* Cambiar el color del borde inferior al hacer clic */
-}
-
-.contact-form button {
-  padding: 10px 20px;
-  background-color: #05156C;
-  color: white;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  font-family: Poppins;
-  font-size: 16px;
-}
-.contact-form button:hover {
-  background-color: #040f4d;
-}
-.contact-form textarea {
-  height: 80px; /* Ajustar la altura del textarea */
-}
-
-#message {
-  resize: vertical;
-  padding: 5px;
-  font-family: Poppins;
-}
-
-
-
-#next-button-product {
-  font-size: 45px; /* Ajusta el tamaño del icono en píxeles */
-}
-
-
-
 
 .container-info-about {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr; /* Cambiado a auto para ajustarse a su contenido */
+  grid-template-rows: 1fr 1fr;
   padding-top: 20px;
-  height: 100%; 
+  height: 100%;
 }
 
-.container-about{
+.container-about {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* La primera columna ocupa el doble de espacio que la segunda */
+  grid-template-columns: 2fr 1fr;
   width: 100%;
-  grid-template-rows: 1fr;
   height: 50%;
 }
 
 .container-about-2 {
   display: grid;
-  grid-template-columns: 1fr 2fr; /* La primera columna ocupa el doble de espacio que la segunda */
+  grid-template-columns: 1fr 2fr;
   width: 100%;
-  grid-template-rows: 1fr;
   height: 50%;
 }
 
 #about-us-text, #mission {
-  background-color: white; /* O el color que prefieras */
+  background-color: white;
   padding: 20px;
   overflow: hidden;
   max-width: 100%;
 }
 
 #about-us-text h1, #about-us-text p, #mission h1, #mission p {
-  color: black; /* O el color que prefieras */
-  font-family: Poppins;
+  color: black;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container-about img, .container-about-2 img {
   width: 100%;
-  height: auto; /* Cambiado a auto para mantener la proporción de la imagen */
-  object-fit: cover; /* Opcional, para ajustar la imagen dentro de su contenedor */
+  height: auto;
+  object-fit: cover;
 }
 
 #mission {
