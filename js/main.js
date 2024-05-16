@@ -55,7 +55,6 @@ function updateNavigation(activeId) {
   if (activeId !== "home") {
     if (!isTransitioning) {
       header.classList.add("not-home");
-      document.querySelector("nav").style.cssText = "float: right;";
       if (previusSection === "home") {
         if (homeLogo && !logoContainer.contains(homeLogo)) {
           animateLogoToHeader();
