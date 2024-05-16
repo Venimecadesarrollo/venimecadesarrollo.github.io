@@ -68,7 +68,6 @@ function updateNavigation(activeId) {
     homeLogo.classList.remove("center-logo-home");
     homeLogo.classList.add("center-logo");
     header.classList.remove("not-home");
-    document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
     headerLogo.classList.add("hidden");
   }
   previusSection = activeId;
@@ -128,12 +127,26 @@ function stopTransition() {
   homeLogo.style.opacity = "";
 }
 
+var burguerHeader = document.querySelector("header");
+var navMenu = document.querySelector("nav");
+
 document.addEventListener("DOMContentLoaded", function () {
   preloadImages();
   setupSectionObserver();
   transitionInClickMenu();
   EventClickDownButton();
   updateBackground();
+
+  var burguerMenu = document.getElementById("hamburguer-menu-btn");
+  burguerMenu.addEventListener("click", function (e) {
+    if (burguerHeader.classList.contains("nav-open")) {
+      burguerHeader.classList.remove("nav-open");
+      navMenu.classList.remove("nav-burguer");
+    } else {
+      navMenu.classList.add("nav-burguer");
+      burguerHeader.classList.add("nav-open");
+    }
+  });
 
   var buttonContactRalaxy = document.getElementById("contact-us-btn");
   console.log(buttonContactRalaxy);
@@ -360,7 +373,6 @@ function addInfoRalaxy(concept) {
 }
 
 function removeInfoRalaxy() {
-  console.log("aaaaaaaa", containerInfo2);
   containerInfo2.innerHTML = "";
 }
 
@@ -369,6 +381,11 @@ function transitionInClickMenu() {
 
   menuLinks.forEach((link) => {
     link.addEventListener("click", function (event) {
+      if (burguerHeader.classList.contains("nav-open")) {
+        burguerHeader.classList.remove("nav-open");
+        navMenu.classList.remove("nav-burguer");
+      }
+
       if (this.id !== "nav-about-us") {
         event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
 
