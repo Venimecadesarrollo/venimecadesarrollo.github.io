@@ -266,7 +266,8 @@ nav a.active::after {
 
 /* Common Styles */
 h1,
-h2 {
+h2,
+h3 {
   font-family: "Poppins", sans-serif;
   color: #fff;
 }
@@ -477,6 +478,7 @@ header.not-home nav ul {
   bottom: 0;
   left: 0;
   right: 0;
+  display: grid;
 }
 
 .product2-bg {
@@ -703,9 +705,6 @@ header.nav-open.not-home nav {
   font-size: 36px;
 }
 
-.material-icons.visibility {
-  
-}
 
 #hamburguer-menu-btn{
   display: none;
@@ -725,4 +724,215 @@ header.nav-open.not-home nav {
   header.not-home #hamburguer-menu-btn {
     grid-column: 2 / 3;
   }
+}
+
+.new-content-product{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  width: 100%;
+  padding-top: 90px;
+  row-gap: 15px;
+}
+
+.new-content-product .image-product-container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  grid-row: 3;
+  grid-column: 1/5;
+}
+
+.new-content-product .logo-product{
+  width: 100%;
+  height: auto;
+  align-self: flex-end;
+  display: grid;
+  justify-content: flex-start;
+  justify-items: center;
+  padding: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-row: 2;
+}
+
+.logo-product .logo-terrabox{
+  width: 100%;
+  grid-column: 1/5;
+}
+
+
+.logo-product h3{
+  grid-row: 2;
+  grid-column: 1/5;
+  margin-bottom: 10px;
+  font-size: 35px;
+}
+
+.logo-product i{
+  font-size: 38px;
+  color: white;
+  align-self: center;
+  justify-self: center;
+}
+
+i.fa-android{
+  grid-column: 2;
+}
+i.fa-apple{
+  grid-column: 3;
+}
+
+.image-product-container .image-product-app{
+  align-self: flex-end;
+  object-fit: cover;
+}
+
+.new-content-product .secondary-navbar{
+  grid-row: 1;
+  padding: 0;
+  justify-content: center;
+}
+
+.appstore-icon{
+  width: 100%;
+  grid-row: 3 !important;
+}
+
+#googleplay{
+  grid-column: 1/3 !important;
+}
+#applestore{
+  padding-left: 10px;
+  grid-column: 3/5 !important;
+}
+
+@media (max-height: 675px) {
+  .image-product-app{
+    width: 50%;
+  }
+}
+
+@media  (min-height: 676px) and (max-height: 750px) {
+  .image-product-app{
+    width: 70%;
+  }
+}
+
+@media  (min-height: 750px) and (max-height: 900px){
+  .image-product-app{
+    width: 80%;
+  }
+}
+
+@media  (min-height: 900px){
+  .image-product-app{
+    width: 90%;
+  }
+}
+
+
+#image-product-complete{
+  width: 100%;
+}
+
+.image-product-container.tall{
+  justify-content: end !important;
+  grid-row: 2/4 !important;
+}
+
+.logo-product.tall{
+  grid-column: 1 !important;
+  width: 70% !important;
+  grid-row: 2 / 4 !important;
+  align-self: start !important;
+  z-index: 10 !important;
+
+}
+
+.new-content-product.tall{
+  justify-items: center;
+}
+
+
+
+
+
+.new-content-product.desktop{
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr 1fr;
+  grid-template-rows: 10% 60% auto;
+  width: 100%;
+  padding-top: 90px;
+  row-gap: 15px;
+
+}
+
+.new-content-product .secondary-navbar.desktop{
+  grid-row: 3;
+  padding: 0;
+  justify-content: center;
+  grid-column: 2;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: max-content;
+}
+
+.new-content-product .logo-product.desktop {
+  width: 70%;
+  height: auto;
+  align-self: start;
+  display: grid;
+  justify-content: flex-start;
+  justify-items: start;
+  grid-template-columns: 30% 30% 40%;
+  grid-row: 2;
+  grid-column: 2 / 4;
+  padding: 0;
+}
+
+.logo-product .logo-terrabox.desktop {
+  grid-column: 1 / 5;
+  width: 100%;
+  grid-column: 1 / 5;
+
+}
+
+.logo-product h3.desktop {
+  grid-row: 2;
+  grid-column: 1 / 5;
+  margin-bottom: 10px;
+  font-size: 35px;
+}
+
+#googleplay.desktop {
+  grid-column: 1 !important;
+  width: 100%;
+}
+.appstore-icon.desktop {
+  width: 50%;
+}
+
+#applestore.desktop {
+  padding-left: 10px;
+  grid-column: 2 !important;
+  width: 100%;
+}
+
+.new-content-product .image-product-container.desktop {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  grid-row: 1 / 5;
+  grid-column: 3 / 5;
+}
+
+#image-product-complete.desktop {
+  width: 90%;
 }

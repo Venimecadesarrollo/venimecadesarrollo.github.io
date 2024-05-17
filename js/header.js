@@ -7,7 +7,6 @@ function transitionInClickMenu() {
         burguerHeader.classList.remove("nav-open");
         navMenu.classList.remove("nav-burguer");
       }
-      
     });
   });
 }

@@ -50,7 +50,6 @@ function updateNavigation(activeId) {
       link.getAttribute("href") === `#${activeId}`
     );
   });
-  console.log(activeId !== "home" && homeLogo);
 
   if (activeId !== "home") {
     if (!isTransitioning) {
@@ -72,9 +71,9 @@ function updateNavigation(activeId) {
   }
   previusSection = activeId;
   if (activeId === "products" && !productInterval) {
-    productInterval = setInterval(() => {
-      nextProduct();
-    }, 4000);
+    //productInterval = setInterval(() => {
+    //  nextProduct();
+    //}, 4000);
   } else {
     clearInterval(productInterval);
     productInterval = null;
@@ -136,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
   transitionInClickMenu();
   EventClickDownButton();
   updateBackground();
+  checkWidth();
 
   var burguerMenu = document.getElementById("hamburguer-menu-btn");
   burguerMenu.addEventListener("click", function (e) {
@@ -149,9 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   var buttonContactRalaxy = document.getElementById("contact-us-btn");
-  console.log(buttonContactRalaxy);
+
   var contactUsSection = document.getElementById("contact");
-  console.log(contactUsSection);
+
   buttonContactRalaxy.addEventListener("click", function (e) {
     contactUsSection.scrollIntoView({ behavior: "smooth" });
   });
@@ -171,11 +171,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link-2").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-      console.log(this.id);
+
       var currentComponent = document.querySelector(
         "#product2 .content-section"
       );
-      console.log(currentComponent);
+
       if (currentComponent) {
         removeInfoRalaxy();
       }
@@ -188,6 +188,8 @@ document.addEventListener("DOMContentLoaded", function () {
   nextButton.addEventListener("click", function () {
     nextProduct();
   });
+
+  window.addEventListener("resize", checkWidth);
 });
 
 function nextProduct() {
@@ -436,5 +438,156 @@ function moveToNextSection() {
   // Si hay una siguiente sección, haz scroll hacia ella
   if (currentSectionIndex !== -1 && currentSectionIndex + 1 < sections.length) {
     sections[currentSectionIndex + 1].scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+function checkWidth() {
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  if (height >= width && width >= 500) {
+    addImageProduct();
+  } else {
+    removeImageProduct();
+  }
+
+  if (height >= width && width <= 500) {
+    addImageProductSingle();
+  } else {
+    removeImageProductSingle();
+  }
+
+  if (height >= width && width >= 500) {
+    addImageProduct();
+  } else {
+    removeImageProduct();
+  }
+
+  if (height >= width && width >= 500) {
+    addClassTall();
+  } else {
+    removeClassTall();
+  }
+
+  if (width >= height && width >= 500) {
+    addImageProduct();
+    addClassDesktop();
+  } else {
+    removeClassDesktop();
+  }
+
+  if (width >= height && width <= 500) {
+    addClassTall();
+  } else {
+    removeClassTall();
+  }
+}
+
+function addClassDesktop() {
+  document.querySelector(".image-product-container").classList.add("desktop");
+
+  document.querySelector(".secondary-navbar").classList.add("desktop");
+
+  document.querySelector(".logo-product").classList.add("desktop");
+
+  document.querySelector(".logo-terrabox").classList.add("desktop");
+
+  document.querySelector(".logo-product h3").classList.add("desktop");
+
+  document.querySelector("#googleplay").classList.add("desktop");
+
+  document.querySelector(".appstore-icon").classList.add("desktop");
+
+  document.querySelector("#applestore").classList.add("desktop");
+
+  document
+    .querySelector(".new-content-product .image-product-container")
+    .classList.add("desktop");
+
+  document.querySelector(".new-content-product").classList.add("desktop");
+
+  var completeProduct = document.getElementById("image-product-complete");
+  if (completeProduct) {
+    completeProduct.classList.add("desktop");
+  }
+}
+
+function removeClassDesktop() {
+  document
+    .querySelector(".image-product-container")
+    .classList.remove("desktop");
+
+  document.querySelector(".secondary-navbar").classList.remove("desktop");
+
+  document.querySelector(".logo-product").classList.remove("desktop");
+
+  document.querySelector(".logo-terrabox").classList.remove("desktop");
+
+  document.querySelector(".logo-product h3").classList.remove("desktop");
+
+  document.querySelector("#googleplay").classList.remove("desktop");
+
+  document.querySelector(".appstore-icon").classList.remove("desktop");
+
+  document.querySelector("#applestore").classList.remove("desktop");
+
+  document
+    .querySelector(".new-content-product .image-product-container")
+    .classList.remove("desktop");
+
+  document.querySelector(".new-content-product").classList.remove("desktop");
+}
+
+function addClassTall() {
+  document.querySelector(".image-product-container").classList.add("tall");
+
+  document.querySelector(".logo-product").classList.add("tall");
+
+  document.querySelector(".new-content-product").classList.add("tall");
+}
+
+function removeClassTall() {
+  document.querySelector(".image-product-container").classList.remove("tall");
+
+  document.querySelector(".logo-product").classList.remove("tall");
+
+  document.querySelector(".new-content-product").classList.remove("tall");
+}
+
+function addImageProductSingle() {
+  var container = document.querySelector(".image-product-container");
+
+  var imageProductSingle = document.createElement("img");
+  imageProductSingle.id = "image-product-single";
+  imageProductSingle.src = "images/app-terrabox.svg";
+  imageProductSingle.classList.add("image-product-app");
+  container.appendChild(imageProductSingle);
+}
+function addImageProduct() {
+  var imageProductComplete = document.getElementById("image-product-complete");
+
+  if (!imageProductComplete) {
+    var container = document.querySelector(".image-product-container");
+
+    imageProductComplete = document.createElement("img");
+    imageProductComplete.id = "image-product-complete";
+    imageProductComplete.src = "images/terrabox-1.svg";
+    container.appendChild(imageProductComplete);
+  }
+}
+
+function removeImageProduct() {
+  var imageProductComplete = document.getElementById("image-product-complete");
+  var container = document.querySelector(".image-product-container");
+  if (imageProductComplete) {
+    container.removeChild(imageProductComplete);
+  }
+}
+
+function removeImageProductSingle() {
+  var imageProductSingle = document.getElementById("image-product-single");
+  var container = document.querySelector(".image-product-container");
+  if (imageProductSingle) {
+    imageProductSingle.removeChild(imageProductComplete);
   }
 }
