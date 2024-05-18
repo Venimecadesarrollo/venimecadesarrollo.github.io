@@ -404,9 +404,14 @@ header.not-home nav ul {
 .secondary-navbar,
 .secondary-navbar-2 {
   width: auto;
-  display: flex;
+  display: grid;
   justify-content: flex-start;
-  padding: 80px 0 10px 0;
+  padding: 0;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: max-content;
+  column-gap: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .nav-link,
@@ -418,7 +423,6 @@ header.not-home nav ul {
   background-color: rgba(217, 217, 217, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.75);
   border-radius: 15px;
-  margin-right: 10px;
 }
 
 .nav-link:hover,
@@ -530,7 +534,40 @@ header.not-home nav ul {
   visibility: hidden;
 }
 
+.new-content-section {
+  overflow-wrap: break-word;
+  width: 100%;
+  max-width: 600px;
+
+  text-align: left; /* Justifica el texto para una mejor presentación */
+  font-family: Poppins;
+  color: #fff;
+
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0; /* Agrega opacidad inicial */
+  visibility: hidden;
+  grid-column: 1/4;
+}
+
 .content-section.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.new-content-section.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.logo-product img,
+.logo-product h3{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.logo-product img.active,
+.logo-product h3.active{
   opacity: 1;
   visibility: visible;
 }
@@ -726,6 +763,19 @@ header.nav-open.not-home nav {
   }
 }
 
+@media (max-width: 290px) {
+  .nav-link {
+    font-size: 11px;
+  }
+  .new-content-section h2{
+    font-size: 32px;
+  }
+  .new-content-section p{
+    font-size: 13px;
+  }
+
+}
+
 .new-content-product{
   display: grid;
   grid-template-columns: 1fr;
@@ -742,8 +792,8 @@ header.nav-open.not-home nav {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  grid-row: 3;
   grid-column: 1/5;
+  grid-row: 2 / 4;
 }
 
 .new-content-product .logo-product{
@@ -755,7 +805,11 @@ header.nav-open.not-home nav {
   justify-items: center;
   padding: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column: 1;
   grid-row: 2;
+  z-index: 3;
+
+  transition: opacity 0.5s ease-in-out;
 }
 
 .logo-product .logo-terrabox{
@@ -792,7 +846,6 @@ i.fa-apple{
 
 .new-content-product .secondary-navbar{
   grid-row: 1;
-  padding: 0;
   justify-content: center;
 }
 
@@ -857,9 +910,6 @@ i.fa-apple{
 }
 
 
-
-
-
 .new-content-product.desktop{
   display: grid;
   grid-template-columns: 40px 1fr 1fr 1fr;
@@ -873,12 +923,10 @@ i.fa-apple{
 .new-content-product .secondary-navbar.desktop{
   grid-row: 3;
   padding: 0;
-  justify-content: center;
+  justify-content: start;
   grid-column: 2;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: max-content;
+  
 }
 
 .new-content-product .logo-product.desktop {
@@ -935,4 +983,14 @@ i.fa-apple{
 
 #image-product-complete.desktop {
   width: 90%;
+}
+
+
+.info-vertical{
+  grid-column: 1/5;
+  text-align: center;
+}
+
+.image-product-container.hidden{
+  visibility: hidden;
 }

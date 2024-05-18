@@ -159,9 +159,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-      var currentComponent = document.querySelector(".content-section-2");
+      var currentComponent = document.querySelector(".logo-product");
 
-      if (currentComponent) {
+      if (currentComponent.childNodes.length > 0) {
         removeInfoTerrabox();
       }
 
@@ -293,7 +293,7 @@ var componentProposalRalaxy = `
 `;
 
 var componentWhatIs = `
-<div id="content-que-es" class="content-section">
+<div id="content-que-es" class="new-content-section">
   <h2>What is TerraBox</h2>
   <p>
     TerraBox es esencial por su capacidad de mejorar 
@@ -311,7 +311,7 @@ var componentWhatIs = `
 
 var componentApproach = `
 
-<div id="content-enfoque-y-abordaje" class="content-section">
+<div id="content-enfoque-y-abordaje" class="new-content-section">
 <h2>Benefit</h2>
   <p>
     Optimizar la recolección y gestión de materiales reciclables, con
@@ -325,35 +325,71 @@ var componentApproach = `
 </div>`;
 
 var componentProposal = `
-<div id="content-enfoque-y-abordaje" class="content-section">
-<img src="images/terrabox-logo.svg" alt="" />
-<h2>Recicla y Gana con Terrabox</h2>
-<button class="download-button">Download</button>
-</div>
+<img src="images/terrabox-logo.svg" alt="" class="logo-terrabox" />
+<h3 class=''>Recicla y Gana</h3>
+<img
+  id="googleplay"
+  class="appstore-icon"
+  src="images/googleplay.svg"
+  alt="google play"
+/>
+<img
+  id="applestore"
+  class="appstore-icon"
+  src="images/Group1.svg"
+  alt="apple store"
+/>
 `;
 
 var containerInfo = document.querySelector("#product-content");
+var newContainerInfo = document.querySelector(".logo-product");
 
 function addInfoTerrabox(concept) {
   var currentComponent = "";
   if (concept === "what-is") {
-    containerInfo.innerHTML = componentWhatIs;
-    currentComponent = document.querySelector(".content-section");
+    newContainerInfo.innerHTML = componentWhatIs;
+    currentComponent = document.querySelector(".new-content-section");
   } else if (concept === "approach") {
-    containerInfo.innerHTML = componentApproach;
-    currentComponent = document.querySelector(".content-section");
+    newContainerInfo.innerHTML = componentApproach;
+    currentComponent = document.querySelector(".new-content-section");
   } else if (concept === "proposal") {
-    containerInfo.innerHTML = componentProposal;
-    currentComponent = document.querySelector(".content-section");
+    newContainerInfo.innerHTML = componentProposal;
+    checkWidth(true);
+    var children = newContainerInfo.querySelectorAll("*");
+  }
+  checkWidthAndAddStyleInfo(currentComponent);
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  if (height >= width && width <= 600 && concept != "proposal") {
+    removeImageProductForInfo();
+  }
+  if (height >= width && width <= 600 && concept == "proposal") {
+    addImageProductForInfo();
   }
 
   setTimeout(() => {
+    if (children) {
+      if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+          children[i].classList.toggle("active");
+        }
+      }
+    }
     currentComponent.classList.toggle("active");
   }, 100);
 }
 
+function removeImageProductForInfo() {
+  document.querySelector(".image-product-container").classList.add("hidden");
+}
+
+function addImageProductForInfo() {
+  document.querySelector(".image-product-container").classList.remove("hidden");
+}
+
 function removeInfoTerrabox() {
-  containerInfo.innerHTML = "";
+  newContainerInfo.innerHTML = "";
 }
 var containerInfo2 = document.querySelector("#product2 #product-content");
 function addInfoRalaxy(concept) {
@@ -441,45 +477,76 @@ function moveToNextSection() {
   }
 }
 
-function checkWidth() {
+function checkWidth(ifForDonwloadDesktopButton) {
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  if (ifForDonwloadDesktopButton) {
+    if (width >= height && width >= 500) {
+      addClassDesktop();
+    }
+  } else {
+    if (height >= width && width >= 500) {
+      addImageProduct();
+      addStyleInfoProduct();
+    } else {
+      removeImageProduct();
+      removeStyleInfoProduct();
+    }
+
+    if (height >= width && width <= 500) {
+      addImageProductSingle();
+      addStyleInfoProduct();
+    } else {
+      removeImageProductSingle();
+      removeStyleInfoProduct();
+    }
+
+    if (height >= width && width >= 500) {
+      addClassTall();
+    } else {
+      removeClassTall();
+    }
+
+    if (width >= height && width >= 500) {
+      addImageProduct();
+      addClassDesktop();
+    } else {
+      removeClassDesktop();
+    }
+
+    if (width >= height && width <= 500) {
+      addClassTall();
+    } else {
+      removeClassTall();
+    }
+  }
+}
+
+function checkWidthAndAddStyleInfo(currentComponent) {
   var width = window.innerWidth;
   var height = window.innerHeight;
 
-  if (height >= width && width >= 500) {
-    addImageProduct();
+  if (height >= width) {
+    addStyleInfoProduct(currentComponent);
   } else {
-    removeImageProduct();
+    removeStyleInfoProduct(currentComponent);
   }
+}
 
-  if (height >= width && width <= 500) {
-    addImageProductSingle();
-  } else {
-    removeImageProductSingle();
+function addStyleInfoProduct(currentComponent) {
+  //var container = document.querySelector('.new-content-section')
+  var container = currentComponent;
+  if (container) {
+    console.log(container);
+    container.classList.add("info-vertical");
   }
-
-  if (height >= width && width >= 500) {
-    addImageProduct();
-  } else {
-    removeImageProduct();
-  }
-
-  if (height >= width && width >= 500) {
-    addClassTall();
-  } else {
-    removeClassTall();
-  }
-
-  if (width >= height && width >= 500) {
-    addImageProduct();
-    addClassDesktop();
-  } else {
-    removeClassDesktop();
-  }
-
-  if (width >= height && width <= 500) {
-    addClassTall();
-  } else {
-    removeClassTall();
+}
+function removeStyleInfoProduct(currentComponent) {
+  //var container = document.querySelector('.new-content-section')
+  var container = currentComponent;
+  if (container) {
+    console.log("xxxxxxxx");
+    container.classList.remove("info-vertical");
   }
 }
 
