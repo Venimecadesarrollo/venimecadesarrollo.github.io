@@ -254,7 +254,7 @@ const preloadImages = () => {
 };
 
 var componentWhatIsRalaxy = `
-<div id="content-que-es" class="content-section">
+<div id="content-que-es" class="new-content-section">
   <h2>What is Ralaxy</h2>
   <p>
     Ralaxy es un sistem a potencial
@@ -275,7 +275,7 @@ var componentWhatIsRalaxy = `
 
 var componentApproachRalaxy = `
 
-<div id="content-enfoque-y-abordaje" class="content-section">
+<div id="content-enfoque-y-abordaje" class="new-content-section">
 <h2>Benefit</h2>
   <p>
   Desarrollar e implementar un sistema de señalización vial
@@ -285,11 +285,11 @@ var componentApproachRalaxy = `
 </div>`;
 
 var componentProposalRalaxy = `
-<div id="content-enfoque-y-abordaje" class="content-section">
-<img src="images/ralaxy-logo.svg" alt="" />
-<h2>Innovación y seguridad vial</h2>
-<button class="download-button" id='contact-us-btn'>Contact us</button>
-</div>
+<img src="images/ralaxy-logo.svg" alt="" class="logo-ralaxy"/>
+<h3 class="">Innovación y seguridad vial</h3>
+<button class="download-button" id="contact-us-btn">
+  Contact us
+</button>
 `;
 
 var componentWhatIs = `
@@ -392,20 +392,30 @@ function removeInfoTerrabox() {
   newContainerInfo.innerHTML = "";
 }
 var containerInfo2 = document.querySelector("#product2 #product-content");
+var newContainerInfo2 = document.querySelector("#product2 .logo-product");
 function addInfoRalaxy(concept) {
   var currentComponent = "";
   if (concept === "what-is") {
-    containerInfo2.innerHTML = componentWhatIsRalaxy;
-    currentComponent = document.querySelector("#product2 .content-section");
+    newContainerInfo2.innerHTML = componentWhatIsRalaxy;
+    currentComponent = document.querySelector("#product2 .logo-product .new-content-section");
   } else if (concept === "approach") {
-    containerInfo2.innerHTML = componentApproachRalaxy;
-    currentComponent = document.querySelector("#product2 .content-section");
+    newContainerInfo2.innerHTML = componentApproachRalaxy;
+    currentComponent = document.querySelector("#product2 .logo-product .new-content-section");
   } else if (concept === "proposal") {
-    containerInfo2.innerHTML = componentProposalRalaxy;
-    currentComponent = document.querySelector("#product2 .content-section");
+    newContainerInfo2.innerHTML = componentProposalRalaxy;
+    var children = newContainerInfo2.querySelectorAll("*");
   }
 
   setTimeout(() => {
+    console.log(children)
+    if (children) {
+      if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+          console.log(children[i])
+          children[i].classList.add("active");
+        }
+      }
+    }
     currentComponent.classList.toggle("active");
   }, 100);
 }
@@ -520,6 +530,19 @@ function checkWidth(ifForDonwloadDesktopButton) {
       removeClassTall();
     }
   }
+  var heightCondition = width - height;
+  heightCondition = Math.abs(heightCondition);
+  var imageRalaxy = document.querySelector("#image-ralaxy");
+  if(width >= height && heightCondition >= 400) {
+    imageRalaxy.classList.add("ralaxy-image-complete");
+  }
+  
+  if(height >=  width && heightCondition <= 300) {    
+    console.log('haaaa',heightCondition)
+    imageRalaxy.src = "images/t5.png";
+  }else{
+    imageRalaxy.src = "images/ralaxy-1-600.svg";
+  }
 }
 
 function checkWidthAndAddStyleInfo(currentComponent) {
@@ -551,15 +574,30 @@ function removeStyleInfoProduct(currentComponent) {
 }
 
 function addClassDesktop() {
-  document.querySelector(".image-product-container").classList.add("desktop");
+  var imageProductContainer = document.querySelectorAll(
+    ".image-product-container"
+  );
+  imageProductContainer.forEach(function (imageProductContainer) {
+    imageProductContainer.classList.add("desktop");
+  });
 
   document.querySelector(".secondary-navbar").classList.add("desktop");
 
-  document.querySelector(".logo-product").classList.add("desktop");
+  document.querySelector(".secondary-navbar-2").classList.add("desktop");
+
+  var logoProduct = document.querySelectorAll(".logo-product");
+  logoProduct.forEach(function (logoProduct) {
+    logoProduct.classList.add("desktop");
+  });
 
   document.querySelector(".logo-terrabox").classList.add("desktop");
+  document.querySelector(".logo-ralaxy").classList.add("desktop");
 
-  document.querySelector(".logo-product h3").classList.add("desktop");
+  var h3LogoProduct = document.querySelectorAll(".logo-product h3");
+  h3LogoProduct.forEach(function (h3LogoProduct) {
+    console.log(h3LogoProduct)
+    h3LogoProduct.classList.add("desktop");
+  });
 
   document.querySelector("#googleplay").classList.add("desktop");
 
@@ -567,11 +605,17 @@ function addClassDesktop() {
 
   document.querySelector("#applestore").classList.add("desktop");
 
-  document
-    .querySelector(".new-content-product .image-product-container")
-    .classList.add("desktop");
+  var imageProductContainer = document.querySelectorAll(
+    ".new-content-product .image-product-container"
+  );
+  imageProductContainer.forEach(function (imageProductContainer) {
+    imageProductContainer.classList.add("desktop");
+  });
 
-  document.querySelector(".new-content-product").classList.add("desktop");
+  var newContentProduct = document.querySelectorAll(".new-content-product");
+  newContentProduct.forEach(function (newContentProduct) {
+    newContentProduct.classList.add("desktop");
+  });
 
   var completeProduct = document.getElementById("image-product-complete");
   if (completeProduct) {
@@ -580,17 +624,29 @@ function addClassDesktop() {
 }
 
 function removeClassDesktop() {
-  document
-    .querySelector(".image-product-container")
-    .classList.remove("desktop");
+  var imageProductContainer = document.querySelectorAll(
+    ".image-product-container"
+  );
+  imageProductContainer.forEach(function (imageProductContainer) {
+    imageProductContainer.classList.remove("desktop");
+  });
 
   document.querySelector(".secondary-navbar").classList.remove("desktop");
 
-  document.querySelector(".logo-product").classList.remove("desktop");
+  document.querySelector(".secondary-navbar-2").classList.remove("desktop");
+
+  var logoProduct = document.querySelectorAll(".logo-product");
+  logoProduct.forEach(function (logoProduct) {
+    logoProduct.classList.remove("desktop");
+  });
 
   document.querySelector(".logo-terrabox").classList.remove("desktop");
+  document.querySelector(".logo-ralaxy").classList.remove("desktop");
 
-  document.querySelector(".logo-product h3").classList.remove("desktop");
+  var h3LogoProduct = document.querySelectorAll(".logo-product h3");
+  h3LogoProduct.forEach(function (h3LogoProduct) {
+    h3LogoProduct.classList.remove("desktop");
+  });
 
   document.querySelector("#googleplay").classList.remove("desktop");
 
@@ -598,11 +654,22 @@ function removeClassDesktop() {
 
   document.querySelector("#applestore").classList.remove("desktop");
 
-  document
-    .querySelector(".new-content-product .image-product-container")
-    .classList.remove("desktop");
+  var imageProductContainer = document.querySelectorAll(
+      ".new-content-product .image-product-container"
+    );
+    imageProductContainer.forEach(function (imageProductContainer) {
+      imageProductContainer.classList.remove("desktop");
+    });
 
-  document.querySelector(".new-content-product").classList.remove("desktop");
+    var newContentProduct = document.querySelectorAll(".new-content-product");
+    newContentProduct.forEach(function (newContentProduct) {
+      newContentProduct.classList.remove("desktop");
+    });
+  
+    var completeProduct = document.getElementById("image-product-complete");
+    if (completeProduct) {
+      completeProduct.classList.remove("desktop");
+    }
 }
 
 function addClassTall() {
