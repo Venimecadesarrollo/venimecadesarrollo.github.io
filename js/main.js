@@ -71,9 +71,9 @@ function updateNavigation(activeId) {
   }
   previusSection = activeId;
   if (activeId === "products" && !productInterval) {
-    //productInterval = setInterval(() => {
-    //  nextProduct();
-    //}, 4000);
+    productInterval = setInterval(() => {
+      nextProduct();
+    }, 4000);
   } else {
     clearInterval(productInterval);
     productInterval = null;
@@ -193,29 +193,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function nextProduct() {
-  const currentProduct = document.querySelector(".products-container.active");
+  const currentProduct = document.querySelector(".cont-prod.active");
   let nextProduct = currentProduct.nextElementSibling;
 
-  if (!nextProduct || !nextProduct.classList.contains("products-container")) {
-    nextProduct = document.querySelector(".products-container:first-of-type");
+  if (!nextProduct || !nextProduct.classList.contains("cont-prod")) {
+    nextProduct = document.querySelector(".cont-prod:first-of-type");
   }
 
-  // Añadir la clase 'no-scroll' al body para ocultar las barras de desplazamiento
-  document.body.classList.add("no-scroll");
+  //document.body.classList.add("no-scroll");
 
   currentProduct.classList.add("exit-left"); // Salida a la izquierda
   nextProduct.classList.add("transitioning"); // Asegura que el nuevo contenedor sea visible
 
   setTimeout(() => {
     nextProduct.classList.add("enter-right"); // Entrada desde la derecha
-
+//
     setTimeout(() => {
       currentProduct.classList.remove("active", "exit-left", "transitioning");
       nextProduct.classList.remove("enter-right", "transitioning");
       nextProduct.classList.add("active");
-
-      // Remover la clase 'no-scroll' después de la transición
-      document.body.classList.remove("no-scroll");
+//
+  //    // Remover la clase 'no-scroll' después de la transición
+  //    document.body.classList.remove("no-scroll");
     }, 500); // Ajusta el tiempo a la duración de la transición
   }, 10);
 }

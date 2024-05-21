@@ -458,7 +458,20 @@ header.not-home nav ul {
   overflow: hidden;
 }
 
-.products-container:first-of-type {
+.cont-prod{
+  display: none;
+  top: 0;
+  left: 100%;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: left 0.5s ease, opacity 0.5s ease;
+  z-index: 1;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.cont-prod:first-of-type {
   display: block;
 }
 
@@ -467,6 +480,14 @@ header.not-home nav ul {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+  z-index: 2;
+}
+
+.cont-prod.active {
+  display: block;
   opacity: 1;
   visibility: visible;
   left: 0;
@@ -498,27 +519,27 @@ header.not-home nav ul {
   display: grid;
 }
 
-.products-container.exit-left {
+.cont-prod.exit-left {
   left: -100%;
   opacity: 0;
   z-index: 1;
 }
 
-.products-container.enter-right {
+.cont-prod.enter-right {
   left: 100%;
   opacity: 1;
   z-index: 2;
 }
 
-.products-container.exit-right {
+.cont-prod.exit-right {
   left: 100%;
 }
 
-.products-container.enter-left {
+.cont-prod.enter-left {
   left: -100%;
 }
 
-.products-container.transitioning {
+.cont-prod.transitioning {
   display: block;
 }
 
@@ -818,7 +839,6 @@ header.nav-open.not-home nav {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column: 1;
   grid-row: 3;
-  z-index: 3;
 
   transition: opacity 0.5s ease-in-out;
 }
