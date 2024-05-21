@@ -129,6 +129,49 @@ function stopTransition() {
 var burguerHeader = document.querySelector("header");
 var navMenu = document.querySelector("nav");
 
+var contentContactInfo = `
+<h2>Let's get in touch</h2>
+<p>We're open for any suggestion or just to have a chat</p>
+<span class="material-symbols-outlined"> location_on </span>
+<div>
+  <strong>Address:</strong> 198 West 21th Street, Suite 721 New York,
+  NY 10016
+</div>
+<span class="material-symbols-outlined"> call </span>
+<div><strong>Phone:</strong> +1235 2355 98</div>
+<span class="material-symbols-outlined"> call </span>
+<div><strong>Phone:</strong> +1235 2355 98</div>
+<span class="material-symbols-outlined"> mail </span>
+<div><strong>Email:</strong> info@yoursite.com</div>
+<span class="material-symbols-outlined"> mail </span>
+<div><strong>Email:</strong> info@yoursite.com</div>
+`;
+
+var contentContactForm = `
+<h2>Get in touch</h2>
+<input
+  type="text"
+  placeholder="Full Name"
+  name="name"
+  id="full-name"
+
+/>
+<input
+  type="email"
+  placeholder="Email Address"
+  name="email"
+  id="email"
+
+/>
+<input type="text" placeholder="Subject" name="subject"/>
+<textarea
+  placeholder="Message"
+  name="message"
+  id="message"
+></textarea>
+<button type="submit">Send Message</button>
+`;
+
 document.addEventListener("DOMContentLoaded", function () {
   preloadImages();
   setupSectionObserver();
@@ -136,6 +179,23 @@ document.addEventListener("DOMContentLoaded", function () {
   EventClickDownButton();
   updateBackground();
   checkWidth();
+
+  var contactInfo = document.querySelector(".contact-info");
+
+  var switchContact = document.querySelector("#mySwitch");
+  switchContact.addEventListener("change", function () {
+    if (this.checked) {
+      removeAllExceptSwitch("contact-info");
+      contactInfo.classList.add("contact-form");
+      contactInfo.classList.remove("contact-info");
+      addNewChildren(contentContactForm, "contact-form");
+    } else {
+      removeAllExceptSwitch("contact-form");
+      contactInfo.classList.remove("contact-form");
+      contactInfo.classList.add("contact-info");
+      addNewChildren(contentContactInfo, "contact-info");
+    }
+  });
 
   var burguerMenu = document.getElementById("hamburguer-menu-btn");
   burguerMenu.addEventListener("click", function (e) {
@@ -207,14 +267,14 @@ function nextProduct() {
 
   setTimeout(() => {
     nextProduct.classList.add("enter-right"); // Entrada desde la derecha
-//
+    //
     setTimeout(() => {
       currentProduct.classList.remove("active", "exit-left", "transitioning");
       nextProduct.classList.remove("enter-right", "transitioning");
       nextProduct.classList.add("active");
-//
-  //    // Remover la clase 'no-scroll' después de la transición
-  //    document.body.classList.remove("no-scroll");
+      //
+      //    // Remover la clase 'no-scroll' después de la transición
+      //    document.body.classList.remove("no-scroll");
     }, 500); // Ajusta el tiempo a la duración de la transición
   }, 10);
 }
@@ -396,21 +456,25 @@ function addInfoRalaxy(concept) {
   var currentComponent = "";
   if (concept === "what-is") {
     newContainerInfo2.innerHTML = componentWhatIsRalaxy;
-    currentComponent = document.querySelector("#product2 .logo-product .new-content-section");
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
   } else if (concept === "approach") {
     newContainerInfo2.innerHTML = componentApproachRalaxy;
-    currentComponent = document.querySelector("#product2 .logo-product .new-content-section");
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
   } else if (concept === "proposal") {
     newContainerInfo2.innerHTML = componentProposalRalaxy;
     var children = newContainerInfo2.querySelectorAll("*");
   }
 
   setTimeout(() => {
-    console.log(children)
+    console.log(children);
     if (children) {
       if (children.length > 0) {
         for (let i = 0; i < children.length; i++) {
-          console.log(children[i])
+          console.log(children[i]);
           children[i].classList.add("active");
         }
       }
@@ -489,6 +553,15 @@ function moveToNextSection() {
 function checkWidth(ifForDonwloadDesktopButton) {
   var width = window.innerWidth;
   var height = window.innerHeight;
+  console.log(width)
+  var contactForm = document.querySelector(".contact-form");
+  if (height >= width && width <= 800) {
+    console.log(width)
+    contactForm.classList.add("hidden");
+  }else{
+    contactForm.classList.remove("hidden");
+  }
+
   if (ifForDonwloadDesktopButton) {
     if (width >= height && width >= 500) {
       addClassDesktop();
@@ -532,14 +605,14 @@ function checkWidth(ifForDonwloadDesktopButton) {
   var heightCondition = width - height;
   heightCondition = Math.abs(heightCondition);
   var imageRalaxy = document.querySelector("#image-ralaxy");
-  if(width >= height && heightCondition >= 400) {
+  if (width >= height && heightCondition >= 400) {
     imageRalaxy.classList.add("ralaxy-image-complete");
   }
-  
-  if(height >=  width && heightCondition <= 300) {    
-    console.log('haaaa',heightCondition)
+
+  if (height >= width && heightCondition <= 300) {
+    console.log("haaaa", heightCondition);
     imageRalaxy.src = "images/t5.png";
-  }else{
+  } else {
     imageRalaxy.src = "images/ralaxy-1-600.svg";
   }
 }
@@ -594,7 +667,7 @@ function addClassDesktop() {
 
   var h3LogoProduct = document.querySelectorAll(".logo-product h3");
   h3LogoProduct.forEach(function (h3LogoProduct) {
-    console.log(h3LogoProduct)
+    console.log(h3LogoProduct);
     h3LogoProduct.classList.add("desktop");
   });
 
@@ -654,21 +727,21 @@ function removeClassDesktop() {
   document.querySelector("#applestore").classList.remove("desktop");
 
   var imageProductContainer = document.querySelectorAll(
-      ".new-content-product .image-product-container"
-    );
-    imageProductContainer.forEach(function (imageProductContainer) {
-      imageProductContainer.classList.remove("desktop");
-    });
+    ".new-content-product .image-product-container"
+  );
+  imageProductContainer.forEach(function (imageProductContainer) {
+    imageProductContainer.classList.remove("desktop");
+  });
 
-    var newContentProduct = document.querySelectorAll(".new-content-product");
-    newContentProduct.forEach(function (newContentProduct) {
-      newContentProduct.classList.remove("desktop");
-    });
-  
-    var completeProduct = document.getElementById("image-product-complete");
-    if (completeProduct) {
-      completeProduct.classList.remove("desktop");
-    }
+  var newContentProduct = document.querySelectorAll(".new-content-product");
+  newContentProduct.forEach(function (newContentProduct) {
+    newContentProduct.classList.remove("desktop");
+  });
+
+  var completeProduct = document.getElementById("image-product-complete");
+  if (completeProduct) {
+    completeProduct.classList.remove("desktop");
+  }
 }
 
 function addClassTall() {
@@ -722,5 +795,31 @@ function removeImageProductSingle() {
   var container = document.querySelector(".image-product-container");
   if (imageProductSingle) {
     imageProductSingle.removeChild(imageProductComplete);
+  }
+}
+
+function removeAllExceptSwitch(parentId) {
+  const parent = document.querySelector("." + parentId);
+  const switchElement = document.getElementById("mySwitch").closest(".switch");
+
+  const children = Array.from(parent.children);
+
+  children.forEach((child) => {
+    if (child !== switchElement) {
+      parent.removeChild(child);
+    }
+  });
+}
+
+function addNewChildren(elements, parentId) {
+  const parent = document.querySelector("." + parentId);
+
+  const tempContainer = document.createElement("div");
+  tempContainer.innerHTML = elements;
+  
+  while (tempContainer.firstElementChild) {
+    const newChild = tempContainer.firstElementChild;
+    parent.appendChild(newChild);
+    
   }
 }
