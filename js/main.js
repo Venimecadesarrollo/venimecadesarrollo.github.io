@@ -134,17 +134,17 @@ var contentContactInfo = `
 <p>We're open for any suggestion or just to have a chat</p>
 <span class="material-symbols-outlined"> location_on </span>
 <div>
-  <strong>Address:</strong> 198 West 21th Street, Suite 721 New York,
-  NY 10016
+  <strong>Address:</strong> Rúa Da Cruz Da Nogueira 13-B. Santiago de
+  Compostela - A Coruña, 15702, Spain.
 </div>
 <span class="material-symbols-outlined"> call </span>
-<div><strong>Phone:</strong> +1235 2355 98</div>
+<div><strong>Phone:</strong> (+34) 624.91.27.72</div>
 <span class="material-symbols-outlined"> call </span>
-<div><strong>Phone:</strong> +1235 2355 98</div>
+<div><strong>Phone:</strong> (+58) 414-7819521</div>
 <span class="material-symbols-outlined"> mail </span>
-<div><strong>Email:</strong> info@yoursite.com</div>
+<div><strong>Email:</strong> management@visenergycorp.com</div>
 <span class="material-symbols-outlined"> mail </span>
-<div><strong>Email:</strong> info@yoursite.com</div>
+<div><strong>Email:</strong> contacto@visenergycorp.com</div>
 `;
 
 var contentContactForm = `

@@ -1,5 +1,7 @@
 /* Resetting default styles */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -174,20 +176,22 @@ nav a.active::after {
   grid-template-rows: 90px auto;
   height: 100vh;
   width: 100%;
+  padding: 20px;
 }
 
 .contact-info {
   background-color: #05156c;
   border-radius: 35px 0 0 35px;
   color: white;
-  padding: 3rem;
+  
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 10px;
   align-items: start;
   grid-row: 2;
   grid-column: 1;
-  margin: 20px 0px 20px 20px;
+  box-sizing: border-box;
+  padding: 40px;
 }
 
 .contact-info.hidden{
@@ -206,14 +210,14 @@ nav a.active::after {
 
 .contact-form {
   background-color: #fff;
-  padding: 3rem;
+  
   border-radius: 0 35px 35px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 50px;
   grid-row: 2;
   grid-column: 2;
-  margin: 20px 20px 20px 0px;
+  padding: 40px;
 }
 
 .contact-form.active{
@@ -1125,17 +1129,22 @@ i.fa-apple{
     grid-template-columns: 1fr;
   }
 
-  .contact-info{
-    margin-right: 20px;
-  }
   .contact-info h2,
   .contact-form h2 {
     font-size: 36px;
   }
 
   .contact-form{
-    margin-left: 20px;
     grid-column: 1;
+  }
+}
+
+
+@media (max-aspect-ratio: 1/1) and (max-width: 450px){
+ 
+
+  .contact-info {
+    font-size: 10px;
   }
 }
 
@@ -1208,14 +1217,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
-
-
-
-
-.contact-info, .contact-form {
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
 
 
 .contact-form button{
