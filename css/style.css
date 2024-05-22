@@ -255,7 +255,7 @@ form {
 
 #email,
 #full-name {
-  grid-column: span 1;
+  
 }
 
 
@@ -280,9 +280,7 @@ form {
 }
 
 #message {
-  resize: vertical;
-  padding: 5px;
-  font-family: "Poppins", sans-serif;
+
 }
 
 /* Common Styles */

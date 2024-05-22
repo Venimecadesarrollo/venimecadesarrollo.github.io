@@ -151,9 +151,8 @@ var contentContactForm = `
 <h2>Get in touch</h2>
 <input
   type="text"
-  placeholder="Fulles"
+  placeholder="Fus"
   name=""
-  id=""
 
 />
 <input
@@ -162,11 +161,11 @@ var contentContactForm = `
   name="mailito"
 
 />
-<input type="text" placeholder="Subject" name="subject"/>
+<input type="text" placeholder="Subject" name=""/>
 <textarea
   placeholder="Message"
-  name="message"
-  id="message"
+  name=""
+  id=""
 ></textarea>
 <button type="submit">Send Message</button>
 
