@@ -149,7 +149,7 @@ var contentContactInfo = `
 
 var contentContactForm = `
 <h2>Get in touch</h2>
-
+<input type="text" name="script" id="" placeholder="script">
 <input
   type="text"
   placeholder="Full Name"
