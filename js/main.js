@@ -149,7 +149,7 @@ var contentContactInfo = `
 
 var contentContactForm = `
 <h2>Get in touch</h2>
-<form id="contactForm">
+<form>
 <input
   type="text"
   placeholder="Full Name"
@@ -221,9 +221,9 @@ document.addEventListener("DOMContentLoaded", function () {
   switchContact.addEventListener("change", function () {
     if (this.checked) {
       removeAllExceptSwitch("contact-info");
-      contactInfo.classList.add("contact-form");
+      contactInfo.classList.add("contact-formJs");
       contactInfo.classList.remove("contact-info");
-      addNewChildren(contentContactForm, "contact-form");
+      addNewChildren(contentContactForm, "contact-formJs");
 
       var form = document.querySelector('form:not([class*="hidden="])');
       form.addEventListener("submit", function (e) {
@@ -231,8 +231,8 @@ document.addEventListener("DOMContentLoaded", function () {
         EventSendEmail(e, this);
       });
     } else {
-      removeAllExceptSwitch("contact-form");
-      contactInfo.classList.remove("contact-form");
+      removeAllExceptSwitch("contact-formJs");
+      contactInfo.classList.remove("contact-formJs");
       contactInfo.classList.add("contact-info");
       addNewChildren(contentContactInfo, "contact-info");
     }
