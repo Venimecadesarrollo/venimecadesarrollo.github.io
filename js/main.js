@@ -149,7 +149,7 @@ var contentContactInfo = `
 
 var contentContactForm = `
 <h2>Get in touch</h2>
-<form id="contactForm">
+
 <input
   type="text"
   placeholder="Full Name"
@@ -171,7 +171,7 @@ var contentContactForm = `
   id="message"
 ></textarea>
 <button type="submit">Send Message</button>
-</form>
+
 `;
 
 function sendDataForEmail(data) {
