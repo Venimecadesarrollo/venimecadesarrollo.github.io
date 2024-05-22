@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var switchContact = document.querySelector("#mySwitch");
   switchContact.addEventListener("change", function () {
     if (this.checked) {
-      removeAllExceptSwitch("contact-info");
+      //removeAllExceptSwitch("contact-info");
       contactInfo.classList.add("contact-form");
       contactInfo.classList.remove("contact-info");
       addNewChildren(contentContactForm, "contact-form");
