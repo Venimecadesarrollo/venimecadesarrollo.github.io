@@ -152,21 +152,23 @@ var contentContactForm = `
 <form>
 <input
   type="text"
-  placeholder="Fus"
-  name=""
+  placeholder="Full Name"
+  name="name"
+  id="full-name"
 
 />
 <input
   type="email"
-  placeholder="Escribe"
-  name="mailito"
+  placeholder="Email Address"
+  name="email"
+  id="email"
 
 />
-<input type="text" placeholder="Subject" name=""/>
+<input type="text" placeholder="Subject" name="subject"/>
 <textarea
   placeholder="Message"
-  name=""
-  id=""
+  name="message"
+  id="message"
 ></textarea>
 <button type="submit">Send Message</button>
 </form>
@@ -188,14 +190,13 @@ function sendDataForEmail(data) {
           openModal(successModal);
       })
       .catch(error => {
-          console.error('Error:', error);
           openModal(errorModal);
       });
 }
 		
 function EventSendEmail(e, form) {
   var formData = new FormData(form);
-  //sendDataForEmail(formData);
+  sendDataForEmail(formData);
   form.reset();
 }
 
@@ -207,7 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateBackground();
   checkWidth();
 
-  var form = document.querySelector('form:not([class*="hidden="])');
+  var form = document.querySelector('.contact-form form');
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     EventSendEmail(e, this);
@@ -223,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
       contactInfo.classList.remove("contact-info");
       addNewChildren(contentContactForm, "contact-formJs");
 
-      var form = document.querySelector('form:not([class*="hidden="])');
+      var form = document.querySelector('.contact-formJs form');
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         EventSendEmail(e, this);

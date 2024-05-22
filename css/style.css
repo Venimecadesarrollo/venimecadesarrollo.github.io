@@ -208,11 +208,19 @@ nav a.active::after {
   text-align: left;
 }
 
-.contact-form,
-.contact-formJs {
+.contact-formJsJs,
+.contact-formJs,
+.contact-formJs ,
+.contact-form {
   background-color: #fff;
   
- 
+  border-radius: 0 35px 35px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+  grid-row: 2;
+  grid-column: 2;
+  padding: 40px;
 }
 
 form {
@@ -234,12 +242,12 @@ form {
 
 .contact-formJs h2 ,
 .contact-form h2 {
-  color: blue;
+  color: #05156c;
 }
 
 .contact-formJs form input,
-.contact-formJs form textarea,
 .contact-form form input,
+.contact-formJs form textarea ,
 .contact-form form textarea {
   color: rgba(0, 0, 0, 0.8);
   width: 100%;
@@ -253,12 +261,12 @@ form {
 }
 
 .contact-formJs form input,
-.contact-formJs form textarea,
-.contact-formJs form button,
-.contact-formJs h2,
 .contact-form form input,
+.contact-formJs form textarea,
 .contact-form form textarea,
+.contact-formJs form button,
 .contact-form form button,
+.contact-formJs h2 ,
 .contact-form h2 {
   grid-column: span 2;
 }
@@ -269,13 +277,13 @@ form {
 }
 
 .contact-formJs form input:focus,
-.contact-formJs form textarea:focus,
 .contact-form form input:focus,
+.contact-formJs form textarea:focus ,
 .contact-form form textarea:focus {
   border-bottom: 1px solid #0c0a53;
 }
 
-.contact-formJs form button,
+.contact-formJs form button ,
 .contact-form form button {
   padding: 10px 20px;
   background-color: #05156c;
@@ -287,18 +295,20 @@ form {
   font-size: 16px;
 }
 
-.contact-formJs form button:hover,
+.contact-formJs form button:hover ,
 .contact-form form button:hover {
   background-color: #040f4d;
 }
 
-.contact-formJs form textarea,
+.contact-formJs form textarea ,
 .contact-form form textarea {
   height: 80px;
 }
 
 #message {
-
+  resize: vertical;
+  padding: 5px;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Common Styles */
@@ -1144,7 +1154,7 @@ i.fa-apple{
   }
 
   .contact-info h2,
-  .contact-formJs h2,
+  .contact-formJs h2 ,
   .contact-form h2 {
     font-size: 36px;
   }
@@ -1179,7 +1189,7 @@ i.fa-apple{
 }
 
 /* Hide default HTML checkbox */
-.switch #mySwitch {
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -1210,9 +1220,18 @@ i.fa-apple{
   transition: .4s;
 }
 
+input:checked + .slider {
+  background-color: #2196F3;
+}
 
-#mySwitch:checked + .slider:before {
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
 
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 /* Rounded sliders */
