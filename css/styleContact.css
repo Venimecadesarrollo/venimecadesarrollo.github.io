@@ -9,7 +9,7 @@
 
 body,
 html {
-  height: 100%;
+  
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   font-family: "Poppins", sans-serif;
@@ -370,18 +370,6 @@ h2 {
   height: 100vh;
   box-sizing: border-box;
 }
-
-.fullscreen-contact {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding-top: 70px;
-  box-sizing: border-box;
-}
-
 
 .scroll-indicator {
   position: absolute;

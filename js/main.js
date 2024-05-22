@@ -175,25 +175,27 @@ var contentContactForm = `
 `;
 
 function sendDataForEmail(data) {
-  fetch('https://script.google.com/macros/s/AKfycbyAl_Q_lA5PCb4YSldOMqVVHVF5TXuYHPu5FNKX1CF2FQ_GJHLy9FOFBJd45ro9_GSNEw/exec', {
-    
-      method: 'POST',
+  fetch(
+    "https://script.google.com/macros/s/AKfycbyAl_Q_lA5PCb4YSldOMqVVHVF5TXuYHPu5FNKX1CF2FQ_GJHLy9FOFBJd45ro9_GSNEw/exec",
+    {
+      method: "POST",
       body: data,
-  })
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Error en la solicitud.');
-          }
-          return response.json();
-      })
-      .then(data => {
-          openModal(successModal);
-      })
-      .catch(error => {
-          openModal(errorModal);
-      });
+    }
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Error en la solicitud.");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      openModal(successModal);
+    })
+    .catch((error) => {
+      openModal(errorModal);
+    });
 }
-		
+
 function EventSendEmail(e, form) {
   var formData = new FormData(form);
   sendDataForEmail(formData);
@@ -208,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateBackground();
   checkWidth();
 
-  var form = document.querySelector('.contact-form form');
+  var form = document.querySelector(".contact-form form");
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     EventSendEmail(e, this);
@@ -223,8 +225,17 @@ document.addEventListener("DOMContentLoaded", function () {
       contactInfo.classList.add("contact-formJs");
       contactInfo.classList.remove("contact-info");
       addNewChildren(contentContactForm, "contact-formJs");
+      const inputElement = document.querySelectorAll(".contact-formJs form input");
+      console.log(inputElement)
+      inputElement.forEach((input) => {
+        input.addEventListener("focus", () => {
+          const scrollPosition = window.scrollY;
+          window.scrollTo(0, scrollPosition);
+          document.querySelector('body').style.cssText = "height: auto;";
+        });
+      });
 
-      var form = document.querySelector('.contact-formJs form');
+      var form = document.querySelector(".contact-formJs form");
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         EventSendEmail(e, this);
@@ -538,15 +549,12 @@ function transitionInClickMenu() {
       }
 
       if (this.id !== "nav-about-us") {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+        event.preventDefault();
 
-        // Obtener el ID de la sección objetivo desde el atributo href del enlace
         const targetId = this.getAttribute("href").substring(1);
         const targetSection = document.getElementById(targetId);
 
-        // Comprobar si la sección objetivo existe
         if (targetSection) {
-          // Realizar un scroll suave hacia la sección objetivo
           targetSection.scrollIntoView({ behavior: "smooth" });
         }
       }
@@ -863,31 +871,26 @@ function addNewChildren(elements, parentId) {
   }
 }
 
-
-
-
 /*-- Modal --*/
 
 var successModal = document.getElementById("successModal");
 var errorModal = document.getElementById("errorModal");
 
-
 var closeSuccess = document.querySelector("#successModal .close");
 var closeError = document.querySelector("#errorModal .close");
 
-
 closeSuccess.onclick = function () {
-    closeModal(successModal);
-}
+  closeModal(successModal);
+};
 
 closeError.onclick = function () {
-    closeModal(errorModal);
-}
+  closeModal(errorModal);
+};
 
 function openModal(modal) {
-    modal.style.display = "block";
+  modal.style.display = "block";
 }
 
 function closeModal(modal) {
-    modal.style.display = "none";
+  modal.style.display = "none";
 }
