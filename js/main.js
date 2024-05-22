@@ -159,7 +159,7 @@ var contentContactForm = `
 <input
   type="email"
   placeholder="Email Address"
-  name="email"
+  name="mailito"
   id="email"
 
 />
