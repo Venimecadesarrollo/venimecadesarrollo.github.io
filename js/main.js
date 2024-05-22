@@ -158,9 +158,8 @@ var contentContactForm = `
 />
 <input
   type="email"
-  placeholder="Email Address"
+  placeholder="Escribe"
   name="mailito"
-  id="email"
 
 />
 <input type="text" placeholder="Subject" name="subject"/>
