@@ -197,7 +197,7 @@ function sendDataForEmail(data) {
 		
 function EventSendEmail(e, form) {
   var formData = new FormData(form);
-  sendDataForEmail(formData);
+  //sendDataForEmail(formData);
   form.reset();
 }
 
