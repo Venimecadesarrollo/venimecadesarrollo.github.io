@@ -236,10 +236,10 @@ form {
 }
 
 .contact-form h2 {
-  color: red;
+  color: yellow;
 }
 
-.contact-form input,
+
 .contact-form textarea {
   color: rgba(0, 0, 0, 0.8);
   width: 100%;
@@ -252,7 +252,7 @@ form {
   outline: none;
 }
 
-.contact-form input,
+
 .contact-form textarea,
 .contact-form button,
 .contact-form h2 {
@@ -1167,7 +1167,7 @@ i.fa-apple{
 }
 
 /* Hide default HTML checkbox */
-.switch input {
+.switch #mySwitch {
   opacity: 0;
   width: 0;
   height: 0;
@@ -1199,7 +1199,7 @@ i.fa-apple{
 }
 
 
-input:checked + .slider:before {
+#mySwitch:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
