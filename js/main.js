@@ -149,6 +149,7 @@ var contentContactInfo = `
 
 var contentContactForm = `
 <h2>Get in touch</h2>
+<form id="contactForm">
 <input
   type="text"
   placeholder="Full Name"
@@ -170,7 +171,35 @@ var contentContactForm = `
   id="message"
 ></textarea>
 <button type="submit">Send Message</button>
+</form>
 `;
+
+function sendDataForEmail(data) {
+  fetch('https://script.google.com/macros/s/AKfycbyAl_Q_lA5PCb4YSldOMqVVHVF5TXuYHPu5FNKX1CF2FQ_GJHLy9FOFBJd45ro9_GSNEw/exec', {
+    
+      method: 'POST',
+      body: data,
+  })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Error en la solicitud.');
+          }
+          return response.json();
+      })
+      .then(data => {
+          openModal(successModal);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          openModal(errorModal);
+      });
+}
+		
+function EventSendEmail(e, form) {
+  var formData = new FormData(form);
+  sendDataForEmail(formData);
+  form.reset();
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   preloadImages();
@@ -179,6 +208,12 @@ document.addEventListener("DOMContentLoaded", function () {
   EventClickDownButton();
   updateBackground();
   checkWidth();
+
+  var form = document.querySelector('form:not([class*="hidden="])');
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    EventSendEmail(e, this);
+  });
 
   var contactInfo = document.querySelector(".contact-info");
 
@@ -189,6 +224,12 @@ document.addEventListener("DOMContentLoaded", function () {
       contactInfo.classList.add("contact-form");
       contactInfo.classList.remove("contact-info");
       addNewChildren(contentContactForm, "contact-form");
+
+      var form = document.querySelector('form:not([class*="hidden="])');
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        EventSendEmail(e, this);
+      });
     } else {
       removeAllExceptSwitch("contact-form");
       contactInfo.classList.remove("contact-form");
@@ -553,12 +594,12 @@ function moveToNextSection() {
 function checkWidth(ifForDonwloadDesktopButton) {
   var width = window.innerWidth;
   var height = window.innerHeight;
-  console.log(width)
+  console.log(width);
   var contactForm = document.querySelector(".contact-form");
   if (height >= width && width <= 800) {
-    console.log(width)
+    console.log(width);
     contactForm.classList.add("hidden");
-  }else{
+  } else {
     contactForm.classList.remove("hidden");
   }
 
@@ -816,10 +857,38 @@ function addNewChildren(elements, parentId) {
 
   const tempContainer = document.createElement("div");
   tempContainer.innerHTML = elements;
-  
+
   while (tempContainer.firstElementChild) {
     const newChild = tempContainer.firstElementChild;
     parent.appendChild(newChild);
-    
   }
+}
+
+
+
+
+/*-- Modal --*/
+
+var successModal = document.getElementById("successModal");
+var errorModal = document.getElementById("errorModal");
+
+
+var closeSuccess = document.querySelector("#successModal .close");
+var closeError = document.querySelector("#errorModal .close");
+
+
+closeSuccess.onclick = function () {
+    closeModal(successModal);
+}
+
+closeError.onclick = function () {
+    closeModal(errorModal);
+}
+
+function openModal(modal) {
+    modal.style.display = "block";
+}
+
+function closeModal(modal) {
+    modal.style.display = "none";
 }
