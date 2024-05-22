@@ -61,7 +61,55 @@
         <i class="material-icons md-36 visibility">menu</i>
       </button>
     </header>
+<section id="contact" class="fullscreen">
+      <div class="container">
+        <div class="contact-info">
+          <label class="switch">
+            <input type="checkbox" id="mySwitch" />
+            <span class="slider round"></span>
+          </label>
+          <input type="text" placeholder="Full Name" id="full-name">
+        </div>
+        <div class="contact-form">
+          <h2>Get in touch</h2>
+          <input type="text" name="script" id="" placeholder="script">
+          <form>
+            <input
+              type="text"
+              placeholder="Full Name"
+              name="name"
+              id="full-name"
+            />
+            <input
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              id="email"
+            />
+            <input type="text" placeholder="Subject" name="subject" />
+            <textarea
+              placeholder="Message"
+              name="message"
+              id="message"
+            ></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div id="successModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>¡El formulario se envió correctamente!</p>
+        </div>
+      </div>
 
+      <div id="errorModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>¡Hubo un error al enviar el formulario!</p>
+        </div>
+      </div>
+    </section>
     <section id="home" class="fullscreen">
       <div class="logo">
         <img
@@ -146,68 +194,7 @@
         </button>
       </div>
     </section>
-    <section id="contact" class="fullscreen">
-      <div class="container">
-        <div class="contact-info">
-          <label class="switch">
-            <input type="checkbox" id="mySwitch" />
-            <span class="slider round"></span>
-          </label>
-          <h2>Let's get in touch</h2>
-          <p>We're open for any suggestion or just to have a chat</p>
-          <span class="material-symbols-outlined"> location_on </span>
-          <div>
-            <strong>Address:</strong> Rúa Da Cruz Da Nogueira 13-B. Santiago de
-            Compostela - A Coruña, 15702, Spain.
-          </div>
-          <span class="material-symbols-outlined"> call </span>
-          <div><strong>Phone:</strong> (+34) 624.91.27.72</div>
-          <span class="material-symbols-outlined"> call </span>
-          <div><strong>Phone:</strong> (+58) 414-7819521</div>
-          <span class="material-symbols-outlined"> mail </span>
-          <div><strong>Email:</strong> management@visenergycorp.com</div>
-          <span class="material-symbols-outlined"> mail </span>
-          <div><strong>Email:</strong> contacto@visenergycorp.com</div>
-        </div>
-        <div class="contact-form">
-          <h2>Get in touch</h2>
-          <form>
-            <input
-              type="text"
-              placeholder="Full Name"
-              name="name"
-              id="full-name"
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              name="email"
-              id="email"
-            />
-            <input type="text" placeholder="Subject" name="subject" />
-            <textarea
-              placeholder="Message"
-              name="message"
-              id="message"
-            ></textarea>
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </div>
-      <div id="successModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>¡El formulario se envió correctamente!</p>
-        </div>
-      </div>
-
-      <div id="errorModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>¡Hubo un error al enviar el formulario!</p>
-        </div>
-      </div>
-    </section>
+    
     <!--<section id="about-us" class="fullscreen"></section>-->
 
     <script src="js/main.js"></script>

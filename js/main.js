@@ -152,23 +152,21 @@ var contentContactForm = `
 <form>
 <input
   type="text"
-  placeholder="Full Name"
-  name="name"
-  id="full-name"
+  placeholder="Fus"
+  name=""
 
 />
 <input
   type="email"
-  placeholder="Email Address"
-  name="email"
-  id="email"
+  placeholder="Escribe"
+  name="mailito"
 
 />
-<input type="text" placeholder="Subject" name="subject"/>
+<input type="text" placeholder="Subject" name=""/>
 <textarea
   placeholder="Message"
-  name="message"
-  id="message"
+  name=""
+  id=""
 ></textarea>
 <button type="submit">Send Message</button>
 </form>
@@ -197,7 +195,7 @@ function sendDataForEmail(data) {
 		
 function EventSendEmail(e, form) {
   var formData = new FormData(form);
-  sendDataForEmail(formData);
+  //sendDataForEmail(formData);
   form.reset();
 }
 
