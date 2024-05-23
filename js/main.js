@@ -84,6 +84,9 @@ function updateNavigation(activeId) {
   } else {
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
   }
+  if(activeId === "contact"){  
+    //document.body.classList.add("auto-height");
+  }
 }
 
 const headerLogo = document.querySelector(".header-logo");
@@ -210,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
   updateBackground();
   checkWidth();
 
+
   var form = document.querySelector(".contact-form form");
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -301,7 +305,64 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   window.addEventListener("resize", checkWidth);
+  handleScrollAndGestures();
 });
+
+
+function handleScrollAndGestures() {
+  const sections = Array.from(document.querySelectorAll("section"));
+  let currentSectionIndex = 0;
+  let isScrolling = false;
+
+  // Crear un nuevo objeto Hammer en el body
+  const hammer = new Hammer(document.body);
+
+  // Configurar Hammer para detectar deslizamientos verticales
+  hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+
+  // Función para desplazarse a la sección actual
+  function scrollToSection(index) {
+    if (index >= 0 && index < sections.length) {
+      sections[index].scrollIntoView({ behavior: 'smooth' });
+      currentSectionIndex = index;
+    }
+  }
+
+  // Manejar eventos de deslizamiento
+  hammer.on('swipeup swipedown', function (ev) {
+    console.log('aqui')
+    if (ev.type === 'swipeup') {
+      if (currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1);
+      }
+    } else if (ev.type === 'swipedown') {
+      if (currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+  });
+
+  // Manejar eventos de scroll del ratón en PC
+  window.addEventListener('wheel', function (event) {
+    console.log('con el mouse')
+    if (isScrolling) return;
+    isScrolling = true;
+    console.log(event.deltaY)
+    if (event.deltaY > 0) {
+      if (currentSectionIndex < sections.length - 1) {
+        scrollToSection(currentSectionIndex + 1);
+      }
+    } else {
+      if (currentSectionIndex > 0) {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000); // Ajusta el tiempo de espera según tus necesidades
+  });
+}
 
 function nextProduct() {
   const currentProduct = document.querySelector(".cont-prod.active");
