@@ -193,18 +193,41 @@ header {
 
 #logo-container {
   display: flex;
-  justify-content: flex-start;
+  grid-column: 1 / 2; /* Ocupa la primera columna */
+  grid-row: 1;
+  justify-self: start;
 }
 
 nav {
   display: flex;
 }
 
+
+
 nav ul {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   list-style: none;
+  padding: 0;
+  justify-items: center; 
+  align-items: center; 
+  justify-content: center;
+  align-content: center;
   gap: 20px;
+  height: 50px;
 }
+
+
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  position: relative;
+}
+
 
 nav ul li a {
   text-decoration: none;
@@ -231,11 +254,14 @@ nav a.active::after {
   opacity: 1;
 }
 
+
+
 #hamburguer-menu-btn {
   background: none;
   border: none;
   cursor: pointer;
   display: none;
+  grid-row: 1;
 }
 
 .material-icons {
@@ -264,6 +290,14 @@ header.not-home {
   width: 100%;
   grid-template-columns: 2fr auto;
 }
+
+.nav-open{
+  background-color: black;
+  height: 100vh;
+  align-items: self-start;
+  grid-template-rows: auto 1fr;
+}
+
 
 header.not-home.nav-open {
   width: 100%;
@@ -320,4 +354,59 @@ header.nav-open.not-home nav {
   header.not-home #hamburguer-menu-btn {
     grid-column: 2 / 3;
   }
+}
+
+
+.nav-link,
+.nav-link-2 {
+  color: white;
+  padding: 8px 15px;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s;
+  background-color: rgba(217, 217, 217, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 15px;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link-2:hover,
+.nav-link-2:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.nav-link.active,
+.nav-link-2.active {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-burguer{
+  display: block;
+  grid-row: 2;
+  justify-self: center;
+  width: 100%;
+}
+
+
+.nav-burguer ul{
+  grid-template-columns: 1fr;
+  height: auto;
+}
+
+.nav-burguer ul li,
+.nav-burguer ul li a{
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+footer{
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  scroll-snap-align: none;
 }
