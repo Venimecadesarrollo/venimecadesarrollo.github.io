@@ -106,12 +106,8 @@ section {
   grid-row: 4/6;
 }
 
-#ico-nav {
-  grid-row: 6/8;
-}
-
 #ico-contribuir {
-  grid-row: 8/10;
+  grid-row: 6/8;
 }
 
 #ico-home,
@@ -136,12 +132,8 @@ section {
     grid-row: 4;
   }
 
-  #ico-nav {
-    grid-row: 6;
-  }
-
   #ico-contribuir {
-    grid-row: 8;
+    grid-row: 6;
   }
 
   #ico-home,
@@ -166,19 +158,11 @@ section {
   grid-row: 5;
 }
 
-#title-nav {
+#title-contribuir {
   grid-row: 6;
 }
-
-#text-nav {
-  grid-row: 7;
-}
-
-#title-contribuir {
-  grid-row: 8;
-}
 #text-contribuir {
-  grid-row: 9;
+  grid-row: 7;
 }
 
 /* Header Styles */
@@ -187,7 +171,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: black;
+  
   width: 100%;
 }
 
