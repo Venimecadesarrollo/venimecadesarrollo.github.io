@@ -43,6 +43,8 @@ const header = document.querySelector("header");
 const logoHome = document.querySelector("#home .logo img");
 const logoHeader = document.querySelector("#logo-container img");
 var previusSection = "home";
+
+let logoAnimetionLoaded = false;
 function updateNavigation(activeId) {
   navLinks.forEach((link) => {
     link.classList.toggle(
@@ -51,23 +53,34 @@ function updateNavigation(activeId) {
     );
   });
 
+  if(activeId === "home"){
+    logoHeader.classList.add("hidden");
+  }
+
   if (activeId !== "home") {
     if (!isTransitioning) {
       header.classList.add("not-home");
-      if (previusSection === "home") {
+      if (previusSection === "home" && !logoAnimetionLoaded) {
         if (homeLogo && !logoContainer.contains(homeLogo)) {
           animateLogoToHeader();
         }
       }
     }
+    if(logoAnimetionLoaded){
+      setTimeout(() => {
+        logoHeader.classList.remove("hidden");
+      }, 250);
+    }
   } else {
     if (isTransitioning) {
       stopTransition();
     }
-    homeLogo.classList.remove("center-logo-home");
-    homeLogo.classList.add("center-logo");
+    if(!logoAnimetionLoaded){
+      homeLogo.classList.remove("center-logo-home");
+      homeLogo.classList.add("center-logo");
+      headerLogo.classList.add("hidden");
+    }
     header.classList.remove("not-home");
-    headerLogo.classList.add("hidden");
   }
   previusSection = activeId;
   if (activeId === "products" && !productInterval) {
@@ -84,7 +97,7 @@ function updateNavigation(activeId) {
   } else {
     document.querySelector("nav").style.cssText = "float: none;"; // Restablece el estilo del menú
   }
-  if(activeId === "contact"){  
+  if (activeId === "contact") {
     //document.body.classList.add("auto-height");
   }
 }
@@ -117,6 +130,7 @@ function animateLogoToHeader() {
           homeLogo.style.transform = "";
           homeLogo.style.opacity = "";
           isTransitioning = false;
+          logoAnimetionLoaded = true;
         }, 300);
       }, 500);
     }, 100);
@@ -205,14 +219,23 @@ function EventSendEmail(e, form) {
   form.reset();
 }
 
+window.onload = function () {
+  const loaderContainer = document.querySelector("#loader-container");
+  loaderContainer.style.opacity = '0'; 
+  setTimeout(() => {
+    loaderContainer.style.display = 'none';
+    document.body.classList.remove("loading");
+  }, 1000);
+};
+
 document.addEventListener("DOMContentLoaded", function () {
+
   preloadImages();
   setupSectionObserver();
   transitionInClickMenu();
   EventClickDownButton();
   updateBackground();
   checkWidth();
-
 
   var form = document.querySelector(".contact-form form");
   form.addEventListener("submit", function (e) {
@@ -229,13 +252,15 @@ document.addEventListener("DOMContentLoaded", function () {
       contactInfo.classList.add("contact-formJs");
       contactInfo.classList.remove("contact-info");
       addNewChildren(contentContactForm, "contact-formJs");
-      const inputElement = document.querySelectorAll(".contact-formJs form input");
-      console.log(inputElement)
+      const inputElement = document.querySelectorAll(
+        ".contact-formJs form input"
+      );
+      console.log(inputElement);
       inputElement.forEach((input) => {
         input.addEventListener("focus", () => {
           const scrollPosition = window.scrollY;
           window.scrollTo(0, scrollPosition);
-          document.querySelector('body').style.cssText = "height: auto;";
+          document.querySelector("body").style.cssText = "height: auto;";
         });
       });
 
@@ -308,7 +333,6 @@ document.addEventListener("DOMContentLoaded", function () {
   handleScrollAndGestures();
 });
 
-
 function handleScrollAndGestures() {
   const sections = Array.from(document.querySelectorAll("section"));
   let currentSectionIndex = 0;
@@ -318,24 +342,24 @@ function handleScrollAndGestures() {
   const hammer = new Hammer(document.body);
 
   // Configurar Hammer para detectar deslizamientos verticales
-  hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+  hammer.get("swipe").set({ direction: Hammer.DIRECTION_VERTICAL });
 
   // Función para desplazarse a la sección actual
   function scrollToSection(index) {
     if (index >= 0 && index < sections.length) {
-      sections[index].scrollIntoView({ behavior: 'smooth' });
+      sections[index].scrollIntoView({ behavior: "smooth" });
       currentSectionIndex = index;
     }
   }
 
   // Manejar eventos de deslizamiento
-  hammer.on('swipeup swipedown', function (ev) {
-    console.log('aqui')
-    if (ev.type === 'swipeup') {
+  hammer.on("swipeup swipedown", function (ev) {
+    console.log("aqui");
+    if (ev.type === "swipeup") {
       if (currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
       }
-    } else if (ev.type === 'swipedown') {
+    } else if (ev.type === "swipedown") {
       if (currentSectionIndex > 0) {
         scrollToSection(currentSectionIndex - 1);
       }
@@ -343,11 +367,11 @@ function handleScrollAndGestures() {
   });
 
   // Manejar eventos de scroll del ratón en PC
-  window.addEventListener('wheel', function (event) {
-    console.log('con el mouse')
+  window.addEventListener("wheel", function (event) {
+    console.log("con el mouse");
     if (isScrolling) return;
     isScrolling = true;
-    console.log(event.deltaY)
+    console.log(event.deltaY);
     if (event.deltaY > 0) {
       if (currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
