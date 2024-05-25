@@ -452,18 +452,18 @@ var componentWhatIsRalaxy = `
 <div id="content-que-es" class="new-content-section">
   <h2>What is Ralaxy</h2>
   <p>
-    Ralaxy es un sistem a potencial
-    para revolucionar la seguridad
-    vial m ediante la 
-    vial m ediante la m ejora de la
-    visibilidad de señalizaciones
-    en calles, avenidas, autopistas 
-    y carreteras. Su tecnología de
-    biolum iniscencia a través de la 
-    carga solar representa un
-    avance significativo. Ralaxy por
-    la evolución del transito
-    vehicular en el m undo.
+  Ralaxy is a system with the potential
+  to revolutionize road safety
+  road safety by 
+  road safety by improving the visibility of road
+  visibility of signage on streets, avenues, highways
+  on streets, avenues, highways and roads. 
+  and highways. Its bioluminescence technology
+  technology through solar-charged bioluminescence 
+  solar charging represents a significant
+  significant breakthrough. Ralaxy for
+  the evolution of vehicular
+  of vehicular traffic in the world.
   </p>
 </div>
 `;
@@ -473,9 +473,9 @@ var componentApproachRalaxy = `
 <div id="content-enfoque-y-abordaje" class="new-content-section">
 <h2>Benefit</h2>
   <p>
-  Desarrollar e implementar un sistema de señalización vial
-  avanzado, utilizando la tecnología de bioluminiscencia y carga
-  solar para mejorar la visibilidad y seguridad en las vías de tráfico.
+  To develop and implement an advanced road signaling system using bioluminescence and
+  using bioluminescence and solar charging technology to improve visibility and safety
+  to improve visibility and safety on roadways.
   </p>
 </div>`;
 
@@ -491,15 +491,15 @@ var componentWhatIs = `
 <div id="content-que-es" class="new-content-section">
   <h2>What is TerraBox</h2>
   <p>
-    TerraBox es esencial por su capacidad de mejorar 
-    significativamente la gestión de residuos, disminuyendo el impacto
-    ambiental y fomentando la conciencia ecológica. Este proyecto
-    innovador no solo utiliza tecnología avanzada para optimizar
-    el
-    reciclaje, sino que también involucra a la comunidad através de un
-    sistema de incentivos, ofreciendo beneficios económicos y
-    adaptándos a diferentes entornos urbanos y rurales, políticas
-  locales, y necesidad especificas de gestión de residuos.
+  TerraBox is essential for its ability to significantly improve waste 
+  significantly improve waste management, decreasing environmental impact and promoting
+  environmental impact and promoting ecological awareness. This innovative
+  project not only uses advanced technology to optimize
+  the
+  recycling, but also engages the community through a system of incentives
+  incentive system, offering economic benefits and adapting to different
+  different urban and rural environments, local policies, and specific waste management
+policies, and specific waste management needs.
   </p>
 </div>
 `;
@@ -509,13 +509,13 @@ var componentApproach = `
 <div id="content-enfoque-y-abordaje" class="new-content-section">
 <h2>Benefit</h2>
   <p>
-    Optimizar la recolección y gestión de materiales reciclables, con
-    el fin de mejorar así la eficiencia en la reutilización urbana y
-    fom entar la participación ciudadana. Metodología El proyecto se
-    enfocará en el diseño, implementación y evaluación del TerraBox
-    mediante técnicas de ingeniería y análisis de sostenibilidad. con
-    pruebas piloto y recopilación de datos para medir su impacto y
-    eficaci
+  Optimize the collection and management of recyclable materials, in order to improve the efficiency of urban reuse and
+  improve efficiency in urban reuse and encourage citizen participation.
+  encourage citizen participation. Methodology The project will
+  will focus on the design, implementation and evaluation of the TerraBox using engineering and sustainability analysis techniques.
+  through engineering techniques and sustainability analysis.
+  pilot testing and data collection to measure its impact and effectiveness.
+  
   </p>
 </div>`;
 
