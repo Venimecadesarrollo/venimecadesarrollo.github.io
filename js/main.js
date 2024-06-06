@@ -151,18 +151,17 @@ var navMenu = document.querySelector("nav");
 var contentContactInfo = `
 <h2>Let's get in touch</h2>
 <p>We're open for any suggestion or just to have a chat</p>
-<span class="material-symbols-outlined"> location_on </span>
+<span><img src="assets/icons/location.svg" alt="icon-location"></span>
 <div>
-  <strong>Address:</strong> Rúa Da Cruz Da Nogueira 13-B. Santiago de
-  Compostela - A Coruña, 15702, Spain.
+  <strong>Address:</strong> Avinguda Diagonal 328, número 3-3, 08013, Barcelona, Spain
 </div>
-<span class="material-symbols-outlined"> call </span>
+<span><img src="assets/icons/call.svg" alt="icon-call"></span>
 <div><strong>Phone:</strong> (+34) 624.91.27.72</div>
-<span class="material-symbols-outlined"> call </span>
+<span><img src="assets/icons/call.svg" alt="icon-call"></span>
 <div><strong>Phone:</strong> (+58) 414-7819521</div>
-<span class="material-symbols-outlined"> mail </span>
+<span><img src="assets/icons/mail.svg" alt="icon-mail"></span>
 <div><strong>Email:</strong> management@visenergycorp.com</div>
-<span class="material-symbols-outlined"> mail </span>
+<span><img src="assets/icons/mail.svg" alt="icon-mail2"></span>
 <div><strong>Email:</strong> contacto@visenergycorp.com</div>
 `;
 
@@ -254,17 +253,6 @@ document.addEventListener("DOMContentLoaded", function () {
       contactInfo.classList.add("contact-formJs");
       contactInfo.classList.remove("contact-info");
       addNewChildren(contentContactForm, "contact-formJs");
-      const inputElement = document.querySelectorAll(
-        ".contact-formJs form input"
-      );
-      
-      inputElement.forEach((input) => {
-        input.addEventListener("focus", () => {
-          const scrollPosition = window.scrollY;
-          window.scrollTo(0, scrollPosition);
-          document.querySelector("body").style.cssText = "height: auto;";
-        });
-      });
 
       var form = document.querySelector(".contact-formJs form");
       form.addEventListener("submit", function (e) {
@@ -356,7 +344,6 @@ function handleScrollAndGestures() {
 
   // Manejar eventos de deslizamiento
   hammer.on("swipeup swipedown", function (ev) {
-    
     if (ev.type === "swipeup") {
       if (currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
@@ -370,10 +357,8 @@ function handleScrollAndGestures() {
 
   // Manejar eventos de scroll del ratón en PC
   window.addEventListener("wheel", function (event) {
-    
     if (isScrolling) return;
     isScrolling = true;
-    
     if (event.deltaY > 0) {
       if (currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
@@ -386,7 +371,7 @@ function handleScrollAndGestures() {
 
     setTimeout(() => {
       isScrolling = false;
-    }, 1000); // Ajusta el tiempo de espera según tus necesidades
+    }, 1000);
   });
 }
 
