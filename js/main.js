@@ -451,7 +451,7 @@ const preloadImages = () => {
 };
 
 var componentWhatIsRalaxy = `
-<div id="content-que-es" class="new-content-section">
+<div class="new-content-section">
   <h2><span class="accent-color-ralaxy">What is Ralaxy</span></h2>
   <p>
   Ralaxy is a system with the potential to revolutionize road safety by enhancing
@@ -466,7 +466,7 @@ var componentWhatIsRalaxy = `
 
 var componentApproachRalaxy = `
 
-<div id="content-enfoque-y-abordaje" class="new-content-section">
+<div class="new-content-section">
 <h2><span class="accent-color-ralaxy">Focus</span></h2>
   <p>
   Develop and implement an advanced road signaling
@@ -500,7 +500,7 @@ and road construction companies.
 
 var componentAddedValueRalaxy = `
 
-<div id="content-enfoque-y-abordaje" class="new-content-section">
+<div class="new-content-section">
 <h2><span class="accent-color-ralaxy">Added value</span></h2>
 <p>
 <span class="accent-color-ralaxy">• Improved Road Safety:</span> Significant increase in
@@ -536,7 +536,7 @@ var componentProposalRalaxy = `
 `;
 
 var componentWhatIs = `
-<div id="content-que-es" class="new-content-section">
+<div class="new-content-section">
   <h2><span class="accent-color-terrabox">What is TerraBox</span></h2>
   <p>
   TerraBox is essential for its ability to significantly improve waste
@@ -554,7 +554,7 @@ policies, and specific waste management needs.
 
 var componentApproach = `
 
-<div id="content-enfoque-y-abordaje" class="new-content-section">
+<div class="new-content-section">
 <h2><span class="accent-color-terrabox">Focus</span></h2>
   <p>
   Optimize the collection and management of recyclable materials, in order to improve the efficiency of urban reuse
@@ -568,7 +568,7 @@ var componentApproach = `
 
 var componentAddedValue = `
 
-<div id="content-enfoque-y-abordaje" class="new-content-section">
+<div class="new-content-section">
 <h2><span class="accent-color-terrabox">Added value</span></h2>
   <p>
   <span class="accent-color-terrabox">• Citizen Participation:</span> Encourages community involvement through incentives.
@@ -609,17 +609,16 @@ var newContainerInfo = document.querySelector(".logo-product");
 
 function addInfoTerrabox(concept) {
   var currentComponent = "";
-  if (concept === "what-is") {
+  if (concept === "what-is-terrabox") {
     newContainerInfo.innerHTML = componentWhatIs;
     currentComponent = document.querySelector(".new-content-section");
-    
-  } else if (concept === "approach") {
+  } else if (concept === "approach-terrabox") {
     newContainerInfo.innerHTML = componentApproach;
     currentComponent = document.querySelector(".new-content-section");
-  } else if (concept === "added-value") {
+  } else if (concept === "added-value-terrabox") {
     newContainerInfo.innerHTML = componentAddedValue;
     currentComponent = document.querySelector(".new-content-section");
-  } else if (concept === "proposal") {
+  } else if (concept === "proposal-terrabox") {
     newContainerInfo.innerHTML = componentProposal;
     checkWidth(true);
     var children = newContainerInfo.querySelectorAll("*");
@@ -629,10 +628,10 @@ function addInfoTerrabox(concept) {
   var width = window.innerWidth;
   var height = window.innerHeight;
 
-  if (height >= width && width <= 600 && concept != "proposal") {
+  if (height >= width && width <= 600 && concept != "proposal-terrabox") {
     removeImageProductForInfo();
   }
-  if (height >= width && width <= 600 && concept == "proposal") {
+  if (height >= width && width <= 600 && concept == "proposal-terrabox") {
     addImageProductForInfo();
   }
 
@@ -644,7 +643,7 @@ function addInfoTerrabox(concept) {
         }
       }
     }
-    
+
     currentComponent.classList.add("active");
   }, 100);
 }
@@ -668,33 +667,32 @@ function addInfoRalaxy(concept) {
 
   var width = window.innerWidth;
   var height = window.innerHeight;
-  
-  
-  if ((height >= width && width <= 600) && (concept != "approach" && concept != "added-value")) {
+
+  if ((height >= width && width <= 600) && (concept != "approach-ralaxy" && concept != "added-value-ralaxy")) {
     addImageProductRalaxy();
   }
-  if ((height >= width && width <= 600) && (concept === "approach" || concept === "added-value")) {
+  if ((height >= width && width <= 600) && (concept === "approach-ralaxy" || concept === "added-value-ralaxy")) {
     removeImageProductRalaxy();
   }
 
 
   var currentComponent = "";
-  if (concept === "what-is") {
+  if (concept === "what-is-ralaxy") {
     newContainerInfo2.innerHTML = componentWhatIsRalaxy;
     currentComponent = document.querySelector(
       "#product2 .logo-product .new-content-section"
     );
-  } else if (concept === "approach") {
+  } else if (concept === "approach-ralaxy") {
     newContainerInfo2.innerHTML = componentApproachRalaxy;
     currentComponent = document.querySelector(
       "#product2 .logo-product .new-content-section"
     );
-  } else if (concept === "added-value") {
+  } else if (concept === "added-value-ralaxy") {
     newContainerInfo2.innerHTML = componentAddedValueRalaxy;
     currentComponent = document.querySelector(
       "#product2 .logo-product .new-content-section"
     );
-  } else if (concept === "proposal") {
+  } else if (concept === "proposal-ralaxy") {
     newContainerInfo2.innerHTML = componentProposalRalaxy;
     var children = newContainerInfo2.querySelectorAll("*");
     currentComponent = document.querySelector(
