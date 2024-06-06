@@ -351,7 +351,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  align-self: center;
   z-index: 3;
 }
 
@@ -467,7 +467,7 @@ header.not-home nav ul {
   display: grid;
   justify-content: flex-start;
   padding: 0;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(4, auto);
   grid-template-rows: max-content;
   column-gap: 5px;
   padding-left: 10px;
@@ -483,6 +483,8 @@ header.not-home nav ul {
   background-color: rgba(217, 217, 217, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.75);
   border-radius: 15px;
+  text-align: center;
+  align-content: center;
 }
 
 .nav-link:hover,
@@ -630,6 +632,18 @@ header.not-home nav ul {
   opacity: 0; /* Agrega opacidad inicial */
   visibility: hidden;
   grid-column: 1/4;
+}
+
+.new-content-section p {
+  font-size: 15px;
+}
+
+.accent-color-ralaxy{
+  color: #f8812b;
+}
+
+.accent-color-terrabox{
+  color: #2be082;
 }
 
 .content-section.active {
@@ -850,7 +864,7 @@ header.nav-open.not-home nav {
 @media (max-width: 290px) {
   .nav-link-2,
   .nav-link {
-    font-size: 11px;
+    font-size: .6rem;
   }
   .new-content-section h2{
     font-size: 32px;
@@ -861,8 +875,25 @@ header.nav-open.not-home nav {
 
 }
 
+@media (min-width: 290px) and (max-width: 380px) {
+  .nav-link-2,
+  .nav-link {
+    font-size: .6rem;
+  }
+}
+
+@media (min-width: 380px) and (max-width: 415px) {
+  .nav-link-2,
+  .nav-link {
+    font-size: .7rem;
+  }
+}
+
 @media (max-width: 380px) {
   #product2 .logo-product .new-content-section p{
+    font-size: 13px;
+  }
+  .new-content-section p{
     font-size: 13px;
   }
 }
@@ -1018,7 +1049,7 @@ i.fa-apple{
   grid-row: 3;
   padding: 0;
   justify-content: start;
-  grid-column: 2;
+  grid-column: 2 / 4;
   height: 100%;
   
 }
@@ -1104,6 +1135,9 @@ i.fa-apple{
   .download-button{
     grid-column: 1 / 6;
   }
+  .new-content-product .logo-product{
+    padding: 0 20px 20px 20px;
+  }
 }
 
 @media (max-width: 391px) {
@@ -1178,7 +1212,6 @@ i.fa-apple{
 
 
 @media (max-aspect-ratio: 1/1) and (max-width: 450px){
- 
 
   .contact-info {
     font-size: 10px;

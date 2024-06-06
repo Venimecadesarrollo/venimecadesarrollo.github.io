@@ -47,7 +47,7 @@ var previusSection = "home";
 let logoAnimetionLoaded = false;
 function updateNavigation(activeId) {
   navLinks.forEach((link) => {
-    link.classList.toggle(
+    link.classList.add(
       "active",
       link.getAttribute("href") === `#${activeId}`
     );
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const inputElement = document.querySelectorAll(
         ".contact-formJs form input"
       );
-      console.log(inputElement);
+      
       inputElement.forEach((input) => {
         input.addEventListener("focus", () => {
           const scrollPosition = window.scrollY;
@@ -354,7 +354,7 @@ function handleScrollAndGestures() {
 
   // Manejar eventos de deslizamiento
   hammer.on("swipeup swipedown", function (ev) {
-    console.log("aqui");
+    
     if (ev.type === "swipeup") {
       if (currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
@@ -368,10 +368,10 @@ function handleScrollAndGestures() {
 
   // Manejar eventos de scroll del ratón en PC
   window.addEventListener("wheel", function (event) {
-    console.log("con el mouse");
+    
     if (isScrolling) return;
     isScrolling = true;
-    console.log(event.deltaY);
+    
     if (event.deltaY > 0) {
       if (currentSectionIndex < sections.length - 1) {
         scrollToSection(currentSectionIndex + 1);
@@ -450,20 +450,14 @@ const preloadImages = () => {
 
 var componentWhatIsRalaxy = `
 <div id="content-que-es" class="new-content-section">
-  <h2>What is Ralaxy</h2>
+  <h2><span class="accent-color-ralaxy">What is Ralaxy</span></h2>
   <p>
-  Ralaxy is a system with the potential
-  to revolutionize road safety
-  road safety by 
-  road safety by improving the visibility of road
-  visibility of signage on streets, avenues, highways
-  on streets, avenues, highways and roads. 
-  and highways. Its bioluminescence technology
-  technology through solar-charged bioluminescence 
-  solar charging represents a significant
-  significant breakthrough. Ralaxy for
-  the evolution of vehicular
-  of vehicular traffic in the world.
+  Ralaxy is a system with the potential to revolutionize road safety by enhancing
+  the visibility of signage on streets, avenues, highways, and roads.
+  <br>
+  Its solar-powered bioluminescence technology represents a
+  significant breakthrough.
+  Ralaxy for the advancement of vehicular traffic worldwide.
   </p>
 </div>
 `;
@@ -471,13 +465,65 @@ var componentWhatIsRalaxy = `
 var componentApproachRalaxy = `
 
 <div id="content-enfoque-y-abordaje" class="new-content-section">
-<h2>Benefit</h2>
+<h2><span class="accent-color-ralaxy">Focus</span></h2>
   <p>
-  To develop and implement an advanced road signaling system using bioluminescence and
-  using bioluminescence and solar charging technology to improve visibility and safety
-  to improve visibility and safety on roadways.
+  Develop and implement an advanced road signaling
+system, using bioluminescence and solar charging
+technology to improve visibility and safety on traffic routes.
+<br>
+<br>
+<span class="accent-color-ralaxy"> • Research and Development: </span> Carry out studies to
+optimize the combination of bioluminescence and solar charging
+technologies in traffic paints.
+<br>
+<br>
+<span class="accent-color-ralaxy">• Pilot Tests:</span>
+Implement tests in different conditions
+and environments to evaluate the effectiveness and durability
+of the signage.
+<br>
+<br>
+<span class="accent-color-ralaxy">•Collaboration with Experts:</span> Work with specialists
+in materials, solar energy and road safety to perfect the
+product.
+<br>
+<br>
+<span class="accent-color-ralaxy">• Production and Distribution:</span> Establish
+production processes. In alliance with efficient
+Venezuelan paint production companies and a distribution
+network to supply paint to government entities
+and road construction companies.
   </p>
 </div>`;
+
+var componentAddedValueRalaxy = `
+
+<div id="content-enfoque-y-abordaje" class="new-content-section">
+<h2><span class="accent-color-ralaxy">Added value</span></h2>
+<p>
+<span class="accent-color-ralaxy">• Improved Road Safety:</span> Significant increase in
+visibility of signs, reducing the risk of accidents.<br><br>
+<span class="accent-color-ralaxy">• Sustainability:</span> Use of solar energy and bioluminescence,
+minimizing environmental impact.
+<br>
+<br>
+<span class="accent-color-ralaxy">• Energy Efficiency: </span>Reduction in energy consumption
+thanks to solar charging and induction by vehicular traffic.
+<br>
+<br>
+<span class="accent-color-ralaxy">• Technological Innovation:</span> Application of cutting-edge technology=
+in bioluminescence and renewable energies.
+<br>
+<br>
+<span class="accent-color-ralaxy">• Adaptability:</span> System applicable in various environments
+and climatic conditions.
+<br>
+<br>
+<span class="accent-color-ralaxy">• Environmental Awareness:</span> Promotion of green and
+sustainable technologies.
+</p>
+</div>`;
+
 
 var componentProposalRalaxy = `
 <img src="images/ralaxy-logo.svg" alt="" class="logo-ralaxy"/>
@@ -489,14 +535,14 @@ var componentProposalRalaxy = `
 
 var componentWhatIs = `
 <div id="content-que-es" class="new-content-section">
-  <h2>What is TerraBox</h2>
+  <h2><span class="accent-color-terrabox">What is TerraBox</span></h2>
   <p>
-  TerraBox is essential for its ability to significantly improve waste 
+  TerraBox is essential for its ability to significantly improve waste
   significantly improve waste management, decreasing environmental impact and promoting
-  environmental impact and promoting ecological awareness. This innovative
+  environmental impact and promoting ecological awareness. <br><br>
+  This innovative
   project not only uses advanced technology to optimize
-  the
-  recycling, but also engages the community through a system of incentives
+  therecycling, but also engages the community through a system of incentives
   incentive system, offering economic benefits and adapting to different
   different urban and rural environments, local policies, and specific waste management
 policies, and specific waste management needs.
@@ -507,21 +553,41 @@ policies, and specific waste management needs.
 var componentApproach = `
 
 <div id="content-enfoque-y-abordaje" class="new-content-section">
-<h2>Benefit</h2>
+<h2><span class="accent-color-terrabox">Focus</span></h2>
   <p>
-  Optimize the collection and management of recyclable materials, in order to improve the efficiency of urban reuse and
-  improve efficiency in urban reuse and encourage citizen participation.
-  encourage citizen participation. Methodology The project will
+  Optimize the collection and management of recyclable materials, in order to improve the efficiency of urban reuse
+  and encourage citizen participation. <br><br>
+  Methodology The project will
   will focus on the design, implementation and evaluation of the TerraBox using engineering and sustainability analysis techniques.
   through engineering techniques and sustainability analysis.
   pilot testing and data collection to measure its impact and effectiveness.
-  
+  </p>
+</div>`;
+
+var componentAddedValue = `
+
+<div id="content-enfoque-y-abordaje" class="new-content-section">
+<h2><span class="accent-color-terrabox">Added value</span></h2>
+  <p>
+  <span class="accent-color-terrabox">• Citizen Participation:</span> Encourages community involvement through incentives.
+  <br>
+  <br>
+<span class="accent-color-terrabox">• Efficiency in waste management:</span>
+Improves collection and processing of recyclable materials<br><br>
+<span class="accent-color-terrabox">• Reduction of environmental impact:</span>
+Reduces pollution and the accumulation of landfills<br><br>
+<span class="accent-color-terrabox">• Ecological Awareness:</span>
+Raise awareness and education about recycling and sustainability.<br><br>
+<span class="accent-color-terrabox">• Sustainability and employment:</span>
+Promote sustainable practices and create job opportunities<br><br>
+<span class="accent-color-terrabox">• Adaptability:</span>
+Adjusts to different contexts and local needs.<br>
   </p>
 </div>`;
 
 var componentProposal = `
 <img src="images/terrabox-logo.svg" alt="" class="logo-terrabox" />
-<h3 class=''>Recicla y Gana</h3>
+<h3 class=''><span class="accent-color-terrabox">Recicla y Gana</span></h3>
 <img
   id="googleplay"
   class="appstore-icon"
@@ -544,13 +610,18 @@ function addInfoTerrabox(concept) {
   if (concept === "what-is") {
     newContainerInfo.innerHTML = componentWhatIs;
     currentComponent = document.querySelector(".new-content-section");
+    
   } else if (concept === "approach") {
     newContainerInfo.innerHTML = componentApproach;
+    currentComponent = document.querySelector(".new-content-section");
+  } else if (concept === "added-value") {
+    newContainerInfo.innerHTML = componentAddedValue;
     currentComponent = document.querySelector(".new-content-section");
   } else if (concept === "proposal") {
     newContainerInfo.innerHTML = componentProposal;
     checkWidth(true);
     var children = newContainerInfo.querySelectorAll("*");
+    currentComponent = document.querySelector(".logo-product");
   }
   checkWidthAndAddStyleInfo(currentComponent);
   var width = window.innerWidth;
@@ -567,11 +638,12 @@ function addInfoTerrabox(concept) {
     if (children) {
       if (children.length > 0) {
         for (let i = 0; i < children.length; i++) {
-          children[i].classList.toggle("active");
+          children[i].classList.add("active");
         }
       }
     }
-    currentComponent.classList.toggle("active");
+    
+    currentComponent.classList.add("active");
   }, 100);
 }
 
@@ -586,9 +658,24 @@ function addImageProductForInfo() {
 function removeInfoTerrabox() {
   newContainerInfo.innerHTML = "";
 }
+
+
 var containerInfo2 = document.querySelector("#product2 #product-content");
 var newContainerInfo2 = document.querySelector("#product2 .logo-product");
 function addInfoRalaxy(concept) {
+
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  
+  
+  if ((height >= width && width <= 600) && (concept != "approach" && concept != "added-value")) {
+    addImageProductRalaxy();
+  }
+  if ((height >= width && width <= 600) && (concept === "approach" || concept === "added-value")) {
+    removeImageProductRalaxy();
+  }
+
+
   var currentComponent = "";
   if (concept === "what-is") {
     newContainerInfo2.innerHTML = componentWhatIsRalaxy;
@@ -600,22 +687,30 @@ function addInfoRalaxy(concept) {
     currentComponent = document.querySelector(
       "#product2 .logo-product .new-content-section"
     );
+  } else if (concept === "added-value") {
+    newContainerInfo2.innerHTML = componentAddedValueRalaxy;
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
   } else if (concept === "proposal") {
     newContainerInfo2.innerHTML = componentProposalRalaxy;
     var children = newContainerInfo2.querySelectorAll("*");
+    currentComponent = document.querySelector(
+      "#product2 .logo-product"
+    );
   }
 
   setTimeout(() => {
-    console.log(children);
+    
     if (children) {
       if (children.length > 0) {
         for (let i = 0; i < children.length; i++) {
-          console.log(children[i]);
+          
           children[i].classList.add("active");
         }
       }
     }
-    currentComponent.classList.toggle("active");
+    currentComponent.classList.add("active");
   }, 100);
 }
 
@@ -686,10 +781,10 @@ function moveToNextSection() {
 function checkWidth(ifForDonwloadDesktopButton) {
   var width = window.innerWidth;
   var height = window.innerHeight;
-  console.log(width);
+  
   var contactForm = document.querySelector(".contact-form");
   if (height >= width && width <= 800) {
-    console.log(width);
+    
     contactForm.classList.add("hidden");
   } else {
     contactForm.classList.remove("hidden");
@@ -743,7 +838,7 @@ function checkWidth(ifForDonwloadDesktopButton) {
   }
 
   if (height >= width && heightCondition <= 300) {
-    console.log("haaaa", heightCondition);
+    
     imageRalaxy.src = "images/t5.png";
   } else {
     imageRalaxy.src = "images/ralaxy-1-600.svg";
@@ -765,15 +860,13 @@ function addStyleInfoProduct(currentComponent) {
   //var container = document.querySelector('.new-content-section')
   var container = currentComponent;
   if (container) {
-    console.log(container);
+    
     container.classList.add("info-vertical");
   }
 }
 function removeStyleInfoProduct(currentComponent) {
-  //var container = document.querySelector('.new-content-section')
   var container = currentComponent;
   if (container) {
-    console.log("xxxxxxxx");
     container.classList.remove("info-vertical");
   }
 }
@@ -800,7 +893,7 @@ function addClassDesktop() {
 
   var h3LogoProduct = document.querySelectorAll(".logo-product h3");
   h3LogoProduct.forEach(function (h3LogoProduct) {
-    console.log(h3LogoProduct);
+    
     h3LogoProduct.classList.add("desktop");
   });
 
@@ -915,11 +1008,37 @@ function addImageProduct() {
   }
 }
 
+function addImageProductRalaxy() {
+  var imageProductComplete = document.getElementById("image-ralaxy");
+  
+
+  if (!imageProductComplete) {
+    
+    var container = document.querySelector('#product2 .image-product-container')
+
+    imageProductComplete = document.createElement("img");
+    imageProductComplete.id = "image-ralaxy";
+    imageProductComplete.src = "images/t5.png";
+    imageProductComplete.classList.add('image-product-ralaxy')
+    container.appendChild(imageProductComplete);
+  }
+}
+
 function removeImageProduct() {
   var imageProductComplete = document.getElementById("image-product-complete");
   var container = document.querySelector(".image-product-container");
   if (imageProductComplete) {
     container.removeChild(imageProductComplete);
+  }
+}
+
+function removeImageProductRalaxy() {
+  var imageProductComplete = document.getElementById("image-ralaxy");
+  
+  if (imageProductComplete) {
+    var container = imageProductComplete.parentNode;
+    container.removeChild(imageProductComplete);
+    
   }
 }
 
