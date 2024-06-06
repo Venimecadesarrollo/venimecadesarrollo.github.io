@@ -361,8 +361,9 @@ h2 {
   z-index: 3;
 }
 
-#next-button-product {
-  font-size: 45px;
+#right-arrow {
+  width: 55px;
+  filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.9));
 }
 
 .fullscreen {
@@ -412,12 +413,6 @@ h2 {
   }
 }
 
-.material-symbols-outlined {
-  color: #fff;
-  font-size: 36px;
-  display: block;
-  filter: drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.9));
-}
 
 /* Hide indicator when no more sections */
 .scroll-indicator.hidden {
