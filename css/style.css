@@ -7,13 +7,20 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: url('/assets/fonts/Poppins-Regular.ttf');
+}
+
 body,
 html {
   height: 100%;
   scroll-snap-type: y mandatory;
   overflow-y: auto;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins-Regular", sans-serif;
 }
+
+
 
 section {
   height: 100vh;
@@ -255,8 +262,11 @@ form {
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 16px;
-  font-family: "Poppins", sans-serif;
   outline: none;
+}
+
+textarea{
+  font-family: "Poppins-Regular", sans-serif;
 }
 
 .contact-formJs form input,
@@ -290,7 +300,6 @@ form {
   border: none;
   border-radius: 40px;
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
 }
 
@@ -307,14 +316,12 @@ form {
 #message {
   resize: vertical;
   padding: 5px;
-  font-family: "Poppins", sans-serif;
 }
 
 /* Common Styles */
 h1,
 h2,
 h3 {
-  font-family: "Poppins", sans-serif;
   color: #fff;
 }
 
@@ -610,7 +617,6 @@ header.not-home nav ul {
   max-width: 600px;
 
   text-align: left; /* Justifica el texto para una mejor presentación */
-  font-family: Poppins;
   color: #fff;
 
   transition: opacity 0.5s ease-in-out;
@@ -624,7 +630,6 @@ header.not-home nav ul {
   max-width: 600px;
 
   text-align: left; /* Justifica el texto para una mejor presentación */
-  font-family: Poppins;
   color: #fff;
 
   transition: opacity 0.5s ease-in-out;
@@ -794,7 +799,6 @@ body.products-bg {
 #mission h1,
 #mission p {
   color: black;
-  font-family: "Poppins", sans-serif;
 }
 
 .container-about img,
