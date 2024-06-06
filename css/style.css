@@ -27,6 +27,7 @@ header {
   top: 0;
   width: 100%;
   padding: 20px;
+  padding-right: 40px;
   z-index: 1000;
   height: auto;
   grid-template-columns: 1fr 1fr 1fr;
@@ -183,7 +184,6 @@ nav a.active::after {
   background-color: #05156c;
   border-radius: 35px 0 0 35px;
   color: white;
-  
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 10px;
@@ -213,7 +213,6 @@ nav a.active::after {
 .contact-formJs ,
 .contact-form {
   background-color: #fff;
-  
   border-radius: 0 35px 35px 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -859,6 +858,11 @@ header.nav-open.not-home nav {
   header.not-home #hamburguer-menu-btn {
     grid-column: 2 / 3;
   }
+
+  header{
+    padding-right: 20px;
+  }
+
 }
 
 @media (max-width: 290px) {

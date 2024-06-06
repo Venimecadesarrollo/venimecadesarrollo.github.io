@@ -46,11 +46,13 @@ var previusSection = "home";
 
 let logoAnimetionLoaded = false;
 function updateNavigation(activeId) {
+  console.log(activeId)
   navLinks.forEach((link) => {
-    link.classList.add(
-      "active",
-      link.getAttribute("href") === `#${activeId}`
-    );
+    if (link.getAttribute("href") === `#${activeId}`) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
   });
 
   if(activeId === "home"){

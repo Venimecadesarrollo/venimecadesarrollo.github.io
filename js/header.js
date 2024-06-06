@@ -15,7 +15,6 @@ var burguerHeader = document.querySelector("header");
 var navMenu = document.querySelector("nav");
 
 document.addEventListener("DOMContentLoaded", function () {
-  //preloadImages();
   transitionInClickMenu();
   var burguerMenu = document.getElementById("hamburguer-menu-btn");
   burguerMenu.addEventListener("click", function (e) {
