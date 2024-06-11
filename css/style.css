@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'Poppins-Regular';
-  src: url('assets/fonts/Poppins-Regular.ttf');
+  src: url('../assets/fonts/Poppins-Regular.ttf');
 }
 
 body,
@@ -1127,7 +1127,8 @@ i.fa-apple{
 
 
 @media (min-aspect-ratio: 1/1) {
-  html {
+  html,
+  body {
       scroll-snap-type: y mandatory;
   }
   section {
