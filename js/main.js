@@ -514,7 +514,7 @@ sustainable technologies.
 
 var componentProposalRalaxy = `
 <img src="images/ralaxy-logo.svg" alt="" class="logo-ralaxy"/>
-<h3 class="">Innovación y seguridad vial</h3>
+<h3 class="">Innovation and road safety</h3>
 <button class="download-button" id="contact-us-btn">
   Contact us
 </button>
@@ -525,14 +525,12 @@ var componentWhatIs = `
   <h2><span class="accent-color-terrabox">What is TerraBox</span></h2>
   <p>
   TerraBox is essential for its ability to significantly improve waste
-  significantly improve waste management, decreasing environmental impact and promoting
-  environmental impact and promoting ecological awareness. <br><br>
-  This innovative
-  project not only uses advanced technology to optimize
-  therecycling, but also engages the community through a system of incentives
-  incentive system, offering economic benefits and adapting to different
-  different urban and rural environments, local policies, and specific waste management
-policies, and specific waste management needs.
+  management, reducing environmental impact and promoting ecological awareness.
+  <br><br>
+  This innovative project not only uses advanced technology to optimize recycling
+  but also engages the community through an incentive system, offering economic
+  benefits and adapting to different urban and rural environments, local policies,
+  and specific waste management needs.
   </p>
 </div>
 `;
@@ -544,10 +542,9 @@ var componentApproach = `
   <p>
   Optimize the collection and management of recyclable materials, in order to improve the efficiency of urban reuse
   and encourage citizen participation. <br><br>
-  Methodology The project will
-  will focus on the design, implementation and evaluation of the TerraBox using engineering and sustainability analysis techniques.
-  through engineering techniques and sustainability analysis.
-  pilot testing and data collection to measure its impact and effectiveness.
+  The project's methodology will focus on the design, implementation, and evaluation of TerraBox using
+  engineering techniques and sustainability analysis. Pilot testing and data collection will be conducted
+  to measure its impact and effectiveness.
   </p>
 </div>`;
 
@@ -574,7 +571,7 @@ Adjusts to different contexts and local needs.<br>
 
 var componentProposal = `
 <img src="images/terrabox-logo.svg" alt="" class="logo-terrabox" />
-<h3 class=''><span class="accent-color-terrabox">Recicla y Gana</span></h3>
+<h3 class=''><span class="accent-color-terrabox">Recycle and Earn</span></h3>
 <img
   id="googleplay"
   class="appstore-icon"
