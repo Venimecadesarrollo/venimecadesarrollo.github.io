@@ -131,7 +131,7 @@ nav a.active::after {
 }
 
 /* Products Section */
-#products {
+.products {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
