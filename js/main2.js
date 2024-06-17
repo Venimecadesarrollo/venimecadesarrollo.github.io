@@ -319,6 +319,10 @@ function stopAutoDisplayTerrabox(){
 function startAutoDisplayTerrabox() {
   var idInfo = ["what-is-terrabox","approach-terrabox","added-value-terrabox","proposal-terrabox"]
 
+  var button = document.querySelector('#proposal-terrabox');
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
+
   var currentIndex = 0;
 
   intervalId = setInterval(function() {
@@ -332,11 +336,15 @@ function stopAutoDisplayRalaxy(){
 function startAutoDisplayRalaxy() {
   var idInfo = ["what-is-ralaxy","approach-ralaxy", "added-value-ralaxy", "proposal-ralaxy"]
 
+  var button = document.querySelector('#proposal-ralaxy');
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
+
   var currentIndex = 0;
 
   intervalIdRalaxy = setInterval(function() {
     addInfoRalaxy(idInfo[currentIndex]);
-      currentIndex = (currentIndex + 1) % idInfo.length;
+    currentIndex = (currentIndex + 1) % idInfo.length;
   }, 3000);
 }
 
@@ -607,6 +615,12 @@ var containerInfo = document.querySelector("#product-content");
 var newContainerInfo = document.querySelector(".logo-product");
 
 function addInfoTerrabox(concept) {
+
+  resetLoadingLines('terrabox');
+  var button = document.querySelector('#' + concept);
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
+
   var currentComponent = "";
   if (concept === "what-is-terrabox") {
     newContainerInfo.innerHTML = componentWhatIs;
@@ -659,10 +673,31 @@ function removeInfoTerrabox() {
   newContainerInfo.innerHTML = "";
 }
 
+function resetLoadingLines(product) {
+  var buttons = null;
+  if(product==='ralaxy'){
+    buttons = document.querySelectorAll(".nav-link-2");
+  }else if(product==='terrabox'){
+    buttons = document.querySelectorAll(".nav-link");
+  }
+  buttons.forEach(button => {
+    button.classList.add('no-transition');
+      button.style.setProperty('--loading-width', '0%');
+      setTimeout(() => {
+          button.classList.remove('no-transition');
+      }, 10);
+  });
+}
+
 
 var containerInfo2 = document.querySelector("#product2 #product-content");
 var newContainerInfo2 = document.querySelector("#product2 .logo-product");
 function addInfoRalaxy(concept) {
+
+  resetLoadingLines('ralaxy');
+  var button = document.querySelector('#' + concept);
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
 
   var width = window.innerWidth;
   var height = window.innerHeight;
