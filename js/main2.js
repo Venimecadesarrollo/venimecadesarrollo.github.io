@@ -266,14 +266,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  var buttonContactRalaxy = document.getElementById("contact-us-btn");
-
-  var contactUsSection = document.getElementById("contact");
-
-  buttonContactRalaxy.addEventListener("click", function (e) {
-    contactUsSection.scrollIntoView({ behavior: "smooth" });
-  });
-
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
@@ -347,7 +339,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  buttonsTerrabox = document.querySelectorAll(".nav-link")
+  buttonsRalaxy = document.querySelectorAll(".nav-link-2")
+
+  buttonsTerrabox.forEach(function(button){
+    button.addEventListener('click',function(){
+      deleteBlurButtons(buttonsTerrabox);
+      this.classList.add('focused')
+    })
+  })
+  buttonsRalaxy.forEach(function(button){
+    button.addEventListener('click',function(){
+      deleteBlurButtons(buttonsRalaxy);
+      this.classList.add('focused')
+    })
+  })
+
 });
+
+
+
+function deleteBlurButtons(buttons){
+  for(let j = 0; j < buttons.length; j++){
+    buttons[j].classList.remove('focused')
+  }
+}
 
 let intervalId = null;
 let intervalIdRalaxy = null;
@@ -496,6 +512,8 @@ function activeTransitionInfoProducts(activeId) {
       stopAutoDisplayRalaxy();
       resetLoadingLines('ralaxy')
       removeInfoRalaxy();
+      var buttons = document.querySelectorAll(".nav-link");
+      deleteBlurButtons(buttons)
       break;
     case "ralaxy":
       currentIndexRalaxy = 0
@@ -503,6 +521,8 @@ function activeTransitionInfoProducts(activeId) {
       stopAutoDisplayTerrabox();
       resetLoadingLines('terrabox')
       removeInfoTerrabox();
+      var buttons = document.querySelectorAll(".nav-link-2");
+      deleteBlurButtons(buttons)
       break;
   }
 }
@@ -597,10 +617,7 @@ sustainable technologies.
 
 var componentProposalRalaxy = `
 <img src="images/ralaxy-logo.svg" alt="" class="logo-ralaxy"/>
-<h3 class="">Innovation and road safety</h3>
-<button class="download-button" id="contact-us-btn">
-  Contact us
-</button>
+<h3 class="">Lighting the Path to a Safer and More Sustainable Future</h3>
 `;
 
 var componentWhatIs = `
@@ -654,7 +671,7 @@ Adjusts to different contexts and local needs.<br>
 
 var componentProposal = `
 <img src="images/terrabox-logo.svg" alt="" class="logo-terrabox" />
-<h3 class=''><span class="accent-color-terrabox">Recycle and Earn</span></h3>
+<h3 class=''><span class="accent-color-terrabox">The Virtual world opens thousands of new opportunities</span></h3>
 `;
 
 var containerInfo = document.querySelector("#product-content");
@@ -1009,12 +1026,12 @@ function checkWidth(ifForDonwloadDesktopButton) {
   if (width >= height && heightCondition >= 400) {
     imageRalaxy.classList.add("ralaxy-image-complete");
   }
-
-  if (height >= width && heightCondition <= 300) {
-    
-    imageRalaxy.src = "images/t5.png";
-  } else {
-    imageRalaxy.src = "images/ralaxy-1-600.svg";
+  if(imageRalaxy !== null){
+    if (height >= width && heightCondition <= 300) {
+      imageRalaxy.src = "images/t5.png";
+    } else {
+      imageRalaxy.src = "images/ralaxy-1-600.svg";
+    }
   }
 }
 

@@ -510,10 +510,8 @@ header.not-home nav ul {
   transition: none !important;
 }
 
-.nav-link:hover,
-.nav-link:focus,
-.nav-link-2:hover,
-.nav-link-2:focus {
+.nav-link.focused,
+.nav-link-2.focused {
   background-color: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 1);
 }
