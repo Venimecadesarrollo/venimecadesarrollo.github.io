@@ -1,186 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VIS Energy</title>
-    <link rel="icon" href="images/favicon2.png" />
 
-    <link rel="stylesheet" href="css/style2.css" />
-    <meta property="og:title" content="Visenergy" />
-    <meta
-      property="og:description"
-      content="Startup dedicada a la innovación tecnológica "
-    />
-    <meta
-      property="og:image"
-      content="https://visenergycorp.com/wp-content/uploads/2022/11/logo-vis-png-115x115.png"
-    />
-    <meta
-      property="og:url"
-      content="https://ed66-186-14-31-252.ngrok-free.app/"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
-  </head>
-  <body class="loading">
-    <div id="loader-container">
-      <span class="loader"></span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIS Energy</title>
+  <link rel="icon" href="images/favicon2.png" />
+
+  <link rel="stylesheet" href="css/style2.css" />
+  <meta property="og:title" content="Visenergy" />
+  <meta property="og:description" content="Startup dedicada a la innovación tecnológica " />
+  <meta property="og:image" content="https://visenergycorp.com/wp-content/uploads/2022/11/logo-vis-png-115x115.png" />
+  <meta property="og:url" content="https://ed66-186-14-31-252.ngrok-free.app/" />
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+</head>
+
+<body class="loading">
+  <div id="loader-container">
+    <span class="loader"></span>
+  </div>
+  <header>
+    <div id="logo-container">
+      <img src="images/logo.svg" width="75" class="header-logo hidden" alt="Logo en Header" />
     </div>
-    <header>
-      <div id="logo-container">
-        <img
-          src="images/logo.svg"
-          width="75"
-          class="header-logo hidden"
-          alt="Logo en Header"
-        />
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="about-us.html" id="nav-about-us">About Us</a></li>
-        </ul>
-      </nav>
-      <button id="hamburguer-menu-btn">
-        <img src="assets/icons/menu.svg" alt="burger menu">
-      </button>
-    </header>
-    <section id="home" class="fullscreen">
-      <div class="logo">
-        <img
-          src="images/logo.svg"
-          width="150"
-          class="home-logo center-logo-home"
-          alt="Logo en Home"
-        />
-      </div>
-      <div class="scroll-indicator" id="scroll-indicator">
-        <span class="get-started" id="get-started-text">Get Started</span>
-        <img src="images/doble_arrow.svg" alt="" />
-      </div>
-    </section>
-    <section id="terrabox" class="products fullscreen">
-      <div class="cont-prod product1-bg active">
-        <div class="new-content-product" id="product1">
-          <!-- first product -->
-          <div class="secondary-navbar">
-            <a class="nav-link" id="proposal-terrabox">Download</a>
-            <a class="nav-link" id="what-is-terrabox">What is?</a>
-            <a class="nav-link" id="approach-terrabox">Focus</a>
-            <a class="nav-link" id="added-value-terrabox">Added Value</a>
-          </div>
-          <div class="logo-product">
-            <img
-              src="images/terrabox-logo.svg"
-              alt=""
-              class="logo-terrabox active"
-            />
-            <h3 class="active"><span class="accent-color-terrabox">Recycle and Earn</span></h3>
-            <h3>Proximamente</h3>
-
-          </div>
-          <div class="image-product-container"></div>
-        </div>
-      </div>
-    </section>
-    <section id="ralaxy" class="products fullscreen">
-      <div class="cont-prod product2-bg active">
-        <div class="new-content-product" id="product2">
-          <div class="secondary-navbar-2">
-            <a class="nav-link-2" id="proposal-ralaxy">Contact us<div class="loading-line"></div></a>
-            <a class="nav-link-2" id="what-is-ralaxy">What is?<div class="loading-line"></div></a>
-            <a class="nav-link-2" id="approach-ralaxy">Focus<div class="loading-line"></div></a>
-            <a class="nav-link-2" id="added-value-ralaxy">Added Value<div class="loading-line"></div></a>
-          </div>
-          <div class="logo-product">
-            <img
-              src="images/ralaxy-logo.svg"
-              alt=""
-              class="logo-ralaxy active"
-            />
-            <h3 class="active">Innovation and road safety</h3>
-            <button class="download-button active" id="contact-us-btn">
-              Contact us
-            </button>
-          </div>
-          <div class="image-product-container">
-            <img
-              id="image-ralaxy"
-              src="images/t5.png"
-              alt=""
-              class="image-product-ralaxy"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact" class="fullscreen">
-      <div class="container">
-        <div class="contact-info">
-          <label class="switch">
-            <input type="checkbox" id="mySwitch" />
-            <span class="slider round"></span>
-          </label>
-          <h2>Let's get in touch</h2>
-          <p>We're open for any suggestion or just to have a chat</p>
-          <span><img src="assets/icons/location.svg" alt="icon-location"></span>
-          <div>
-            <strong>Address:</strong> Avinguda Diagonal 328, número 3-3, 08013, Barcelona, Spain
-          </div>
-          <span><img src="assets/icons/call.svg" alt="icon-call"></span>
-          <div><strong>Phone:</strong> (+34) 624.91.27.72</div>
-          <span><img src="assets/icons/call.svg" alt="icon-call"></span>
-          <div><strong>Phone:</strong> (+58) 414-7819521</div>
-          <span><img src="assets/icons/mail.svg" alt="icon-mail"></span>
-          <div><strong>Email:</strong> management@visenergycorp.com</div>
-          <span><img src="assets/icons/mail.svg" alt="icon-mail2"></span>
-          <div><strong>Email:</strong> contacto@visenergycorp.com</div>
-        </div>
-        <div class="contact-form">
-          <h2>Get in touch</h2>
-          <form>
-            <input
-              type="text"
-              placeholder="Full Name"
-              name="name"
-              id="full-name"
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              name="email"
-              id="email"
-            />
-            <input type="text" placeholder="Subject" name="subject" />
-            <textarea
-              placeholder="Message"
-              name="message"
-              id="message"
-            ></textarea>
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </div>
-      <div id="successModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>¡El formulario se envió correctamente!</p>
-        </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="about-us.html" id="nav-about-us">About Us</a></li>
+      </ul>
+    </nav>
+    <button id="hamburguer-menu-btn">
+      <img src="assets/icons/menu.svg" alt="burger menu">
+    </button>
+  </header>
+  <section id="accordion-section" class="fullscreen">
+    <div class="container-accordion">
+      <button class="accordion">About us?</button>
+      <div class="panel">
+        <p>VIS ENERGY VOLT OÜ is an outstanding company, with extensive experience and specialization in the provision of innovative solutions and comprehensive strategies in the fields of Robotics, Software, Automation, Electricity and 3D Design.</p>
       </div>
 
-      <div id="errorModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>¡Hubo un error al enviar el formulario!</p>
+      <button class="accordion">Mission</button>
+      <div class="panel">
+        <p> We focus on promoting innovation in the areas of Electronics, Robotics, Software, Home Automation, Electricity and Automation, to enrich and add value to human and social development.</p>
+      </div>
+
+      <button class="accordion">Vision</button>
+      <div class="panel">
+          <p>To be one of the leading companies in America and worldwide, in the development of technologies and innovation that can make a better world.</p>
+      </div>
+    </div>
+    <div class="container-text">
+      <h2>About us?</h2>
+      <p>VIS ENERGY VOLT OÜ is an outstanding company, with extensive experience and specialization in the provision of innovative solutions and comprehensive strategies in the fields of Robotics, Software, Automation, Electricity and 3D Design.</p>
+      <h2>Mission</h2>
+      <p> We focus on promoting innovation in the areas of Electronics, Robotics, Software, Home Automation, Electricity and Automation, to enrich and add value to human and social development.</p>
+      <h2>Vision</h2>
+      <p>To be one of the leading companies in America and worldwide, in the development of technologies and innovation that can make a better world.</p>
+      </div>
+    </div>
+  </section>
+  <section id="home" class="fullscreen">
+    <div class="logo">
+      <img src="images/logo.svg" width="150" class="home-logo center-logo-home" alt="Logo en Home" />
+    </div>
+    <div class="scroll-indicator" id="scroll-indicator">
+      <span class="get-started" id="get-started-text">Get Started</span>
+      <img src="images/doble_arrow.svg" alt="" />
+    </div>
+  </section>
+  <section id="terrabox" class="products fullscreen">
+    <div class="cont-prod product1-bg active">
+      <div class="new-content-product" id="product1">
+        <!-- first product -->
+        <div class="secondary-navbar">
+          <a class="nav-link" id="proposal-terrabox">Download</a>
+          <a class="nav-link" id="what-is-terrabox">What is?</a>
+          <a class="nav-link" id="approach-terrabox">Focus</a>
+          <a class="nav-link" id="added-value-terrabox">Added Value</a>
+        </div>
+        <div class="logo-product">
+          <img src="images/terrabox-logo.svg" alt="" class="logo-terrabox active" />
+          <h3 class="active"><span class="accent-color-terrabox">Recycle and Earn</span></h3>
+          <h3>Proximamente</h3>
+
+        </div>
+        <div class="image-product-container"></div>
+      </div>
+    </div>
+  </section>
+  <section id="ralaxy" class="products fullscreen">
+    <div class="cont-prod product2-bg active">
+      <div class="new-content-product" id="product2">
+        <div class="secondary-navbar-2">
+          <a class="nav-link-2" id="proposal-ralaxy">Contact us<div class="loading-line"></div></a>
+          <a class="nav-link-2" id="what-is-ralaxy">What is?<div class="loading-line"></div></a>
+          <a class="nav-link-2" id="approach-ralaxy">Focus<div class="loading-line"></div></a>
+          <a class="nav-link-2" id="added-value-ralaxy">Added Value<div class="loading-line"></div></a>
+        </div>
+        <div class="logo-product">
+          <img src="images/ralaxy-logo.svg" alt="" class="logo-ralaxy active" />
+          <h3 class="active">Innovation and road safety</h3>
+          <button class="download-button active" id="contact-us-btn">
+            Contact us
+          </button>
+        </div>
+        <div class="image-product-container">
+          <img id="image-ralaxy" src="images/t5.png" alt="" class="image-product-ralaxy" />
         </div>
       </div>
-      <footer>
-        <p>© 2022 Visenergy Corp. All rights reserved.</p>
-      </footer>
-    </section>
+    </div>
+  </section>
+  
+  <section id="contact" class="fullscreen">
+    <div class="container">
+      <div class="contact-info">
+        <label class="switch">
+          <input type="checkbox" id="mySwitch" />
+          <span class="slider round"></span>
+        </label>
+        <h2>Let's get in touch</h2>
+        <p>We're open for any suggestion or just to have a chat</p>
+        <span><img src="assets/icons/location.svg" alt="icon-location"></span>
+        <div>
+          <strong>Address:</strong> Avinguda Diagonal 328, número 3-3, 08013, Barcelona, Spain
+        </div>
+        <span><img src="assets/icons/call.svg" alt="icon-call"></span>
+        <div><strong>Phone:</strong> (+34) 624.91.27.72</div>
+        <span><img src="assets/icons/call.svg" alt="icon-call"></span>
+        <div><strong>Phone:</strong> (+58) 414-7819521</div>
+        <span><img src="assets/icons/mail.svg" alt="icon-mail"></span>
+        <div><strong>Email:</strong> management@visenergycorp.com</div>
+        <span><img src="assets/icons/mail.svg" alt="icon-mail2"></span>
+        <div><strong>Email:</strong> contacto@visenergycorp.com</div>
+      </div>
+      <div class="contact-form">
+        <h2>Get in touch</h2>
+        <form>
+          <input type="text" placeholder="Full Name" name="name" id="full-name" />
+          <input type="email" placeholder="Email Address" name="email" id="email" />
+          <input type="text" placeholder="Subject" name="subject" />
+          <textarea placeholder="Message" name="message" id="message"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+    <div id="successModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>¡El formulario se envió correctamente!</p>
+      </div>
+    </div>
 
-    <script src="js/main2.js"></script>
-  </body>
+    <div id="errorModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>¡Hubo un error al enviar el formulario!</p>
+      </div>
+    </div>
+    <footer>
+      <p>© 2022 Visenergy Corp. All rights reserved.</p>
+    </footer>
+  </section>
+
+  <script src="js/main2.js"></script>
+</body>
+
 </html>

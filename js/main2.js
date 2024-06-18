@@ -42,7 +42,6 @@ var previusSection = "home";
 
 let logoAnimetionLoaded = false;
 function updateNavigation(activeId) {
-  console.log(activeId)
   navLinks.forEach((link) => {
     if (link.getAttribute("href") === `#${activeId}`) {
       link.classList.add("active");
@@ -315,6 +314,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("resize", checkWidth);
   handleScrollAndGestures();
+
+  var acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight != '0px' && panel.style.maxHeight != '') {
+        this.classList.remove('active')
+        panel.style.minHeight = 0;
+        panel.style.maxHeight = 0;
+        panel.style.paddingTop = 0;
+        panel.style.paddingBottom = 0;
+      } else {
+        this.classList.add('active')
+        closeAllPanels(panel)
+        panel.style.maxHeight = "500px";
+        panel.style.minHeight = "320px";
+        panel.style.paddingTop = "40px";
+        panel.style.paddingBottom = "40px";
+      }
+    });
+  }
+
+  function closeAllPanels(exceptThisPanel) {
+    for (let j = 0; j < acc.length; j++) {
+      var panel = acc[j].nextElementSibling;
+      if (panel !== exceptThisPanel) {
+        panel.style.minHeight = 0;
+        panel.style.maxHeight = 0;
+        panel.style.paddingTop = 0;  // Ajustar paddingTop
+        panel.style.paddingBottom = 0;  // Ajustar paddingBottom
+        acc[j].classList.remove('active')
+      }
+    }
+  }
 
 });
 
