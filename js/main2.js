@@ -277,11 +277,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-
-      //link.style.setProperty('--loading-width', '0%');
       clearInterval(intervalId);
       link.classList.add('no-transition');
-      console.log(link)
 
 
       var currentComponent = document.querySelector(".logo-product");
@@ -297,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link-2").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
-      stopAutoDisplayRalaxy();
+      clearInterval(intervalIdRalaxy)
       link.classList.add('no-transition');
 
       var currentComponent = document.querySelector(
@@ -305,6 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       if (currentComponent) {
+        console.log('si entra aqui')
         removeInfoRalaxy();
       }
 
@@ -360,32 +358,33 @@ function stopAutoDisplayTerrabox(){
   clearInterval(intervalId);
 }
 function startAutoDisplayTerrabox() {
-  var idInfo = ["what-is-terrabox","approach-terrabox","added-value-terrabox","proposal-terrabox"]
+  var idInfo = ["proposal-terrabox", "what-is-terrabox","approach-terrabox","added-value-terrabox"]
 
   var button = document.querySelector('#proposal-terrabox');
   button.classList.remove('no-transition');
   button.style.setProperty('--loading-width', '100%');
 
-
+  addInfoTerrabox(idInfo[currentIndexTerrabox]);
   intervalId = setInterval(function() {
-      addInfoTerrabox(idInfo[currentIndexTerrabox]);
-      currentIndexTerrabox = (currentIndexTerrabox + 1) % idInfo.length;
+    currentIndexTerrabox = (currentIndexTerrabox + 1) % idInfo.length;
+    addInfoTerrabox(idInfo[currentIndexTerrabox]);
   }, 3000);
 }
 function stopAutoDisplayRalaxy(){
+
   clearInterval(intervalIdRalaxy);
 }
 function startAutoDisplayRalaxy() {
-  var idInfo = ["what-is-ralaxy","approach-ralaxy", "added-value-ralaxy", "proposal-ralaxy"]
+  var idInfo = ["proposal-ralaxy", "what-is-ralaxy","approach-ralaxy", "added-value-ralaxy"]
 
   var button = document.querySelector('#proposal-ralaxy');
   button.classList.remove('no-transition');
   button.style.setProperty('--loading-width', '100%');
 
-
+  addInfoRalaxy(idInfo[currentIndexRalaxy]);
   intervalIdRalaxy = setInterval(function() {
-    addInfoRalaxy(idInfo[currentIndexRalaxy]);
     currentIndexRalaxy = (currentIndexRalaxy + 1) % idInfo.length;
+    addInfoRalaxy(idInfo[currentIndexRalaxy]);
   }, 3000);
 }
 
@@ -492,16 +491,18 @@ function activeTransitionInfoProducts(activeId) {
   switch (activeId) {
 
     case "terrabox":
+      currentIndexTerrabox = 0
       startAutoDisplayTerrabox();
       stopAutoDisplayRalaxy();
       resetLoadingLines('ralaxy')
-      currentIndexRalaxy = 0
+      removeInfoRalaxy();
       break;
     case "ralaxy":
+      currentIndexRalaxy = 0
       startAutoDisplayRalaxy();
       stopAutoDisplayTerrabox();
       resetLoadingLines('terrabox')
-      currentIndexTerrabox = 0
+      removeInfoTerrabox();
       break;
   }
 }
@@ -710,8 +711,6 @@ function addInfoTerraboxClick(concept) {
 
   resetLoadingLines('terrabox');
   var button = document.querySelector('#' + concept);
-  //button.classList.remove('no-transition');
-  //button.style.setProperty('--loading-width', '100%');
 
   var currentComponent = "";
   if (concept === "what-is-terrabox") {
@@ -779,7 +778,7 @@ function resetLoadingLines(product) {
 }
 
 
-var containerInfo2 = document.querySelector("#product2 #product-content");
+var containerInfo2 = document.querySelector("#product2 .logo-product");
 var newContainerInfo2 = document.querySelector("#product2 .logo-product");
 function addInfoRalaxy(concept) {
 
@@ -876,11 +875,9 @@ function addInfoRalaxyClick(concept) {
   }
 
   setTimeout(() => {
-    
     if (children) {
       if (children.length > 0) {
         for (let i = 0; i < children.length; i++) {
-          
           children[i].classList.add("active");
         }
       }
@@ -890,6 +887,7 @@ function addInfoRalaxyClick(concept) {
 }
 
 function removeInfoRalaxy() {
+  console.log('estoy eliminando')
   containerInfo2.innerHTML = "";
 }
 
@@ -1064,11 +1062,10 @@ function addClassDesktop() {
   });
 
   document.querySelector(".logo-terrabox").classList.add("desktop");
-  document.querySelector(".logo-ralaxy").classList.add("desktop");
+  document.querySelector(".logo-ralaxy")?.classList.add("desktop");
 
   var h3LogoProduct = document.querySelectorAll(".logo-product h3");
   h3LogoProduct.forEach(function (h3LogoProduct) {
-    
     h3LogoProduct.classList.add("desktop");
   });
 
