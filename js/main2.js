@@ -278,20 +278,28 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
+
+      //link.style.setProperty('--loading-width', '0%');
       clearInterval(intervalId);
+      link.classList.add('no-transition');
+      console.log(link)
+
+
       var currentComponent = document.querySelector(".logo-product");
 
       if (currentComponent.childNodes.length > 0) {
         removeInfoTerrabox();
       }
 
-      addInfoTerrabox(this.id);
+      //addInfoTerrabox(this.id);
+      addInfoTerraboxClick(this.id);
     });
   });
   document.querySelectorAll(".nav-link-2").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
       stopAutoDisplayRalaxy();
+      link.classList.add('no-transition');
 
       var currentComponent = document.querySelector(
         "#product2 .content-section"
@@ -301,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
         removeInfoRalaxy();
       }
 
-      addInfoRalaxy(this.id);
+      addInfoRalaxyClick(this.id);
     });
   });
 
@@ -312,6 +320,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let intervalId = null;
 let intervalIdRalaxy = null;
+var currentIndexTerrabox = 0;
+var currentIndexRalaxy = 0;
 
 function stopAutoDisplayTerrabox(){
   clearInterval(intervalId);
@@ -323,11 +333,10 @@ function startAutoDisplayTerrabox() {
   button.classList.remove('no-transition');
   button.style.setProperty('--loading-width', '100%');
 
-  var currentIndex = 0;
 
   intervalId = setInterval(function() {
-      addInfoTerrabox(idInfo[currentIndex]);
-      currentIndex = (currentIndex + 1) % idInfo.length;
+      addInfoTerrabox(idInfo[currentIndexTerrabox]);
+      currentIndexTerrabox = (currentIndexTerrabox + 1) % idInfo.length;
   }, 3000);
 }
 function stopAutoDisplayRalaxy(){
@@ -340,11 +349,10 @@ function startAutoDisplayRalaxy() {
   button.classList.remove('no-transition');
   button.style.setProperty('--loading-width', '100%');
 
-  var currentIndex = 0;
 
   intervalIdRalaxy = setInterval(function() {
-    addInfoRalaxy(idInfo[currentIndex]);
-    currentIndex = (currentIndex + 1) % idInfo.length;
+    addInfoRalaxy(idInfo[currentIndexRalaxy]);
+    currentIndexRalaxy = (currentIndexRalaxy + 1) % idInfo.length;
   }, 3000);
 }
 
@@ -453,10 +461,14 @@ function activeTransitionInfoProducts(activeId) {
     case "terrabox":
       startAutoDisplayTerrabox();
       stopAutoDisplayRalaxy();
+      resetLoadingLines('ralaxy')
+      currentIndexRalaxy = 0
       break;
     case "ralaxy":
       startAutoDisplayRalaxy();
       stopAutoDisplayTerrabox();
+      resetLoadingLines('terrabox')
+      currentIndexTerrabox = 0
       break;
   }
 }
@@ -661,6 +673,53 @@ function addInfoTerrabox(concept) {
   }, 100);
 }
 
+function addInfoTerraboxClick(concept) {
+
+  resetLoadingLines('terrabox');
+  var button = document.querySelector('#' + concept);
+  //button.classList.remove('no-transition');
+  //button.style.setProperty('--loading-width', '100%');
+
+  var currentComponent = "";
+  if (concept === "what-is-terrabox") {
+    newContainerInfo.innerHTML = componentWhatIs;
+    currentComponent = document.querySelector(".new-content-section");
+  } else if (concept === "approach-terrabox") {
+    newContainerInfo.innerHTML = componentApproach;
+    currentComponent = document.querySelector(".new-content-section");
+  } else if (concept === "added-value-terrabox") {
+    newContainerInfo.innerHTML = componentAddedValue;
+    currentComponent = document.querySelector(".new-content-section");
+  } else if (concept === "proposal-terrabox") {
+    newContainerInfo.innerHTML = componentProposal;
+    checkWidth(true);
+    var children = newContainerInfo.querySelectorAll("*");
+    currentComponent = document.querySelector(".logo-product");
+  }
+  checkWidthAndAddStyleInfo(currentComponent);
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  if (height >= width && width <= 600 && concept != "proposal-terrabox") {
+    removeImageProductForInfo();
+  }
+  if (height >= width && width <= 600 && concept == "proposal-terrabox") {
+    addImageProductForInfo();
+  }
+
+  setTimeout(() => {
+    if (children) {
+      if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+          children[i].classList.add("active");
+        }
+      }
+    }
+
+    currentComponent.classList.add("active");
+  }, 100);
+}
+
 function removeImageProductForInfo() {
   document.querySelector(".image-product-container").classList.add("hidden");
 }
@@ -682,10 +741,7 @@ function resetLoadingLines(product) {
   }
   buttons.forEach(button => {
     button.classList.add('no-transition');
-      button.style.setProperty('--loading-width', '0%');
-      setTimeout(() => {
-          button.classList.remove('no-transition');
-      }, 10);
+    button.style.setProperty('--loading-width', '0%');
   });
 }
 
@@ -699,6 +755,58 @@ function addInfoRalaxy(concept) {
   button.classList.remove('no-transition');
   button.style.setProperty('--loading-width', '100%');
 
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  if ((height >= width && width <= 600) && (concept != "approach-ralaxy" && concept != "added-value-ralaxy")) {
+    addImageProductRalaxy();
+  }
+  if ((height >= width && width <= 600) && (concept === "approach-ralaxy" || concept === "added-value-ralaxy")) {
+    removeImageProductRalaxy();
+  }
+
+
+  var currentComponent = "";
+  if (concept === "what-is-ralaxy") {
+    newContainerInfo2.innerHTML = componentWhatIsRalaxy;
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
+  } else if (concept === "approach-ralaxy") {
+    newContainerInfo2.innerHTML = componentApproachRalaxy;
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
+  } else if (concept === "added-value-ralaxy") {
+    newContainerInfo2.innerHTML = componentAddedValueRalaxy;
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
+  } else if (concept === "proposal-ralaxy") {
+    newContainerInfo2.innerHTML = componentProposalRalaxy;
+    var children = newContainerInfo2.querySelectorAll("*");
+    currentComponent = document.querySelector(
+      "#product2 .logo-product"
+    );
+  }
+
+  setTimeout(() => {
+    
+    if (children) {
+      if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+          
+          children[i].classList.add("active");
+        }
+      }
+    }
+    currentComponent.classList.add("active");
+  }, 100);
+}
+
+function addInfoRalaxyClick(concept) {
+
+  resetLoadingLines('ralaxy');
   var width = window.innerWidth;
   var height = window.innerHeight;
 
