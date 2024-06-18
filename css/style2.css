@@ -84,7 +84,7 @@ nav {
 
 nav ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   list-style: none;
   padding: 0;
@@ -1512,7 +1512,7 @@ body.loading #main-content {
   color:white !important;
 }
 
-#accordion-section{
+.accordion-section{
   background-image: linear-gradient(#0c0a53 0%, #2d5bb9 40%, #3873bf 54%, #4a95c7 72%, #58b2ba 100%);
   padding: 40px;
   display: grid;
