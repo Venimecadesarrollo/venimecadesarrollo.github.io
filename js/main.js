@@ -524,6 +524,21 @@ function activeTransitionInfoProducts(activeId) {
       var buttons = document.querySelectorAll(".nav-link-2");
       deleteBlurButtons(buttons)
       break;
+    default:
+      currentIndexRalaxy = 0
+      stopAutoDisplayTerrabox();
+      resetLoadingLines('terrabox')
+      removeInfoTerrabox();
+      var buttons = document.querySelectorAll(".nav-link-2");
+      deleteBlurButtons(buttons)
+
+      currentIndexTerrabox = 0
+      stopAutoDisplayRalaxy();
+      resetLoadingLines('ralaxy')
+      removeInfoRalaxy();
+      var buttons = document.querySelectorAll(".nav-link");
+      deleteBlurButtons(buttons)
+      break;
   }
 }
 
@@ -904,7 +919,6 @@ function addInfoRalaxyClick(concept) {
 }
 
 function removeInfoRalaxy() {
-  console.log('estoy eliminando')
   containerInfo2.innerHTML = "";
 }
 
