@@ -84,7 +84,7 @@ nav {
 
 nav ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   list-style: none;
   padding: 0;
@@ -131,7 +131,7 @@ nav a.active::after {
 }
 
 /* Products Section */
-#products {
+.products {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -484,12 +484,34 @@ header.not-home nav ul {
   border-radius: 15px;
   text-align: center;
   align-content: center;
+
+  position: relative;
+  overflow: hidden;
+  --loading-width: 0%;
 }
 
-.nav-link:hover,
-.nav-link:focus,
-.nav-link-2:hover,
-.nav-link-2:focus {
+.nav-link::before,
+.nav-link-2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--loading-width);
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: width 3s linear;
+  z-index: -1;
+}
+
+.nav-link-2.no-transition::before {
+  transition: none !important;
+}
+.nav-link.no-transition::before {
+  transition: none !important;
+}
+
+.nav-link.focused,
+.nav-link-2.focused {
   background-color: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 1);
 }
@@ -1419,4 +1441,112 @@ footer{
 /* Inicialmente ocultar el contenido */
 body.loading #main-content {
   display: none;
+}
+
+.loading-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 2s linear;
+}
+
+
+
+
+
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #0A2F54;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-family: "Poppins-Regular", sans-serif;
+
+  color: white;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion.active, .accordion:hover {
+  background-color: #0A2F54;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  background-color: white;
+  max-height: 0;
+  min-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, min-height 0.5s ease-out, padding-top 0.5s ease-out, padding-bottom 0.5s ease-out;
+  padding-bottom: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+
+}
+
+.panel.active{
+  padding: 40px;
+  max-height: 500px;
+}
+
+.accordion:after {
+  content: '\002B'; /* Unicode character for "plus" sign (+) */
+  font-size: 20px;
+  color: white !important;
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion.active:after {
+  content: "\002D"; /* Unicode character for "minus" sign (-) */
+  color:white !important;
+}
+
+.accordion-section{
+  background-image: linear-gradient(#0c0a53 0%, #2d5bb9 40%, #3873bf 54%, #4a95c7 72%, #58b2ba 100%);
+  padding: 40px;
+  display: grid;
+  grid-template-rows: 50px auto;
+}
+
+.container-accordion{
+  grid-row: 2;
+  display: none;
+  align-self: start;
+}
+
+.container-text{
+  grid-row: 2;
+  justify-self: center;
+}
+
+.container-text p{
+  text-align: center;
+  padding: 15px 0 40px 0;
+  max-width: 700px;
+  align-self: center;
+  color: white;
+}
+
+.container-text h2{
+  text-align: center;
+  color:#f1f9fd;
+}
+
+@media (max-width: 800px) {
+  .container-accordion{
+    display: block;
+  }
+  .container-text{
+    display: none;
+  }
+
 }

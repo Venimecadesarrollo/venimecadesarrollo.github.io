@@ -18,6 +18,7 @@ function setupSectionObserver() {
         updateNavigation(entry.target.id);
         updateDownButton(entry.target.id, hasNextSection);
         updateBackground(entry.target.id);
+        activeTransitionInfoProducts(entry.target.id);
       }
     });
   }, options);
@@ -27,11 +28,6 @@ function setupSectionObserver() {
   });
 }
 
-const productSection = document.getElementById("products");
-productSection.addEventListener("click", () => {
-  clearInterval(productInterval); // Detiene la ejecución de nextProduct()
-  productInterval = null; // Limpia la variable del intervalo
-});
 let productInterval;
 const navLinks = document.querySelectorAll("nav a");
 const logoContainer = document.getElementById("logo-container");
@@ -46,7 +42,6 @@ var previusSection = "home";
 
 let logoAnimetionLoaded = false;
 function updateNavigation(activeId) {
-  console.log(activeId)
   navLinks.forEach((link) => {
     if (link.getAttribute("href") === `#${activeId}`) {
       link.classList.add("active");
@@ -85,14 +80,7 @@ function updateNavigation(activeId) {
     header.classList.remove("not-home");
   }
   previusSection = activeId;
-  if (activeId === "products" && !productInterval) {
-    productInterval = setInterval(() => {
-      nextProduct();
-    }, 4000);
-  } else {
-    clearInterval(productInterval);
-    productInterval = null;
-  }
+
 
   if (activeId !== "home" && homeLogo) {
     document.querySelector("nav").style.cssText = "float: right;"; // Alinea el menú a la derecha
@@ -278,50 +266,144 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  var buttonContactRalaxy = document.getElementById("contact-us-btn");
-
-  var contactUsSection = document.getElementById("contact");
-
-  buttonContactRalaxy.addEventListener("click", function (e) {
-    contactUsSection.scrollIntoView({ behavior: "smooth" });
-  });
-
   document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
+      clearInterval(intervalId);
+      link.classList.add('no-transition');
+
+
       var currentComponent = document.querySelector(".logo-product");
 
       if (currentComponent.childNodes.length > 0) {
         removeInfoTerrabox();
       }
 
-      addInfoTerrabox(this.id);
+      //addInfoTerrabox(this.id);
+      addInfoTerraboxClick(this.id);
     });
   });
   document.querySelectorAll(".nav-link-2").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
+      clearInterval(intervalIdRalaxy)
+      link.classList.add('no-transition');
 
       var currentComponent = document.querySelector(
         "#product2 .content-section"
       );
 
       if (currentComponent) {
+        console.log('si entra aqui')
         removeInfoRalaxy();
       }
 
-      addInfoRalaxy(this.id);
+      addInfoRalaxyClick(this.id);
     });
-  });
-
-  var nextButton = document.getElementById("next-button");
-  nextButton.addEventListener("click", function () {
-    nextProduct();
   });
 
   window.addEventListener("resize", checkWidth);
   handleScrollAndGestures();
+
+  var acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight != '0px' && panel.style.maxHeight != '') {
+        this.classList.remove('active')
+        panel.style.minHeight = 0;
+        panel.style.maxHeight = 0;
+        panel.style.paddingTop = 0;
+        panel.style.paddingBottom = 0;
+      } else {
+        this.classList.add('active')
+        closeAllPanels(panel)
+        panel.style.maxHeight = "500px";
+        panel.style.minHeight = "320px";
+        panel.style.paddingTop = "40px";
+        panel.style.paddingBottom = "40px";
+      }
+    });
+  }
+
+  function closeAllPanels(exceptThisPanel) {
+    for (let j = 0; j < acc.length; j++) {
+      var panel = acc[j].nextElementSibling;
+      if (panel !== exceptThisPanel) {
+        panel.style.minHeight = 0;
+        panel.style.maxHeight = 0;
+        panel.style.paddingTop = 0;  // Ajustar paddingTop
+        panel.style.paddingBottom = 0;  // Ajustar paddingBottom
+        acc[j].classList.remove('active')
+      }
+    }
+  }
+
+  buttonsTerrabox = document.querySelectorAll(".nav-link")
+  buttonsRalaxy = document.querySelectorAll(".nav-link-2")
+
+  buttonsTerrabox.forEach(function(button){
+    button.addEventListener('click',function(){
+      deleteBlurButtons(buttonsTerrabox);
+      this.classList.add('focused')
+    })
+  })
+  buttonsRalaxy.forEach(function(button){
+    button.addEventListener('click',function(){
+      deleteBlurButtons(buttonsRalaxy);
+      this.classList.add('focused')
+    })
+  })
+
 });
+
+
+
+function deleteBlurButtons(buttons){
+  for(let j = 0; j < buttons.length; j++){
+    buttons[j].classList.remove('focused')
+  }
+}
+
+let intervalId = null;
+let intervalIdRalaxy = null;
+var currentIndexTerrabox = 0;
+var currentIndexRalaxy = 0;
+
+function stopAutoDisplayTerrabox(){
+  clearInterval(intervalId);
+}
+function startAutoDisplayTerrabox() {
+  var idInfo = ["proposal-terrabox", "what-is-terrabox","approach-terrabox","added-value-terrabox"]
+
+  var button = document.querySelector('#proposal-terrabox');
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
+
+  addInfoTerrabox(idInfo[currentIndexTerrabox]);
+  intervalId = setInterval(function() {
+    currentIndexTerrabox = (currentIndexTerrabox + 1) % idInfo.length;
+    addInfoTerrabox(idInfo[currentIndexTerrabox]);
+  }, 3000);
+}
+function stopAutoDisplayRalaxy(){
+
+  clearInterval(intervalIdRalaxy);
+}
+function startAutoDisplayRalaxy() {
+  var idInfo = ["proposal-ralaxy", "what-is-ralaxy","approach-ralaxy", "added-value-ralaxy"]
+
+  var button = document.querySelector('#proposal-ralaxy');
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
+
+  addInfoRalaxy(idInfo[currentIndexRalaxy]);
+  intervalIdRalaxy = setInterval(function() {
+    currentIndexRalaxy = (currentIndexRalaxy + 1) % idInfo.length;
+    addInfoRalaxy(idInfo[currentIndexRalaxy]);
+  }, 3000);
+}
+
 
 function handleScrollAndGestures() {
   const sections = Array.from(document.querySelectorAll("section"));
@@ -395,9 +477,6 @@ function nextProduct() {
       currentProduct.classList.remove("active", "exit-left", "transitioning");
       nextProduct.classList.remove("enter-right", "transitioning");
       nextProduct.classList.add("active");
-      //
-      //    // Remover la clase 'no-scroll' después de la transición
-      //    document.body.classList.remove("no-scroll");
     }, 500); // Ajusta el tiempo a la duración de la transición
   }, 10);
 }
@@ -416,10 +495,34 @@ function updateBackground(activeId) {
     case "about-us":
       body.classList.add("about-us-bg");
       break;
-    case "products":
+    case "terrabox":
       body.classList.add("products-bg");
       break;
     default:
+      break;
+  }
+}
+
+function activeTransitionInfoProducts(activeId) {
+  switch (activeId) {
+
+    case "terrabox":
+      currentIndexTerrabox = 0
+      startAutoDisplayTerrabox();
+      stopAutoDisplayRalaxy();
+      resetLoadingLines('ralaxy')
+      removeInfoRalaxy();
+      var buttons = document.querySelectorAll(".nav-link");
+      deleteBlurButtons(buttons)
+      break;
+    case "ralaxy":
+      currentIndexRalaxy = 0
+      startAutoDisplayRalaxy();
+      stopAutoDisplayTerrabox();
+      resetLoadingLines('terrabox')
+      removeInfoTerrabox();
+      var buttons = document.querySelectorAll(".nav-link-2");
+      deleteBlurButtons(buttons)
       break;
   }
 }
@@ -514,10 +617,7 @@ sustainable technologies.
 
 var componentProposalRalaxy = `
 <img src="images/ralaxy-logo.svg" alt="" class="logo-ralaxy"/>
-<h3 class="">Innovation and road safety</h3>
-<button class="download-button" id="contact-us-btn">
-  Contact us
-</button>
+<h3 class="">Lighting the Path to a Safer and More Sustainable Future</h3>
 `;
 
 var componentWhatIs = `
@@ -571,25 +671,64 @@ Adjusts to different contexts and local needs.<br>
 
 var componentProposal = `
 <img src="images/terrabox-logo.svg" alt="" class="logo-terrabox" />
-<h3 class=''><span class="accent-color-terrabox">Recycle and Earn</span></h3>
-<img
-  id="googleplay"
-  class="appstore-icon"
-  src="images/googleplay.svg"
-  alt="google play"
-/>
-<img
-  id="applestore"
-  class="appstore-icon"
-  src="images/Group1.svg"
-  alt="apple store"
-/>
+<h3 class=''><span class="accent-color-terrabox">The Virtual world opens thousands of new opportunities</span></h3>
 `;
 
 var containerInfo = document.querySelector("#product-content");
 var newContainerInfo = document.querySelector(".logo-product");
 
 function addInfoTerrabox(concept) {
+
+  resetLoadingLines('terrabox');
+  var button = document.querySelector('#' + concept);
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
+
+  var currentComponent = "";
+  if (concept === "what-is-terrabox") {
+    newContainerInfo.innerHTML = componentWhatIs;
+    currentComponent = document.querySelector(".new-content-section");
+  } else if (concept === "approach-terrabox") {
+    newContainerInfo.innerHTML = componentApproach;
+    currentComponent = document.querySelector(".new-content-section");
+  } else if (concept === "added-value-terrabox") {
+    newContainerInfo.innerHTML = componentAddedValue;
+    currentComponent = document.querySelector(".new-content-section");
+  } else if (concept === "proposal-terrabox") {
+    newContainerInfo.innerHTML = componentProposal;
+    checkWidth(true);
+    var children = newContainerInfo.querySelectorAll("*");
+    currentComponent = document.querySelector(".logo-product");
+  }
+  checkWidthAndAddStyleInfo(currentComponent);
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  if (height >= width && width <= 600 && concept != "proposal-terrabox") {
+    removeImageProductForInfo();
+  }
+  if (height >= width && width <= 600 && concept == "proposal-terrabox") {
+    addImageProductForInfo();
+  }
+
+  setTimeout(() => {
+    if (children) {
+      if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+          children[i].classList.add("active");
+        }
+      }
+    }
+
+    currentComponent.classList.add("active");
+  }, 100);
+}
+
+function addInfoTerraboxClick(concept) {
+
+  resetLoadingLines('terrabox');
+  var button = document.querySelector('#' + concept);
+
   var currentComponent = "";
   if (concept === "what-is-terrabox") {
     newContainerInfo.innerHTML = componentWhatIs;
@@ -642,10 +781,28 @@ function removeInfoTerrabox() {
   newContainerInfo.innerHTML = "";
 }
 
+function resetLoadingLines(product) {
+  var buttons = null;
+  if(product==='ralaxy'){
+    buttons = document.querySelectorAll(".nav-link-2");
+  }else if(product==='terrabox'){
+    buttons = document.querySelectorAll(".nav-link");
+  }
+  buttons.forEach(button => {
+    button.classList.add('no-transition');
+    button.style.setProperty('--loading-width', '0%');
+  });
+}
 
-var containerInfo2 = document.querySelector("#product2 #product-content");
+
+var containerInfo2 = document.querySelector("#product2 .logo-product");
 var newContainerInfo2 = document.querySelector("#product2 .logo-product");
 function addInfoRalaxy(concept) {
+
+  resetLoadingLines('ralaxy');
+  var button = document.querySelector('#' + concept);
+  button.classList.remove('no-transition');
+  button.style.setProperty('--loading-width', '100%');
 
   var width = window.innerWidth;
   var height = window.innerHeight;
@@ -696,7 +853,58 @@ function addInfoRalaxy(concept) {
   }, 100);
 }
 
+function addInfoRalaxyClick(concept) {
+
+  resetLoadingLines('ralaxy');
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  if ((height >= width && width <= 600) && (concept != "approach-ralaxy" && concept != "added-value-ralaxy")) {
+    addImageProductRalaxy();
+  }
+  if ((height >= width && width <= 600) && (concept === "approach-ralaxy" || concept === "added-value-ralaxy")) {
+    removeImageProductRalaxy();
+  }
+
+
+  var currentComponent = "";
+  if (concept === "what-is-ralaxy") {
+    newContainerInfo2.innerHTML = componentWhatIsRalaxy;
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
+  } else if (concept === "approach-ralaxy") {
+    newContainerInfo2.innerHTML = componentApproachRalaxy;
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
+  } else if (concept === "added-value-ralaxy") {
+    newContainerInfo2.innerHTML = componentAddedValueRalaxy;
+    currentComponent = document.querySelector(
+      "#product2 .logo-product .new-content-section"
+    );
+  } else if (concept === "proposal-ralaxy") {
+    newContainerInfo2.innerHTML = componentProposalRalaxy;
+    var children = newContainerInfo2.querySelectorAll("*");
+    currentComponent = document.querySelector(
+      "#product2 .logo-product"
+    );
+  }
+
+  setTimeout(() => {
+    if (children) {
+      if (children.length > 0) {
+        for (let i = 0; i < children.length; i++) {
+          children[i].classList.add("active");
+        }
+      }
+    }
+    currentComponent.classList.add("active");
+  }, 100);
+}
+
 function removeInfoRalaxy() {
+  console.log('estoy eliminando')
   containerInfo2.innerHTML = "";
 }
 
@@ -818,12 +1026,12 @@ function checkWidth(ifForDonwloadDesktopButton) {
   if (width >= height && heightCondition >= 400) {
     imageRalaxy.classList.add("ralaxy-image-complete");
   }
-
-  if (height >= width && heightCondition <= 300) {
-    
-    imageRalaxy.src = "images/t5.png";
-  } else {
-    imageRalaxy.src = "images/ralaxy-1-600.svg";
+  if(imageRalaxy !== null){
+    if (height >= width && heightCondition <= 300) {
+      imageRalaxy.src = "images/t5.png";
+    } else {
+      imageRalaxy.src = "images/ralaxy-1-600.svg";
+    }
   }
 }
 
@@ -871,19 +1079,13 @@ function addClassDesktop() {
   });
 
   document.querySelector(".logo-terrabox").classList.add("desktop");
-  document.querySelector(".logo-ralaxy").classList.add("desktop");
+  document.querySelector(".logo-ralaxy")?.classList.add("desktop");
 
   var h3LogoProduct = document.querySelectorAll(".logo-product h3");
   h3LogoProduct.forEach(function (h3LogoProduct) {
-    
     h3LogoProduct.classList.add("desktop");
   });
 
-  document.querySelector("#googleplay").classList.add("desktop");
-
-  document.querySelector(".appstore-icon").classList.add("desktop");
-
-  document.querySelector("#applestore").classList.add("desktop");
 
   var imageProductContainer = document.querySelectorAll(
     ".new-content-product .image-product-container"
@@ -928,11 +1130,6 @@ function removeClassDesktop() {
     h3LogoProduct.classList.remove("desktop");
   });
 
-  document.querySelector("#googleplay").classList.remove("desktop");
-
-  document.querySelector(".appstore-icon").classList.remove("desktop");
-
-  document.querySelector("#applestore").classList.remove("desktop");
 
   var imageProductContainer = document.querySelectorAll(
     ".new-content-product .image-product-container"
