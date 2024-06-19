@@ -714,11 +714,6 @@ body.home-bg {
 
 }
 
-body.about-us-bg {
-  background: url("../images/about.jpg") no-repeat center center fixed;
-  background-size: cover;
-}
-
 body.products-bg {
   background: url("../images/background-terrabox.png") no-repeat center center
     fixed;
