@@ -1078,7 +1078,7 @@ function addClassDesktop() {
     logoProduct.classList.add("desktop");
   });
 
-  document.querySelector(".logo-terrabox").classList.add("desktop");
+  document.querySelector(".logo-terrabox")?.classList.add("desktop");
   document.querySelector(".logo-ralaxy")?.classList.add("desktop");
 
   var h3LogoProduct = document.querySelectorAll(".logo-product h3");
