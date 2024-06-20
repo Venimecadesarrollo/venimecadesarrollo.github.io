@@ -499,8 +499,13 @@ header.not-home nav ul {
   width: var(--loading-width);
   height: 100%;
   background-color: rgba(255, 255, 255, 0.5);
-  transition: width 3s linear;
+  transition: width 10s linear;
   z-index: -1;
+}
+
+.nav-link.fast-transition::before,
+.nav-link-2.fast-transition::before {
+  transition: width 1.9s linear !important;
 }
 
 .nav-link-2.no-transition::before {
@@ -1615,7 +1620,13 @@ ul.ralaxy-list li {
 }
 
 @media (max-height: 550px) {
- .terrabox-list li{
+  .terrabox-list li{
+    font-size: 12px;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) and (max-height: 670px) {
+  .terrabox-list li{
     font-size: 12px;
   }
 }

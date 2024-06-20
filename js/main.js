@@ -210,7 +210,7 @@ function EventSendEmail(e, form) {
 
 window.onload = function () {
   const loaderContainer = document.querySelector("#loader-container");
-  loaderContainer.style.opacity = '0'; 
+  loaderContainer.style.opacity = '0';
   setTimeout(() => {
     loaderContainer.style.display = 'none';
     document.body.classList.remove("loading");
@@ -270,6 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
     link.addEventListener("click", function (event) {
       event.preventDefault();
       clearInterval(intervalId);
+      clearTimeout(terraboxTimeOut);
       link.classList.add('no-transition');
 
 
@@ -286,6 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
     link.addEventListener("click", function (event) {
       event.preventDefault();
       clearInterval(intervalIdRalaxy)
+      clearTimeout(ralaxyTiemeOut);
       link.classList.add('no-transition');
 
       var currentComponent = document.querySelector(
@@ -382,6 +384,8 @@ var currentIndexRalaxy = 0;
 function stopAutoDisplayTerrabox(){
   clearInterval(intervalId);
 }
+let terraboxTimeOut = null;
+let ralaxyTiemeOut = null;
 function startAutoDisplayTerrabox() {
   var idInfo = ["proposal-terrabox", "what-is-terrabox","approach-terrabox","added-value-terrabox"]
 
@@ -390,10 +394,29 @@ function startAutoDisplayTerrabox() {
   button.style.setProperty('--loading-width', '100%');
 
   addInfoTerrabox(idInfo[currentIndexTerrabox]);
-  intervalId = setInterval(function() {
-    currentIndexTerrabox = (currentIndexTerrabox + 1) % idInfo.length;
-    addInfoTerrabox(idInfo[currentIndexTerrabox]);
-  }, 3000);
+
+  function displayStartTerrabox(){
+    terraboxTimeOut = setTimeout(function() {
+      currentIndexTerrabox = (currentIndexTerrabox + 1) % idInfo.length;
+      addInfoTerrabox(idInfo[currentIndexTerrabox]);
+      displayInfoTerrabox();
+    }, 1900);
+  }
+
+  displayStartTerrabox();
+
+  function displayInfoTerrabox(){
+    intervalId = setInterval(function() {
+      currentIndexTerrabox = (currentIndexTerrabox + 1) % idInfo.length;
+      addInfoTerrabox(idInfo[currentIndexTerrabox]);
+      if(idInfo[currentIndexTerrabox] === 'proposal-terrabox'){
+        clearInterval(intervalId);
+        displayStartTerrabox();
+      }
+    }, 10000);
+  }
+
+
 }
 function stopAutoDisplayRalaxy(){
 
@@ -407,12 +430,28 @@ function startAutoDisplayRalaxy() {
   button.style.setProperty('--loading-width', '100%');
 
   addInfoRalaxy(idInfo[currentIndexRalaxy]);
-  intervalIdRalaxy = setInterval(function() {
-    currentIndexRalaxy = (currentIndexRalaxy + 1) % idInfo.length;
-    addInfoRalaxy(idInfo[currentIndexRalaxy]);
-  }, 3000);
-}
 
+  function displayStartRalaxy(){
+    ralaxyTiemeOut = setTimeout(function() {
+      currentIndexRalaxy = (currentIndexRalaxy + 1) % idInfo.length;
+      addInfoRalaxy(idInfo[currentIndexRalaxy]);
+      displayInfoRalaxy();
+    }, 1900);
+  }
+
+  displayStartRalaxy();
+
+  function displayInfoRalaxy(){
+    intervalIdRalaxy = setInterval(function() {
+      currentIndexRalaxy = (currentIndexRalaxy + 1) % idInfo.length;
+      addInfoRalaxy(idInfo[currentIndexRalaxy]);
+      if(idInfo[currentIndexRalaxy] === 'proposal-ralaxy'){
+        clearInterval(intervalIdRalaxy);
+        displayStartRalaxy();
+      }
+    }, 10000);
+  }
+}
 
 function handleScrollAndGestures() {
   const sections = Array.from(document.querySelectorAll("section"));
@@ -577,7 +616,7 @@ var componentWhatIsRalaxy = `
 `;
 
 var componentApproachRalaxy = `
-<div class="new-content-section active">
+<div class="new-content-section">
 <h2><span class="accent-color-ralaxy">Focus</span></h2>
 <p class="ralaxy-focus">
   Develop and implement an advanced road signaling
@@ -613,7 +652,7 @@ var componentApproachRalaxy = `
 </div>`;
 
 var componentAddedValueRalaxy = `
-<div class="new-content-section active">
+<div class="new-content-section">
 <h2><span class="accent-color-ralaxy">Added value</span></h2>
 <ul class="ralaxy-list">
   <li>
