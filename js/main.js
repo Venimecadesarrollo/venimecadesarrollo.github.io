@@ -305,8 +305,18 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", checkWidth);
   handleScrollAndGestures();
 
+  const aboutSection = document.getElementById("about-us");
+  const containerAccordion = aboutSection.querySelector(".container-accordion");
+  const gridItem = containerAccordion.parentElement;
+  const containerRect = containerAccordion.getBoundingClientRect();
+  const gridItemRect = gridItem.getBoundingClientRect();
+  const distance = gridItemRect.bottom - containerRect.bottom;
+
   var acc = document.getElementsByClassName("accordion");
   for (let i = 0; i < acc.length; i++) {
+    if(acc[i].nextElementSibling.classList.contains('active')) {
+      acc[i].nextElementSibling.style.minHeight = distance + 'px';
+    }
     acc[i].addEventListener("click", function() {
       var panel = this.nextElementSibling;
       if (panel.style.maxHeight != '0px' && panel.style.maxHeight != '') {
@@ -318,9 +328,9 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         this.classList.add('active')
         closeAllPanels(panel)
-        panel.style.maxHeight = "500px";
-        panel.style.minHeight = "320px";
-        panel.style.paddingTop = "40px";
+        panel.style.maxHeight = distance + 'px';
+        panel.style.minHeight = distance + 'px';
+        panel.style.paddingTop = "4px";
         panel.style.paddingBottom = "40px";
       }
     });

@@ -1484,12 +1484,11 @@ body.loading #main-content {
   padding-bottom: 0;
   padding-left: 40px;
   padding-right: 40px;
-
+  align-content: center;
 }
 
 .panel.active{
   padding: 40px;
-  max-height: 500px;
 }
 
 .accordion:after {
@@ -1544,4 +1543,13 @@ body.loading #main-content {
     display: none;
   }
 
+}
+
+@media (max-height: 675px) {
+  .container-accordion{
+    display: block;
+  }
+  .container-text{
+    display: none;
+  }
 }
