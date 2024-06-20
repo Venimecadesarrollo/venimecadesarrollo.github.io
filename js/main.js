@@ -577,37 +577,39 @@ var componentWhatIsRalaxy = `
 `;
 
 var componentApproachRalaxy = `
-
-<div class="new-content-section">
+<div class="new-content-section active">
 <h2><span class="accent-color-ralaxy">Focus</span></h2>
-  <p>
+<p class="ralaxy-focus">
   Develop and implement an advanced road signaling
-system, using bioluminescence and solar charging
-technology to improve visibility and safety on traffic routes.
-<br>
-<br>
-<span class="accent-color-ralaxy"> • Research and Development: </span> Carry out studies to
-optimize the combination of bioluminescence and solar charging
-technologies in traffic paints.
-<br>
-<br>
-<span class="accent-color-ralaxy">• Pilot Tests:</span>
-Implement tests in different conditions
-and environments to evaluate the effectiveness and durability
-of the signage.
-<br>
-<br>
-<span class="accent-color-ralaxy">•Collaboration with Experts:</span> Work with specialists
-in materials, solar energy and road safety to perfect the
-product.
-<br>
-<br>
-<span class="accent-color-ralaxy">• Production and Distribution:</span> Establish
-production processes. In alliance with efficient
-Venezuelan paint production companies and a distribution
-network to supply paint to government entities
-and road construction companies.
-  </p>
+  system, using bioluminescence and solar charging
+  technology to improve visibility and safety on traffic routes.
+</p>
+<ul class="ralaxy-list">
+  <li class="">
+    <span class="accent-color-ralaxy">Research and Development: </span>
+    Carry out studies to
+    optimize the combination of bioluminescence and solar charging
+    technologies in traffic paints.
+  </li>
+  <li class="">
+    <span class="accent-color-ralaxy">Pilot Tests:</span>
+    Implement tests in different conditions
+    and environments to evaluate the effectiveness and durability
+    of the signage.
+  </li>
+  <li class="">
+    <span class="accent-color-ralaxy">Collaboration with Experts:</span> Work with specialists
+    in materials, solar energy and road safety to perfect the
+    product.
+  </li>
+  <li class="">
+    <span class="accent-color-ralaxy">Production and Distribution:</span> Establish
+    production processes. In alliance with efficient
+    Venezuelan paint production companies and a distribution
+    network to supply paint to government entities
+    and road construction companies.
+  </li>
+</ul>
 </div>`;
 
 var componentAddedValueRalaxy = `

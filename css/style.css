@@ -1574,20 +1574,48 @@ ul.terrabox-list li {
   margin-bottom: 5px; /* Agregar espacio entre los elementos de la lista */
 }
 
+ul.ralaxy-list li::before {
+  content: '•';
+  color: #f8812b;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: inline-block;
+  width: .5em;
+  margin-left: -1em;
+}
+
+ul.ralaxy-list li {
+  margin-bottom: 10px; /* Agregar espacio entre los elementos de la lista */
+}
+
+.ralaxy-focus{
+  margin-bottom: 10px;
+}
+
 @media (max-height: 630px) {
   h2{
     font-size: 35px;
   }
 }
 
+@media (max-height: 775px) {
+  .ralaxy-list li{
+    font-size: 12px;
+  }
+  .ralaxy-focus{
+    font-size: 12px !important;
+  }
+}
+
+
 @media (max-height: 600px) {
-  ul li{
+  .terrabox-list li{
     font-size: 15px;
   }
 }
 
 @media (max-height: 550px) {
-  ul li{
+ .terrabox-list li{
     font-size: 12px;
   }
 }
