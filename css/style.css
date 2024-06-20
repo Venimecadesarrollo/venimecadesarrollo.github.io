@@ -1553,3 +1553,41 @@ body.loading #main-content {
     display: none;
   }
 }
+
+
+ul {
+  list-style-type: none; /* Eliminar los puntos predeterminados */
+  padding: 0 25px;
+}
+
+ul.terrabox-list li::before {
+  content: '•';
+  color: #2be082;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: inline-block;
+  width: .5em;
+  margin-left: -1em;
+}
+
+ul.terrabox-list li {
+  margin-bottom: 5px; /* Agregar espacio entre los elementos de la lista */
+}
+
+@media (max-height: 630px) {
+  h2{
+    font-size: 35px;
+  }
+}
+
+@media (max-height: 600px) {
+  ul li{
+    font-size: 15px;
+  }
+}
+
+@media (max-height: 550px) {
+  ul li{
+    font-size: 12px;
+  }
+}

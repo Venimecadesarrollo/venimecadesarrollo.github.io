@@ -279,7 +279,6 @@ document.addEventListener("DOMContentLoaded", function () {
         removeInfoTerrabox();
       }
 
-      //addInfoTerrabox(this.id);
       addInfoTerraboxClick(this.id);
     });
   });
@@ -674,25 +673,36 @@ var componentApproach = `
 </div>`;
 
 var componentAddedValue = `
-
 <div class="new-content-section">
 <h2><span class="accent-color-terrabox">Added value</span></h2>
-  <p>
-  <span class="accent-color-terrabox">• Citizen Participation:</span> Encourages community involvement through incentives.
-  <br>
-  <br>
-<span class="accent-color-terrabox">• Efficiency in waste management:</span>
-Improves collection and processing of recyclable materials<br><br>
-<span class="accent-color-terrabox">• Reduction of environmental impact:</span>
-Reduces pollution and the accumulation of landfills<br><br>
-<span class="accent-color-terrabox">• Ecological Awareness:</span>
-Raise awareness and education about recycling and sustainability.<br><br>
-<span class="accent-color-terrabox">• Sustainability and employment:</span>
-Promote sustainable practices and create job opportunities<br><br>
-<span class="accent-color-terrabox">• Adaptability:</span>
-Adjusts to different contexts and local needs.<br>
-  </p>
-</div>`;
+<ul class="terrabox-list">
+  <li>
+    <span class="accent-color-terrabox">Citizen Participation:</span>
+    Encourages community involvement through incentives.
+  </li>
+  <li>
+    <span class="accent-color-terrabox">Efficiency in waste management:</span>
+    Improves collection and processing of recyclable materials
+  </li>
+  <li>
+    <span class="accent-color-terrabox">Reduction of environmental impact:</span>
+    Reduces pollution and the accumulation of landfills
+  </li>
+  <li>
+    <span class="accent-color-terrabox">Ecological Awareness:</span>
+    Raise awareness and education about recycling and sustainability.
+  </li>
+  <li>
+    <span class="accent-color-terrabox">Sustainability and employment:</span>
+    Promote sustainable practices and create job opportunities
+  </li>
+  <li>
+    <span class="accent-color-terrabox">Adaptability:</span>
+    Adjusts to different contexts and local needs.
+  </li>
+</ul>
+</div>
+`;
 
 var componentProposal = `
 <img src="images/terrabox-logo.svg" alt="" class="logo-terrabox" />
