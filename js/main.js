@@ -565,7 +565,7 @@ const preloadImages = () => {
 var componentWhatIsRalaxy = `
 <div class="new-content-section">
   <h2><span class="accent-color-ralaxy">What is Ralaxy</span></h2>
-  <p>
+  <p class="ralaxy-focus">
   Ralaxy is a system with the potential to revolutionize road safety by enhancing
   the visibility of signage on streets, avenues, highways, and roads.
   <br>
@@ -613,31 +613,32 @@ var componentApproachRalaxy = `
 </div>`;
 
 var componentAddedValueRalaxy = `
-
-<div class="new-content-section">
+<div class="new-content-section active">
 <h2><span class="accent-color-ralaxy">Added value</span></h2>
-<p>
-<span class="accent-color-ralaxy">• Improved Road Safety:</span> Significant increase in
-visibility of signs, reducing the risk of accidents.<br><br>
-<span class="accent-color-ralaxy">• Sustainability:</span> Use of solar energy and bioluminescence,
-minimizing environmental impact.
-<br>
-<br>
-<span class="accent-color-ralaxy">• Energy Efficiency: </span>Reduction in energy consumption
-thanks to solar charging and induction by vehicular traffic.
-<br>
-<br>
-<span class="accent-color-ralaxy">• Technological Innovation:</span> Application of cutting-edge technology=
-in bioluminescence and renewable energies.
-<br>
-<br>
-<span class="accent-color-ralaxy">• Adaptability:</span> System applicable in various environments
-and climatic conditions.
-<br>
-<br>
-<span class="accent-color-ralaxy">• Environmental Awareness:</span> Promotion of green and
-sustainable technologies.
-</p>
+<ul class="ralaxy-list">
+  <li>
+  <span class="accent-color-ralaxy">Improved Road Safety:</span>
+  Significant increase invisibility of signs, reducing the risk of accidents.</li>
+  <li>
+    <span class="accent-color-ralaxy">Sustainability:</span>
+    Use of solar energy and bioluminescence,minimizing environmental impact.</li>
+  <li>
+    <span class="accent-color-ralaxy">Energy Efficiency:</span>
+    Reduction in energy consumptionthanks to solar charging and induction by vehicular traffic.
+  </li>
+  <li>
+    <span class="accent-color-ralaxy">Technological Innovation:</span>
+    Application of cutting-edgetechnology=in bioluminescence and renewable energies.
+  </li>
+  <li>
+    <span class="accent-color-ralaxy">Adaptability:</span>
+    System applicable in various environmentsand climatic conditions.
+  </li>
+  <li>
+    <span class="accent-color-ralaxy">Environmental Awareness:</span>
+    Promotion of green andsustainable technologies.
+  </li>
+</ul>
 </div>`;
 
 
