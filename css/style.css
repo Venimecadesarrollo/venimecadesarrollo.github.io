@@ -1129,6 +1129,11 @@ i.fa-apple{
   width: 100%;
 }
 
+#product2 .image-product-container.desktop {
+  grid-row: 1 / 4;
+  grid-column: 3 / 5;
+}
+
 .new-content-product .image-product-container.desktop {
   display: flex;
   justify-content: end;
