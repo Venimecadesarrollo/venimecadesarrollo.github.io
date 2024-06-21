@@ -478,6 +478,10 @@ header.not-home nav ul {
   padding-right: 10px;
 }
 
+.secondary-navbar{
+  font-size: 11px;
+}
+
 .nav-link,
 .nav-link-2 {
   color: white;
@@ -1089,24 +1093,26 @@ i.fa-apple{
   display: grid;
   justify-content: flex-start;
   justify-items: start;
-  grid-template-columns: 30% 30% 40%;
+  grid-template-columns: repeat(4, 1fr);
   grid-row: 2;
   grid-column: 2 / 4;
   padding: 0;
 }
 
-.logo-product .logo-ralaxy.desktop,
-.logo-product .logo-terrabox.desktop {
+.logo-product .logo-ralaxy.desktop{
   width: 100%;
   grid-column: 1 / 5;
-
+}
+.logo-product .logo-terrabox.desktop {
+  width: 100%;
+  grid-column: 1 / 4;
 }
 
 .logo-product h3.desktop {
   grid-row: 2;
-  grid-column: 1 / 5;
+  grid-column: 1 / 4;
   margin-bottom: 10px;
-  font-size: 35px;
+  font-size: 28px;
 }
 
 #googleplay.desktop {
@@ -1130,18 +1136,33 @@ i.fa-apple{
   width: 100%;
   height: 100%;
   overflow: hidden;
-  grid-row: 1 / 4;
+  grid-row: 2 / 4;
   grid-column: 3 / 5;
 }
 
+#product1 .image-product-container.desktop{
+  padding-left: 95px;
+  align-items: start;
+}
+
 #image-product-complete.desktop {
-  width: 90%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 
 .info-vertical{
   grid-column: 1/5;
   text-align: center;
+}
+
+#product1 .info-vertical img{
+  width: 80%;
+}
+
+#product1 .info-vertical h3{
+  font-size: 20px;
 }
 
 .image-product-container.hidden{

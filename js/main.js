@@ -1258,7 +1258,7 @@ function addImageProduct() {
 
     imageProductComplete = document.createElement("img");
     imageProductComplete.id = "image-product-complete";
-    imageProductComplete.src = "images/terrabox-1.svg";
+    imageProductComplete.src = "images/terrabox-model2.png";
     container.appendChild(imageProductComplete);
   }
 }
