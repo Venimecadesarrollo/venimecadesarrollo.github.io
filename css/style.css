@@ -38,8 +38,13 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
-}
 
+  background: rgb(0,0,0);
+  background: -moz-linear-gradient(180deg, rgba(0,0,0,1) 2%, rgba(0,0,0,0) 100%, rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(0,0,0,1) 2%, rgba(0,0,0,0) 100%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 2%, rgba(0,0,0,0) 100%, rgba(0,0,0,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
 #logo-container {
   display: flex;
   grid-column: 1 / 2; /* Ocupa la primera columna */
