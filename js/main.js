@@ -1246,7 +1246,7 @@ function addImageProductSingle() {
 
   var imageProductSingle = document.createElement("img");
   imageProductSingle.id = "image-product-single";
-  imageProductSingle.src = "images/app-terrabox.svg";
+  imageProductSingle.src = "images/terrabox-model2.png";
   imageProductSingle.classList.add("image-product-app");
   container.appendChild(imageProductSingle);
 }

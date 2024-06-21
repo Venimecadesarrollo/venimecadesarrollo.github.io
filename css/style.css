@@ -1021,25 +1021,25 @@ i.fa-apple{
 
 @media (max-height: 675px) {
   .image-product-app{
-    width: 50%;
+    width: 100%;
   }
 }
 
 @media  (min-height: 676px) and (max-height: 750px) {
   .image-product-app{
-    width: 70%;
+    width: 100%;
   }
 }
 
 @media  (min-height: 750px) and (max-height: 900px){
   .image-product-app{
-    width: 80%;
+    width: 100%;
   }
 }
 
 @media  (min-height: 900px){
   .image-product-app{
-    width: 90%;
+    width: 100%;
   }
 }
 
